@@ -1,0 +1,3 @@
+Elements of Terraria, initially introduced by Shards of Atheria, implements a new immersive elemental mechanic to Terraria!
+There are four elements that any NPC, weapon or projectile can have: Fire, Ice, Electric, andMetal. 
+The elemental system is based on a strength and weakness system, akin to rock-paper-scissors, Fire is effective against Ice, Ice is effective against Metal, Metal is effective against Electric, and Electric is effective against Fire.

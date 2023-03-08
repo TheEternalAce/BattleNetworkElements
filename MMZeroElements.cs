@@ -1,3 +1,4 @@
+using MMZeroElements.Utilities;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -62,7 +63,7 @@ namespace MMZeroElements
 						}
 						else if (args[1] is NPC elementNPC)
 						{
-							if (args[2] is double[] elements)
+							if (args[2] is float[] elements)
 							{
 								elementNPC.GetGlobalNPC<NPCElements>().elementMultipliers = elements;
 							}

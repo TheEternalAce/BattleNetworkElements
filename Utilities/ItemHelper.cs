@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Terraria.ModLoader;
 
-namespace MMZeroElements
+namespace MMZeroElements.Utilities
 {
     public static class ItemHelper
     {

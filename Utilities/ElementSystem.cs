@@ -1,7 +1,7 @@
 ﻿using System;
 using Terraria;
 
-namespace MMZeroElements
+namespace MMZeroElements.Utilities
 {
     public static class ElementSystem
     {
@@ -9,7 +9,7 @@ namespace MMZeroElements
         /// Sets NPC multipliers in the following order: Fire, Ice, Electric, Metal
         /// <para>This method should be called in the SetDefaults() override</para>
         /// </summary>
-        public static void SetCustomElementMultipliers(this NPC npc, params double[] multipliers)
+        public static void SetCustomElementMultipliers(this NPC npc, params float[] multipliers)
         {
             if (multipliers.Length > 4)
             {
@@ -35,30 +35,34 @@ namespace MMZeroElements
             switch (element)
             {
                 case Element.Fire:
-                    npc.SetElementMultiplier(Element.Electric, 2.0);
-                    npc.SetElementMultiplier(Element.Ice, 0.5);
+                    npc.SetElementMultiplier(Element.Fire, 0.8f);
+                    npc.SetElementMultiplier(Element.Ice, 0.5f);
+                    npc.SetElementMultiplier(Element.Electric, 2.0f);
                     break;
                 case Element.Ice:
-                    npc.SetElementMultiplier(Element.Fire, 2.0);
-                    npc.SetElementMultiplier(Element.Metal, 0.5);
+                    npc.SetElementMultiplier(Element.Fire, 2.0f);
+                    npc.SetElementMultiplier(Element.Ice, 0.8f);
+                    npc.SetElementMultiplier(Element.Metal, 0.5f);
                     break;
                 case Element.Electric:
-                    npc.SetElementMultiplier(Element.Metal, 2.0);
-                    npc.SetElementMultiplier(Element.Fire, 0.5);
+                    npc.SetElementMultiplier(Element.Fire, 0.5f);
+                    npc.SetElementMultiplier(Element.Electric, 0.8f);
+                    npc.SetElementMultiplier(Element.Metal, 2.0f);
                     break;
                 case Element.Metal:
-                    npc.SetElementMultiplier(Element.Ice, 2.0);
-                    npc.SetElementMultiplier(Element.Electric, 0.5);
+                    npc.SetElementMultiplier(Element.Ice, 2.0f);
+                    npc.SetElementMultiplier(Element.Electric, 0.5f);
+                    npc.SetElementMultiplier(Element.Metal, 0.8f);
                     break;
             }
         }
 
-        public static void SetElementMultiplier(this NPC npc, int element, double multiplier)
+        public static void SetElementMultiplier(this NPC npc, int element, float multiplier)
         {
             npc.GetGlobalNPC<NPCElements>().elementMultipliers[element] = multiplier;
         }
 
-        public static void SetElementMultiplier(this NPC npc, double[] multipliers)
+        public static void SetElementMultiplier(this NPC npc, float[] multipliers)
         {
             npc.GetGlobalNPC<NPCElements>().elementMultipliers = multipliers;
         }

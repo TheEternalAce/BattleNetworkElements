@@ -23,7 +23,6 @@ namespace MMZeroElements
         public override void SetDefaults(Projectile proj)
         {
             int type = proj.type;
-
             switch (type)
             {
                 // Rocket
@@ -131,50 +130,51 @@ namespace MMZeroElements
                     Metal.Add(type);
                     break;
             }
-
         }
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            int type = projectile.type;
-            if (source is EntitySource_Parent parentSource && parentSource.Entity is NPC npc)
+            if (source is EntitySource_Parent parentSource)
             {
-                int sourceEnemy = npc.type;
-                if (NPCElements.Fire.Contains(sourceEnemy))
+                if (parentSource.Entity is NPC npc)
                 {
-                    tempFire = true;
+                    int sourceEnemy = npc.type;
+                    if (NPCElements.Fire.Contains(sourceEnemy))
+                    {
+                        tempFire = true;
+                    }
+                    if (NPCElements.Ice.Contains(sourceEnemy))
+                    {
+                        tempIce = true;
+                    }
+                    if (NPCElements.Electric.Contains(sourceEnemy))
+                    {
+                        tempElectric = true;
+                    }
+                    if (NPCElements.Metal.Contains(sourceEnemy))
+                    {
+                        tempMetal = true;
+                    }
                 }
-                if (NPCElements.Ice.Contains(sourceEnemy))
+                else if (parentSource.Entity is Projectile proj)
                 {
-                    tempIce = true;
-                }
-                if (NPCElements.Electric.Contains(sourceEnemy))
-                {
-                    tempElectric = true;
-                }
-                if (NPCElements.Metal.Contains(sourceEnemy))
-                {
-                    tempMetal = true;
-                }
-            }
-            if (source is EntitySource_Parent parentSourceProj && parentSourceProj.Entity is Projectile proj)
-            {
-                int sourceProjType = proj.type;
-                if (Fire.Contains(sourceProjType))
-                {
-                    tempFire = true;
-                }
-                if (Ice.Contains(sourceProjType))
-                {
-                    tempIce = true;
-                }
-                if (Electric.Contains(sourceProjType))
-                {
-                    tempElectric = true;
-                }
-                if (Metal.Contains(sourceProjType))
-                {
-                    tempMetal = true;
+                    int sourceProjType = proj.type;
+                    if (Fire.Contains(sourceProjType))
+                    {
+                        tempFire = true;
+                    }
+                    if (Ice.Contains(sourceProjType))
+                    {
+                        tempIce = true;
+                    }
+                    if (Electric.Contains(sourceProjType))
+                    {
+                        tempElectric = true;
+                    }
+                    if (Metal.Contains(sourceProjType))
+                    {
+                        tempMetal = true;
+                    }
                 }
             }
             //if (FireProj.Contains(type))
@@ -193,26 +193,6 @@ namespace MMZeroElements
             //{
             //    ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("Metal Projectile: " + projectile.Name), Color.White);
             //}
-        }
-
-        public override void Kill(Projectile projectile, int timeLeft)
-        {
-            if (tempFire)
-            {
-                Fire.Remove(projectile.type);
-            }
-            if (tempIce)
-            {
-                Ice.Remove(projectile.type);
-            }
-            if (tempElectric)
-            {
-                Electric.Remove(projectile.type);
-            }
-            if (tempMetal)
-            {
-                Metal.Remove(projectile.type);
-            }
         }
     }
 }

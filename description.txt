@@ -8,3 +8,5 @@ Players can now have elemental multipliers.
 Multiplier number appears when striking NPCs/Players.
 Boss summoning items will display the elements of the associated boss.
 Added multipliers for "common" slimes.
+"Poison type" enemies have the Fire element.
+Corruption enemies have the Fire element.

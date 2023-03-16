@@ -1,5 +1,5 @@
-﻿using System;
-using MMZeroElements.Utilities;
+﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -11,6 +11,7 @@ namespace MMZeroElements
         public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
         {
             float modifier = 1.0f;
+            Color color = Color.Blue;
             if (NPCElements.Fire.Contains(npc.type))
             {
                 modifier *= elementMultiplier[Element.Fire];
@@ -27,6 +28,8 @@ namespace MMZeroElements
             {
                 modifier *= elementMultiplier[Element.Metal];
             }
+            int ct = CombatText.NewText(Player.getRect(), color, modifier + "x");
+            Main.combatText[ct].position.Y -= 45;
             damage = (int)Math.Ceiling(damage * modifier);
 
             base.ModifyHitByNPC(npc, ref damage, ref crit);
@@ -36,6 +39,7 @@ namespace MMZeroElements
         {
             ProjectileElements elementProj = proj.GetGlobalProjectile<ProjectileElements>();
             float modifier = 1.0f;
+            Color color = Color.Blue;
             if (ProjectileElements.Fire.Contains(proj.type) || elementProj.tempFire)
             {
                 modifier *= elementMultiplier[Element.Fire];
@@ -52,6 +56,8 @@ namespace MMZeroElements
             {
                 modifier *= elementMultiplier[Element.Metal];
             }
+            int ct = CombatText.NewText(Player.getRect(), color, modifier + "x");
+            Main.combatText[ct].position.Y -= 45;
             damage = (int)Math.Ceiling(damage * modifier);
 
             base.ModifyHitByProjectile(proj, ref damage, ref crit);
@@ -60,6 +66,7 @@ namespace MMZeroElements
         public override void ModifyHitPvp(Item item, Player target, ref int damage, ref bool crit)
         {
             float modifier = 1.0f;
+            Color color = Color.Blue;
             if (WeaponElements.Fire.Contains(item.type))
             {
                 modifier *= elementMultiplier[Element.Fire];
@@ -76,6 +83,8 @@ namespace MMZeroElements
             {
                 modifier *= elementMultiplier[Element.Metal];
             }
+            int ct = CombatText.NewText(Player.getRect(), color, modifier + "x");
+            Main.combatText[ct].position.Y -= 45;
             damage = (int)Math.Ceiling(damage * modifier);
 
             base.ModifyHitPvp(item, target, ref damage, ref crit);
@@ -85,6 +94,7 @@ namespace MMZeroElements
         {
             ProjectileElements elementProj = proj.GetGlobalProjectile<ProjectileElements>();
             float modifier = 1.0f;
+            Color color = Color.Blue;
             if (ProjectileElements.Fire.Contains(proj.type) || elementProj.tempFire)
             {
                 modifier *= elementMultiplier[Element.Fire];
@@ -101,6 +111,8 @@ namespace MMZeroElements
             {
                 modifier *= elementMultiplier[Element.Metal];
             }
+            int ct = CombatText.NewText(Player.getRect(), color, modifier + "x");
+            Main.combatText[ct].position.Y -= 45;
             damage = (int)Math.Ceiling(damage * modifier);
 
             base.ModifyHitPvpWithProj(proj, target, ref damage, ref crit);

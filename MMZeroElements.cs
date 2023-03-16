@@ -1,4 +1,3 @@
-using MMZeroElements.Utilities;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -59,11 +58,11 @@ namespace MMZeroElements
 										break;
 								}
 							}
-							else throw new ArgumentException("args[2] must be an int of either 1, 2, 3, or 4.");
+							else throw new ArgumentException("args[2] must be an int of either 0, 1, 2, or 3.");
 						}
 						else if (args[1] is NPC elementNPC)
 						{
-							if (args[2] is float[] elements)
+							if (args[2] is double[] elements)
 							{
 								elementNPC.GetGlobalNPC<NPCElements>().elementMultipliers = elements;
 							}
@@ -71,7 +70,25 @@ namespace MMZeroElements
 						}
 						else if (args[1] is Projectile elementProjectile)
 						{
-
+							if (args[2] is int element)
+							{
+								switch (element)
+								{
+									case Element.Fire:
+										ProjectileElements.Fire.Add(elementProjectile.type);
+										break;
+									case Element.Ice:
+										ProjectileElements.Ice.Add(elementProjectile.type);
+										break;
+									case Element.Electric:
+										ProjectileElements.Electric.Add(elementProjectile.type);
+										break;
+									case Element.Metal:
+										ProjectileElements.Metal.Add(elementProjectile.type);
+										break;
+								}
+							}
+							else throw new ArgumentException("args[2] must be an int of either 0, 1, 2, or 3.");
 						}
 						break;
 					case COMMAND_GET_ELEMENT:

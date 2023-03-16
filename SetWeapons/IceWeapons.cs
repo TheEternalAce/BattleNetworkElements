@@ -99,6 +99,16 @@ namespace MMZeroElements.SetWeapons
                 case ItemID.StardustAxe:
                 case ItemID.StardustHammer:
                 case ItemID.Hammush:
+
+                // Summons
+                case ItemID.SlimeCrown:
+                case ItemID.WormFood:
+                case ItemID.BloodySpine:
+                case ItemID.Abeemination:
+                case ItemID.DeerThing:
+                case ItemID.QueenSlimeCrystal:
+                case ItemID.MechanicalSkull:
+                case ItemID.TruffleWorm:
                     WeaponElements.Ice.Add(type);
                     break;
             }

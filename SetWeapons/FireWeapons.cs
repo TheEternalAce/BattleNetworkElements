@@ -135,6 +135,12 @@ namespace MMZeroElements.SetWeapons
                 case ItemID.LunarHamaxeSolar:
                 case ItemID.SolarFlareAxe:
                 case ItemID.SolarFlareHammer:
+
+                // Summons
+                case ItemID.GuideVoodooDoll:
+                case ItemID.MechanicalSkull:
+                case ItemID.MechanicalEye:
+                case ItemID.LihzahrdPowerCell:
                     WeaponElements.Fire.Add(type);
                     break;
             }

@@ -18,10 +18,10 @@ namespace MMZeroElements
         public static List<int> Electric = new();
         public static List<int> Metal = new();
 
-        public static Asset<Texture2D> FireIcon = ModContent.Request<Texture2D>("MMZeroElements/FireIcon");
-        public static Asset<Texture2D> IceIcon = ModContent.Request<Texture2D>("MMZeroElements/IceIcon");
-        public static Asset<Texture2D> ElectricIcon = ModContent.Request<Texture2D>("MMZeroElements/ElectricIcon");
-        public static Asset<Texture2D> MetalIcon = ModContent.Request<Texture2D>("MMZeroElements/MetalIcon");
+        public static Asset<Texture2D> FireIcon = ModContent.Request<Texture2D>("MMZeroElements/ElementIcons/FireIcon");
+        public static Asset<Texture2D> IceIcon = ModContent.Request<Texture2D>("MMZeroElements/ElementIcons/IceIcon");
+        public static Asset<Texture2D> ElectricIcon = ModContent.Request<Texture2D>("MMZeroElements/ElementIcons/ElectricIcon");
+        public static Asset<Texture2D> MetalIcon = ModContent.Request<Texture2D>("MMZeroElements/ElementIcons/MetalIcon");
 
         public override bool InstancePerEntity => true;
 

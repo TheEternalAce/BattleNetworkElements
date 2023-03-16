@@ -1,4 +1,4 @@
-﻿using MMZeroElements.Utilities;
+﻿using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,55 +7,66 @@ namespace MMZeroElements.SetNPCs
 {
     internal class FireNPCs : GlobalNPC
     {
+        static List<int> FireEnemies = new()
+        {
+            NPCID.BlazingWheel,
+            NPCID.BoneSerpentHead,
+            NPCID.BoneSerpentBody,
+            NPCID.BoneSerpentTail,
+            NPCID.Clinger,
+            NPCID.Demon,
+            NPCID.DiabolistRed,
+            NPCID.DiabolistWhite,
+            NPCID.FireImp,
+            NPCID.Hellbat,
+            NPCID.HoppinJack,
+            NPCID.Lavabat,
+            NPCID.LavaSlime,
+            NPCID.Necromancer,
+            NPCID.NecromancerArmored,
+            NPCID.RedDevil,
+            NPCID.DemonTaxCollector,
+            NPCID.VoodooDemon,
+
+            NPCID.MeteorHead,
+            NPCID.Tim,
+            NPCID.ChaosBall,
+            NPCID.ChaosBallTim,
+            NPCID.HellArmoredBones,
+            NPCID.HellArmoredBonesMace,
+            NPCID.HellArmoredBonesSpikeShield,
+            NPCID.HellArmoredBonesSword,
+            NPCID.RuneWizard,
+            NPCID.GoblinSummoner,
+            NPCID.ShadowFlameApparition,
+
+            NPCID.WallofFlesh,
+            NPCID.WallofFleshEye,
+            NPCID.PrimeCannon,
+            NPCID.SkeletronPrime,
+            NPCID.Spazmatism,
+            NPCID.Golem,
+            NPCID.GolemFistLeft,
+            NPCID.GolemFistRight,
+            NPCID.GolemHead,
+            NPCID.GolemHeadFree,
+        };
+
+        public override void Load()
+        {
+            NPCElements.Fire.AddRange(FireEnemies);
+        }
+
+        public override void Unload()
+        {
+            NPCElements.Fire.Clear();
+        }
+
         public override void SetDefaults(NPC npc)
         {
-            int type = npc.type;
-            switch (type)
+            if (NPCElements.Fire.Contains(npc.type))
             {
-                case NPCID.BlazingWheel:
-                case NPCID.BoneSerpentHead:
-                case NPCID.BoneSerpentBody:
-                case NPCID.BoneSerpentTail:
-                case NPCID.Clinger:
-                case NPCID.Demon:
-                case NPCID.DiabolistRed:
-                case NPCID.DiabolistWhite:
-                case NPCID.FireImp:
-                case NPCID.Hellbat:
-                case NPCID.HoppinJack:
-                case NPCID.Lavabat:
-                case NPCID.LavaSlime:
-                case NPCID.Necromancer:
-                case NPCID.NecromancerArmored:
-                case NPCID.RedDevil:
-                case NPCID.DemonTaxCollector:
-                case NPCID.VoodooDemon:
-
-                case NPCID.MeteorHead:
-                case NPCID.Tim:
-                case NPCID.ChaosBall:
-                case NPCID.ChaosBallTim:
-                case NPCID.HellArmoredBones:
-                case NPCID.HellArmoredBonesMace:
-                case NPCID.HellArmoredBonesSpikeShield:
-                case NPCID.HellArmoredBonesSword:
-                case NPCID.RuneWizard:
-                case NPCID.GoblinSummoner:
-                case NPCID.ShadowFlameApparition:
-
-                case NPCID.WallofFlesh:
-                case NPCID.WallofFleshEye:
-                case NPCID.PrimeCannon:
-                case NPCID.SkeletronPrime:
-                case NPCID.Spazmatism:
-                case NPCID.Golem:
-                case NPCID.GolemFistLeft:
-                case NPCID.GolemFistRight:
-                case NPCID.GolemHead:
-                case NPCID.GolemHeadFree:
-                    NPCElements.Fire.Add(type);
-                    npc.SetElementMultipliersByElement(Element.Fire);
-                    break;
+                npc.SetElementMultipliersByElement(Element.Fire);
             }
         }
     }

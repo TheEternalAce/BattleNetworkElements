@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using MMZeroElements.Utilities;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -16,7 +15,7 @@ namespace MMZeroElements
         /// <summary>
         /// Elemental multipliers for a given NPC in the following order: Fire, Ice, Electric, Metal
         /// </summary>
-        public float[] elementMultipliers = { 1.0f, 1.0f, 1.0f, 1.0f };
+        public double[] elementMultipliers = { 1.0, 1.0, 1.0, 1.0 };
 
         public override bool InstancePerEntity => true;
 
@@ -40,7 +39,7 @@ namespace MMZeroElements
             {
                 modifier *= elementMultipliers[Element.Metal];
             }
-            int ct = CombatText.NewText(npc.getRect(), color, modifier + "x");
+            int ct = CombatText.NewText(npc.getRect(), color, (float)modifier + "x");
             Main.combatText[ct].position.Y -= 45;
             damage = (int)Math.Ceiling(damage * modifier);
 
@@ -68,7 +67,7 @@ namespace MMZeroElements
             {
                 modifier *= elementMultipliers[Element.Metal];
             }
-            int ct = CombatText.NewText(npc.getRect(), color, modifier + "x");
+            int ct = CombatText.NewText(npc.getRect(), color, (float)modifier + "x");
             Main.combatText[ct].position.Y -= 45;
             damage = (int)Math.Ceiling(damage * modifier);
 

@@ -1,4 +1,4 @@
-﻿using MMZeroElements.Utilities;
+﻿using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,41 +7,52 @@ namespace MMZeroElements.SetNPCs
 {
     internal class ElectricNPCs : GlobalNPC
     {
+        static List<int> ElectricEnemies = new()
+        {
+            NPCID.BlueJellyfish,
+            NPCID.Harpy,
+            NPCID.PinkJellyfish,
+            NPCID.GreenJellyfish,
+            NPCID.WyvernHead,
+            NPCID.WyvernBody,
+            NPCID.WyvernLegs,
+            NPCID.WyvernBody2,
+            NPCID.WyvernBody3,
+            NPCID.WyvernTail,
+            NPCID.Tumbleweed,
+            NPCID.SandShark,
+            NPCID.SandElemental,
+            NPCID.DesertLamiaDark,
+            NPCID.DesertLamiaLight,
+            NPCID.DesertScorpionWalk,
+            NPCID.DesertScorpionWall,
+            NPCID.DesertGhoul,
+            NPCID.DesertGhoulCorruption,
+            NPCID.DesertGhoulCrimson,
+            NPCID.DesertGhoulHallow,
+
+            NPCID.EyeofCthulhu,
+            NPCID.SkeletronHead,
+            NPCID.SkeletronHand,
+            NPCID.PrimeLaser,
+            NPCID.HallowBoss,
+        };
+
+        public override void Load()
+        {
+            NPCElements.Electric.AddRange(ElectricEnemies);
+        }
+
+        public override void Unload()
+        {
+            NPCElements.Electric.Clear();
+        }
+
         public override void SetDefaults(NPC npc)
         {
-            int type = npc.type;
-            switch (type)
+            if (NPCElements.Electric.Contains(npc.type))
             {
-                case NPCID.BlueJellyfish:
-                case NPCID.Harpy:
-                case NPCID.PinkJellyfish:
-                case NPCID.GreenJellyfish:
-                case NPCID.WyvernHead:
-                case NPCID.WyvernBody:
-                case NPCID.WyvernLegs:
-                case NPCID.WyvernBody2:
-                case NPCID.WyvernBody3:
-                case NPCID.WyvernTail:
-                case NPCID.Tumbleweed:
-                case NPCID.SandShark:
-                case NPCID.SandElemental:
-                case NPCID.DesertLamiaDark:
-                case NPCID.DesertLamiaLight:
-                case NPCID.DesertScorpionWalk:
-                case NPCID.DesertScorpionWall:
-                case NPCID.DesertGhoul:
-                case NPCID.DesertGhoulCorruption:
-                case NPCID.DesertGhoulCrimson:
-                case NPCID.DesertGhoulHallow:
-
-                case NPCID.EyeofCthulhu:
-                case NPCID.SkeletronHead:
-                case NPCID.SkeletronHand:
-                case NPCID.PrimeLaser:
-                case NPCID.HallowBoss:
-                    NPCElements.Electric.Add(type);
-                    npc.SetElementMultipliersByElement(Element.Electric);
-                    break;
+                npc.SetElementMultipliersByElement(Element.Electric);
             }
         }
     }

@@ -278,6 +278,10 @@ namespace MMZeroElements.SetWeapons
                 case ItemID.Pwnhammer:
                 //case 4317: // Haemorrhaxe
                 case ItemID.GravediggerShovel:
+
+                // Summons
+                case ItemID.MechanicalSkull:
+                case ItemID.MechanicalWorm:
                     WeaponElements.Metal.Add(type);
                     break;
             }

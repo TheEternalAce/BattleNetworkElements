@@ -1,7 +1,7 @@
 ﻿using System;
 using Terraria;
 
-namespace MMZeroElements.Utilities
+namespace MMZeroElements
 {
     public static class ElementSystem
     {
@@ -9,7 +9,7 @@ namespace MMZeroElements.Utilities
         /// Sets NPC multipliers in the following order: Fire, Ice, Electric, Metal
         /// <para>This method should be called in the SetDefaults() override</para>
         /// </summary>
-        public static void SetCustomElementMultipliers(this NPC npc, params float[] multipliers)
+        public static void SetCustomElementMultipliers(this NPC npc, params double[] multipliers)
         {
             if (multipliers.Length > 4)
             {
@@ -57,12 +57,12 @@ namespace MMZeroElements.Utilities
             }
         }
 
-        public static void SetElementMultiplier(this NPC npc, int element, float multiplier)
+        public static void SetElementMultiplier(this NPC npc, int element, double multiplier)
         {
             npc.GetGlobalNPC<NPCElements>().elementMultipliers[element] = multiplier;
         }
 
-        public static void SetElementMultiplier(this NPC npc, float[] multipliers)
+        public static void SetElementMultiplier(this NPC npc, double[] multipliers)
         {
             npc.GetGlobalNPC<NPCElements>().elementMultipliers = multipliers;
         }
@@ -72,8 +72,10 @@ namespace MMZeroElements.Utilities
     {
         public const int Null = -1;
         public const int Fire = 0;
+        //public const int Wood = 1;
         public const int Ice = 1;
         public const int Electric = 2;
+        //public const int Aqua = 2;
         public const int Metal = 3;
     }
 }

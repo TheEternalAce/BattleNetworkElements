@@ -69,6 +69,11 @@ namespace MMZeroElements.SetWeapons
                 case ItemID.LunarHamaxeVortex:
                 case ItemID.VortexAxe:
                 case ItemID.VortexHammer:
+
+                // Summons
+                case ItemID.SuspiciousLookingEye:
+                case ItemID.MechanicalSkull:
+                case ItemID.EmpressButterfly:
                     WeaponElements.Electric.Add(type);
                     break;
             }

@@ -1,5 +1,4 @@
-﻿using MMZeroElements.Utilities;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -51,7 +50,7 @@ namespace MMZeroElements.SetNPCs
                     NPCElements.Ice.Add(type);
                     NPCElements.Electric.Add(type);
                     NPCElements.Metal.Add(type);
-                    npc.SetCustomElementMultipliers(1f, 1f, 1f, 1f);
+                    npc.SetCustomElementMultipliers(1, 1, 1, 1);
                     break;
             }
         }

@@ -1,0 +1,10 @@
+﻿Mods: {
+	MMZeroElements: {
+		Element: {
+			Fire: Élément de feu
+			Ice: Élément de glace
+			Electric: Élément d'électricité
+			Metal: Élément de métal
+		}
+	}
+}

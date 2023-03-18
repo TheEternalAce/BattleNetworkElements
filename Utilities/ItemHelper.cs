@@ -1,11 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace MMZeroElements.Utilities
 {
     public static class ItemHelper
     {
+        public static void AddFire(this Item item)
+        {
+            item.type.AddFireItem();
+        }
+        public static void AddFireItem(this int itemType)
+        {
+            WeaponElements.Fire.Add(itemType);
+        }
+
+        public static void AddIce(this Item item)
+        {
+            item.type.AddIceItem();
+        }
+        public static void AddIceItem(this int itemType)
+        {
+            WeaponElements.Ice.Add(itemType);
+        }
+
+        public static void AddElectric(this Item item)
+        {
+            item.type.AddElectricItem();
+        }
+        public static void AddElectricItem(this int itemType)
+        {
+            WeaponElements.Electric.Add(itemType);
+        }
+
         internal static readonly string[] VanillaTooltipNames = new string[]
         {
                 "ItemName",

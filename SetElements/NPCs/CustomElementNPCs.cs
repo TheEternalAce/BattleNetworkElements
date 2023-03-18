@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetNPCs
+namespace MMZeroElements.SetElements.NPCs
 {
     internal class CustomElementNPCs : GlobalNPC
     {

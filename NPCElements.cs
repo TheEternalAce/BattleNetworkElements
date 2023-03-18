@@ -35,10 +35,6 @@ namespace MMZeroElements
             {
                 modifier *= elementMultipliers[Element.Electric];
             }
-            if (WeaponElements.Metal.Contains(item.type))
-            {
-                modifier *= elementMultipliers[Element.Metal];
-            }
             int ct = CombatText.NewText(npc.getRect(), color, (float)modifier + "x");
             Main.combatText[ct].position.Y -= 45;
             damage = (int)Math.Ceiling(damage * modifier);
@@ -62,10 +58,6 @@ namespace MMZeroElements
             if (ProjectileElements.Electric.Contains(projectile.type) || elementProj.tempElectric)
             {
                 modifier *= elementMultipliers[Element.Electric];
-            }
-            if (ProjectileElements.Metal.Contains(projectile.type) || elementProj.tempMetal)
-            {
-                modifier *= elementMultipliers[Element.Metal];
             }
             int ct = CombatText.NewText(npc.getRect(), color, (float)modifier + "x");
             Main.combatText[ct].position.Y -= 45;

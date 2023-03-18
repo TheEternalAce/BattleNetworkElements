@@ -3,11 +3,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetNPCs
+namespace MMZeroElements.SetElements.NPCs
 {
     internal class ElectricNPCs : GlobalNPC
     {
-        static List<int> ElectricEnemies = new()
+        static List<int> npcs = new()
         {
             NPCID.BlueJellyfish,
             NPCID.Harpy,
@@ -40,7 +40,7 @@ namespace MMZeroElements.SetNPCs
 
         public override void Load()
         {
-            NPCElements.Electric.AddRange(ElectricEnemies);
+            NPCElements.Electric.AddRange(npcs);
         }
 
         public override void Unload()
@@ -50,9 +50,12 @@ namespace MMZeroElements.SetNPCs
 
         public override void SetDefaults(NPC npc)
         {
-            if (NPCElements.Electric.Contains(npc.type))
+            foreach (int type in npcs)
             {
-                npc.SetElementMultipliersByElement(Element.Electric);
+                if (npc.type == type)
+                {
+                    npc.SetElementMultipliersByElement(Element.Electric);
+                }
             }
         }
     }

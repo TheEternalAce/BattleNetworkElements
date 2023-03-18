@@ -42,17 +42,12 @@ namespace MMZeroElements
                 case Element.Ice:
                     npc.SetElementMultiplier(Element.Fire, 2.0f);
                     npc.SetElementMultiplier(Element.Ice, 0.8f);
-                    npc.SetElementMultiplier(Element.Metal, 0.5f);
+                    npc.SetElementMultiplier(Element.Electric, 0.5f);
                     break;
                 case Element.Electric:
                     npc.SetElementMultiplier(Element.Fire, 0.5f);
                     npc.SetElementMultiplier(Element.Electric, 0.8f);
-                    npc.SetElementMultiplier(Element.Metal, 2.0f);
-                    break;
-                case Element.Metal:
                     npc.SetElementMultiplier(Element.Ice, 2.0f);
-                    npc.SetElementMultiplier(Element.Electric, 0.5f);
-                    npc.SetElementMultiplier(Element.Metal, 0.8f);
                     break;
             }
         }
@@ -76,6 +71,5 @@ namespace MMZeroElements
         public const int Ice = 1;
         public const int Electric = 2;
         //public const int Aqua = 2;
-        public const int Metal = 3;
     }
 }

@@ -3,11 +3,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetNPCs
+namespace MMZeroElements.SetElements.NPCs
 {
     internal class FireNPCs : GlobalNPC
     {
-        static List<int> FireEnemies = new()
+        static List<int> npcs = new()
         {
             NPCID.BlazingWheel,
             NPCID.BoneSerpentHead,
@@ -82,9 +82,11 @@ namespace MMZeroElements.SetNPCs
             NPCID.Clinger,
             NPCID.EaterofSouls,
 
+            // Boss
             NPCID.EaterofWorldsHead,
             NPCID.EaterofWorldsBody,
             NPCID.EaterofWorldsTail,
+            NPCID.QueenBee,
             NPCID.WallofFlesh,
             NPCID.WallofFleshEye,
             NPCID.PrimeCannon,
@@ -99,7 +101,7 @@ namespace MMZeroElements.SetNPCs
 
         public override void Load()
         {
-            NPCElements.Fire.AddRange(FireEnemies);
+            NPCElements.Fire.AddRange(npcs);
         }
 
         public override void Unload()
@@ -109,9 +111,12 @@ namespace MMZeroElements.SetNPCs
 
         public override void SetDefaults(NPC npc)
         {
-            if (NPCElements.Fire.Contains(npc.type))
+            foreach (int type in npcs)
             {
-                npc.SetElementMultipliersByElement(Element.Fire);
+                if (npc.type == type)
+                {
+                    npc.SetElementMultipliersByElement(Element.Fire);
+                }
             }
         }
     }

@@ -5,7 +5,6 @@ using ReLogic.Content;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent;
-using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -21,7 +20,6 @@ namespace MMZeroElements
         public static Asset<Texture2D> FireIcon = ModContent.Request<Texture2D>("MMZeroElements/ElementIcons/FireIcon");
         public static Asset<Texture2D> IceIcon = ModContent.Request<Texture2D>("MMZeroElements/ElementIcons/IceIcon");
         public static Asset<Texture2D> ElectricIcon = ModContent.Request<Texture2D>("MMZeroElements/ElementIcons/ElectricIcon");
-        public static Asset<Texture2D> MetalIcon = ModContent.Request<Texture2D>("MMZeroElements/ElementIcons/MetalIcon");
 
         public override bool InstancePerEntity => true;
 
@@ -45,12 +43,6 @@ namespace MMZeroElements
             if (line.Name == "ElementElectric")
             {
                 Main.spriteBatch.Draw(ElectricIcon.Value, new Vector2(line.X, line.Y), rect, Color.White, 0f, origin, scale, 0, 0f);
-                Utils.DrawBorderStringFourWay(Main.spriteBatch, FontAssets.MouseText.Value, line.Text, line.X, line.Y, line.OverrideColor ?? line.Color, Color.Black, line.Origin);
-                return false;
-            }
-            if (line.Name == "ElementMetal")
-            {
-                Main.spriteBatch.Draw(MetalIcon.Value, new Vector2(line.X, line.Y), rect, Color.White, 0f, origin, scale, 0, 0f);
                 Utils.DrawBorderStringFourWay(Main.spriteBatch, FontAssets.MouseText.Value, line.Text, line.X, line.Y, line.OverrideColor ?? line.Color, Color.Black, line.Origin);
                 return false;
             }
@@ -81,42 +73,6 @@ namespace MMZeroElements
                     OverrideColor = Color.Cyan
                 });
             }
-            if (Metal.Contains(type))
-            {
-                tooltips.Insert(tooltips.GetIndex("OneDropLogo"), new TooltipLine(Mod, "ElementMetal", "    " + Language.GetTextValue(Paths.MetalElement))
-                {
-                    OverrideColor = Color.Gray
-                });
-            }
-        }
-
-        public void AddProjectilesToElements(Item item)
-        {
-            int type = item.type;
-            if (item.shoot != ProjectileID.None && item.ammo != AmmoID.Rocket && item.useAmmo == AmmoID.None)
-            {
-                if (Fire.Contains(type) && !ProjectileElements.Fire.Contains(type))
-                {
-                    ProjectileElements.Fire.Add(item.shoot);
-                }
-                if (Ice.Contains(type) && !ProjectileElements.Ice.Contains(type))
-                {
-                    ProjectileElements.Ice.Add(item.shoot);
-                }
-                if (Electric.Contains(type) && !ProjectileElements.Electric.Contains(type))
-                {
-                    ProjectileElements.Electric.Add(item.shoot);
-                }
-                if (Metal.Contains(type) && !ProjectileElements.Metal.Contains(type))
-                {
-                    ProjectileElements.Metal.Add(item.shoot);
-                }
-            }
-        }
-
-        public override void SetDefaults(Item item)
-        {
-            AddProjectilesToElements(item);
         }
     }
 }

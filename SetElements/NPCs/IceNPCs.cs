@@ -3,11 +3,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetNPCs
+namespace MMZeroElements.SetElements.NPCs
 {
     internal class IceNPCs : GlobalNPC
     {
-        static List<int> IceEnemies = new()
+        static List<int> npcs = new()
         {
             NPCID.GreenSlime,
             NPCID.SlimeSpiked,
@@ -54,7 +54,6 @@ namespace MMZeroElements.SetNPCs
             NPCID.KingSlime,
             NPCID.BrainofCthulhu,
             NPCID.Creeper,
-            NPCID.QueenBee,
             NPCID.Deerclops,
             NPCID.DeerclopsLeg,
             NPCID.QueenSlimeBoss,
@@ -72,7 +71,7 @@ namespace MMZeroElements.SetNPCs
 
         public override void Load()
         {
-            NPCElements.Ice.AddRange(IceEnemies);
+            NPCElements.Ice.AddRange(npcs);
         }
 
         public override void Unload()
@@ -82,9 +81,12 @@ namespace MMZeroElements.SetNPCs
 
         public override void SetDefaults(NPC npc)
         {
-            if (NPCElements.Ice.Contains(npc.type))
+            foreach (int type in npcs)
             {
-                npc.SetElementMultipliersByElement(Element.Ice);
+                if (npc.type == type)
+                {
+                    npc.SetElementMultipliersByElement(Element.Ice);
+                }
             }
         }
     }

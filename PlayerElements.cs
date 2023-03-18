@@ -8,6 +8,18 @@ namespace MMZeroElements
     public class PlayerElements : ModPlayer
     {
         public float[] elementMultiplier = { 1.0f, 1.0f, 1.0f, 1.0f };
+        public NPC targetedNPC = null;
+
+        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        {
+            targetedNPC = target;
+        }
+
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+        {
+            targetedNPC = target;
+        }
+
         public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
         {
             float modifier = 1.0f;
@@ -24,13 +36,10 @@ namespace MMZeroElements
             {
                 modifier *= elementMultiplier[Element.Electric];
             }
-            if (NPCElements.Metal.Contains(npc.type))
-            {
-                modifier *= elementMultiplier[Element.Metal];
-            }
             int ct = CombatText.NewText(Player.getRect(), color, modifier + "x");
             Main.combatText[ct].position.Y -= 45;
             damage = (int)Math.Ceiling(damage * modifier);
+            targetedNPC = npc;
 
             base.ModifyHitByNPC(npc, ref damage, ref crit);
         }
@@ -51,10 +60,6 @@ namespace MMZeroElements
             if (ProjectileElements.Electric.Contains(proj.type) || elementProj.tempElectric)
             {
                 modifier *= elementMultiplier[Element.Electric];
-            }
-            if (ProjectileElements.Metal.Contains(proj.type) || elementProj.tempMetal)
-            {
-                modifier *= elementMultiplier[Element.Metal];
             }
             int ct = CombatText.NewText(Player.getRect(), color, modifier + "x");
             Main.combatText[ct].position.Y -= 45;
@@ -79,10 +84,6 @@ namespace MMZeroElements
             {
                 modifier *= elementMultiplier[Element.Electric];
             }
-            if (WeaponElements.Metal.Contains(item.type))
-            {
-                modifier *= elementMultiplier[Element.Metal];
-            }
             int ct = CombatText.NewText(Player.getRect(), color, modifier + "x");
             Main.combatText[ct].position.Y -= 45;
             damage = (int)Math.Ceiling(damage * modifier);
@@ -106,10 +107,6 @@ namespace MMZeroElements
             if (ProjectileElements.Electric.Contains(proj.type) || elementProj.tempElectric)
             {
                 modifier *= elementMultiplier[Element.Electric];
-            }
-            if (ProjectileElements.Metal.Contains(proj.type) || elementProj.tempMetal)
-            {
-                modifier *= elementMultiplier[Element.Metal];
             }
             int ct = CombatText.NewText(Player.getRect(), color, modifier + "x");
             Main.combatText[ct].position.Y -= 45;

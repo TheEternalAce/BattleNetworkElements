@@ -1,0 +1,118 @@
+﻿using System.Collections.Generic;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace MMZeroElements.SetElements.Weapons
+{
+    public class IceWeapons : GlobalItem
+    {
+        static List<int> items = new()
+        {
+            // Melee
+            ItemID.Amarok,
+            ItemID.BorealWoodSword,
+            ItemID.CandyCaneSword,
+            ItemID.EbonwoodSword,
+            ItemID.Flairon,
+            ItemID.Frostbrand,
+            ItemID.FruitcakeChakram,
+            ItemID.IceBlade,
+            ItemID.IceBoomerang,
+            ItemID.NorthPole,
+            ItemID.ShadewoodSword,
+            ItemID.Shroomerang,
+            ItemID.Swordfish,
+            ItemID.ZombieArm,
+
+            // Ranged/Throwing
+            ItemID.AleThrowingGlove,
+            ItemID.BloodRainBow,
+            ItemID.IceBow,
+            ItemID.PainterPaintballGun,
+            ItemID.Snowball,
+            ItemID.SnowballCannon,
+            ItemID.StarAnise,
+            ItemID.Toxikarp,
+            ItemID.Tsunami,
+
+            // Magic
+            ItemID.AquaScepter,
+            ItemID.BlizzardStaff,
+            ItemID.SharpTears,
+            ItemID.BubbleGun,
+            ItemID.CrimsonRod,
+            ItemID.FlowerofFrost,
+            ItemID.FrostStaff,
+            ItemID.GoldenShower,
+            ItemID.IceRod,
+            ItemID.SoulDrain,
+            ItemID.NebulaArcanum,
+            ItemID.NimbusRod,
+            ItemID.RazorbladeTyphoon,
+            ItemID.SpectreStaff,
+            ItemID.ToxicFlask,
+            //case ItemID.WandofFrosting,
+            ItemID.WaterBolt,
+
+            // Summon
+            ItemID.AbigailsFlower,
+            ItemID.CoolWhip,
+            ItemID.FlinxStaff,
+            ItemID.SanguineStaff,
+            ItemID.SlimeStaff,
+            ItemID.StaffoftheFrostHydra,
+            ItemID.StardustCellStaff,
+            ItemID.StardustDragonStaff,
+            ItemID.TempestStaff,
+            ItemID.ThornWhip,
+
+            // Ammo
+            ItemID.IchorBullet,
+            ItemID.FrostburnArrow,
+            ItemID.UnholyArrow,
+            ItemID.HolyArrow,
+            ItemID.IchorArrow,
+            //case ItemID.ShimmerArrow,
+            ItemID.WetRocket,
+            ItemID.HoneyRocket,
+            ItemID.PoisonDart,
+            ItemID.IchorDart,
+            ItemID.Seed,
+            ItemID.Gel,
+            ItemID.Ale,
+            ItemID.CandyCorn,
+
+            // Tool
+            ItemID.ReaverShark,
+            ItemID.SawtoothShark,
+            ItemID.NebulaPickaxe,
+            ItemID.LunarHamaxeNebula,
+            ItemID.NebulaAxe,
+            ItemID.NebulaHammer,
+            ItemID.StardustPickaxe,
+            ItemID.LunarHamaxeStardust,
+            ItemID.StardustAxe,
+            ItemID.StardustHammer,
+            ItemID.Hammush,
+
+            // Summons
+            ItemID.SlimeCrown,
+            ItemID.WormFood,
+            ItemID.BloodySpine,
+            ItemID.DeerThing,
+            ItemID.QueenSlimeCrystal,
+            ItemID.MechanicalSkull,
+            ItemID.TruffleWorm,
+        };
+
+        public override void Load()
+        {
+            WeaponElements.Metal.AddRange(items);
+        }
+
+        public override void Unload()
+        {
+            WeaponElements.Metal.Clear();
+        }
+    }
+}

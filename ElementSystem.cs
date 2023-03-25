@@ -67,9 +67,8 @@ namespace MMZeroElements
     {
         public const int Null = -1;
         public const int Fire = 0;
-        //public const int Wood = 1;
-        public const int Ice = 1;
+        public const int Ice = 1; // /Aqua
         public const int Electric = 2;
-        //public const int Aqua = 2;
+        public const int Wood = 3;
     }
 }

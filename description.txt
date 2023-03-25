@@ -1,15 +1,13 @@
 Elements of Terraria, initially introduced by Shards of Atheria, implements a new immersive elemental mechanic to Terraria!
-There are four elements that any NPC, weapon or projectile can have: Fire, Ice, Electric, andMetal. 
-The elemental system is based on a strength and weakness system, akin to rock-paper-scissors, Fire is effective against Ice, Ice is effective against Electric, and Electric is effective against Fire.
+There are four elements that any NPC, weapon or projectile can have: Fire, Ice, and Electric. 
+The elemental system is based on a multiplier system.
+When an NPC or Player takes damage, the damage is multiplied by the element multiplier for the corresponding element.
 
-0.2 Changelog
-Fixed melee item hits accidentally using Ice multipliers.
-Players can now have elemental multipliers.
-Multiplier number appears when striking NPCs/Players.
-Boss summoning items will display the elements of the associated boss.
-Added multipliers for "common" slimes.
-"Poison type" enemies have the Fire element.
-Corruption enemies have the Fire element.
-Vanilla projectiles added manually to each element.
-Removed Metal element.
--New effectiveness goes Fire -> Ice -> Electric -> Fire.
+For example:
+A Blue Slime's multipliers are as follows, Fire: 2.0x, Ice: 0.8x, Electric: 0.5x.
+Damaging the slime with an Fire weapon will double the damage.
+Damaging the slime with an Ice weapon will reduce the damage by 20%.
+Damaging the slime with an Electric weapon will reduce the damage by 50%.
+Damaging the slime withe a Fire AND Ice weapon will increase the damage by 60%.
+
+This mod adds no content, other than the mechanic, it simply creates a foundation for other mods to add cool stuff.

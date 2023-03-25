@@ -16,6 +16,7 @@
 		ConfigDesc: {
 			LegacySystem:
 				'''
+				(UNIMPLEMENTED: DOES NOTHING)
 				Enable to use the previous 3 elements system
 				Wood element is disabled
 				Aqua renamed to Ice

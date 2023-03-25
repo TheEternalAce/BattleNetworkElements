@@ -19,6 +19,7 @@ namespace MMZeroElements.SetElements.Weapons
             ItemID.ChlorophyteGreaves,
 
             // Melee
+            ItemID.BladeofGrass,
             ItemID.Cascade,
             ItemID.DayBreak,
             ItemID.EnchantedBoomerang,
@@ -155,16 +156,17 @@ namespace MMZeroElements.SetElements.Weapons
             ItemID.MechanicalSkull,
             ItemID.MechanicalEye,
             ItemID.LihzahrdPowerCell,
+            ItemID.CelestialSigil,
         };
 
         public override void Load()
         {
-            WeaponElements.Metal.AddRange(items);
+            WeaponElements.Fire.AddRange(items);
         }
 
         public override void Unload()
         {
-            WeaponElements.Metal.Clear();
+            WeaponElements.Fire.Clear();
         }
     }
 }

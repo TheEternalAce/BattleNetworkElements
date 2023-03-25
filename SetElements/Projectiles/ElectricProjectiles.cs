@@ -73,7 +73,24 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.MoonlordTurretLaser,
 
             // NPC proj
+            ProjectileID.HarpyFeather,
+            ProjectileID.Skull,
+            ProjectileID.SandnadoHostile,
+            ProjectileID.DeathLaser,
+            ProjectileID.MartianTurretBolt,
+            ProjectileID.MartianWalkerLaser,
+            ProjectileID.SaucerDeathray,
+            ProjectileID.SaucerLaser,
+            ProjectileID.SaucerMissile,
+            ProjectileID.SaucerScrap,
+            ProjectileID.CultistBossLightningOrb,
+            ProjectileID.CultistBossLightningOrbArc,
             ProjectileID.DD2LightningBugZap,
+            ProjectileID.VortexLaser,
+            ProjectileID.VortexLightning,
+            ProjectileID.VortexVortexPortal,
+            ProjectileID.VortexVortexLightning,
+            ProjectileID.VortexAcid,
         };
 
         public override void Load()

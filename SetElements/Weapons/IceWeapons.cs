@@ -8,8 +8,15 @@ namespace MMZeroElements.SetElements.Weapons
     {
         static List<int> items = new()
         {
+            // Accessory/Armor
+            ItemID.StardustHelmet,
+            ItemID.StardustBreastplate,
+            ItemID.StardustLeggings,
+            ItemID.BoneHelm,
+
             // Melee
             ItemID.Amarok,
+            ItemID.BloodButcherer,
             ItemID.BorealWoodSword,
             ItemID.CandyCaneSword,
             ItemID.EbonwoodSword,
@@ -18,6 +25,7 @@ namespace MMZeroElements.SetElements.Weapons
             ItemID.FruitcakeChakram,
             ItemID.IceBlade,
             ItemID.IceBoomerang,
+            ItemID.Muramasa,
             ItemID.NorthPole,
             ItemID.ShadewoodSword,
             ItemID.Shroomerang,
@@ -103,16 +111,17 @@ namespace MMZeroElements.SetElements.Weapons
             ItemID.QueenSlimeCrystal,
             ItemID.MechanicalSkull,
             ItemID.TruffleWorm,
+            ItemID.CelestialSigil,
         };
 
         public override void Load()
         {
-            WeaponElements.Metal.AddRange(items);
+            WeaponElements.Ice.AddRange(items);
         }
 
         public override void Unload()
         {
-            WeaponElements.Metal.Clear();
+            WeaponElements.Ice.Clear();
         }
     }
 }

@@ -85,7 +85,7 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.CrystalLeafShot,
 
             // Melee
-            //ProjectileID.BladeofGrass,
+            //ProjectileID.BladeOfGrass,
             ProjectileID.Cascade,
             ProjectileID.Daybreak,
             ProjectileID.DaybreakExplosion,
@@ -110,7 +110,7 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.Starfury,
             ProjectileID.StarWrath,
             ProjectileID.ThornChakram,
-            //ProjectileID.VolcanoExplosion,
+            //ProjectileID.Volcano,
 
             // Ranged
             ProjectileID.DD2BetsyArrow,

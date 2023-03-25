@@ -28,15 +28,18 @@ namespace MMZeroElements.SetElements.Projectiles
 
             // Accessory
             ProjectileID.StardustGuardian,
+            ProjectileID.InsanityShadowFriendly,
 
             // Melee
             ProjectileID.Amarok,
+            //ProjectileID.BloodButcherer,
             ProjectileID.Flairon,
             ProjectileID.FlaironBubble,
             ProjectileID.FrostBoltSword,
             ProjectileID.FruitcakeChakram,
             ProjectileID.IceBolt,
             ProjectileID.IceBoomerang,
+            //ProjectileID.Muramasa,
             ProjectileID.NorthPoleSpear,
             ProjectileID.NorthPoleSnowflake,
             ProjectileID.NorthPoleWeapon,
@@ -101,6 +104,26 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.ThornWhip,
 
             // NPC proj
+            ProjectileID.SpikedSlimeSpike,
+            ProjectileID.IceSpike,
+            ProjectileID.JungleSpike,
+            ProjectileID.IcewaterSpit,
+            ProjectileID.RainNimbus,
+            ProjectileID.FrostBeam,
+            ProjectileID.BloodShot,
+            ProjectileID.BloodNautilusTears,
+            ProjectileID.BloodNautilusShot,
+            ProjectileID.Shadowflames,
+            ProjectileID.DeerclopsIceSpike,
+            ProjectileID.DeerclopsRangedProjectile,
+            ProjectileID.InsanityShadowHostile,
+            ProjectileID.QueenSlimeGelAttack,
+            ProjectileID.QueenSlimeMinionBlueSpike,
+            ProjectileID.QueenSlimeMinionPinkBall,
+            ProjectileID.QueenSlimeSmash,
+            ProjectileID.Sharknado,
+            ProjectileID.SharknadoBolt,
+            ProjectileID.Cthulunado,
         };
 
         public override void Load()

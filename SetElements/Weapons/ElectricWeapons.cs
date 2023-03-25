@@ -69,18 +69,20 @@ namespace MMZeroElements.SetElements.Weapons
 
             // Summons
             ItemID.SuspiciousLookingEye,
+            ItemID.ClothierVoodooDoll,
             ItemID.MechanicalSkull,
             ItemID.EmpressButterfly,
+            ItemID.CelestialSigil,
         };
 
         public override void Load()
         {
-            WeaponElements.Metal.AddRange(items);
+            WeaponElements.Electric.AddRange(items);
         }
 
         public override void Unload()
         {
-            WeaponElements.Metal.Clear();
+            WeaponElements.Electric.Clear();
         }
     }
 }

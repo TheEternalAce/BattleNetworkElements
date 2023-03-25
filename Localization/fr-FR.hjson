@@ -1,10 +1,32 @@
 ﻿Mods: {
-	MMZeroElements: {
+	 MMZeroElements: {
 		Element: {
-			Fire: Élément de feu
-			Ice: Élément de glace
-			Electric: Élément d'électricité
-			Metal: Élément de métal
+			Fire: Élément de Feu
+			Ice: Élément de Glace
+			Electric: Élément d'Électricité
+			Wood: Élément du Bois
+		}
+
+		Config: {
+			ServerLabel: Config de Serveur
+
+			LegacySystem: Système Héritage
+		}
+
+		ConfigDesc: {
+			LegacySystem:
+				'''
+				(INAPPLIQUÉ: FAIS RIEN)
+				Activer pour utiliser le système de 3 éléments précédent
+				Élément du Bois est désactivé
+				Aqua renomme à Glace
+				Aqua renamed to Ice
+				Les armes thématiques du Poison qui fait partir d'Élément du Bois est changé au Élément du Feu
+				Les multiplicateurs par éléments défaut: 
+				-PNJs de Feu: Feu: 0.8x, Glace: 0.5, Électricité: 2.0
+				-PNJs de Glace: Feu: 2.0x, Glace: 0.8, Électricité: 0.5
+				-PNJs d'Électricité: Feu: 0.5x, Glace: 2.0, Électricité: 0.8
+				'''
 		}
 	}
 }

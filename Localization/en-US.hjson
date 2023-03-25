@@ -4,7 +4,26 @@
 			Fire: Fire Element
 			Ice: Ice Element
 			Electric: Electric Element
-			Metal: Metal Element
+			Wood: Wood Element
+		}
+
+		Config: {
+			ServerLabel: Server Config
+
+			LegacySystem: Legacy System
+		}
+
+		ConfigDesc: {
+			LegacySystem:
+				'''
+				Enable to use the previous 3 elements system
+				Wood element is disabled
+				Poison-themed weapons from the Wood weapons list are moved to the Fire weapons list
+				Default multipliers by element:
+				-Fire NPCs: Fire: 0.8x, Ice: 0.5, Electric: 2.0
+				-Ice NPCs: Fire: 2.0x, Ice: 0.8, Electric: 0.5
+				-Electric NPCs: Fire: 0.5x, Ice: 2.0, Electric: 0.8
+				'''
 		}
 	}
 }

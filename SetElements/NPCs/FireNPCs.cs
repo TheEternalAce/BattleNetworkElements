@@ -92,6 +92,7 @@ namespace MMZeroElements.SetElements.NPCs
             NPCID.PrimeCannon,
             NPCID.SkeletronPrime,
             NPCID.Spazmatism,
+            NPCID.Retinazer,
             NPCID.Plantera,
             NPCID.PlanterasHook,
             NPCID.PlanterasTentacle,

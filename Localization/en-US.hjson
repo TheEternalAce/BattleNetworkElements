@@ -1,10 +1,10 @@
 ﻿Mods: {
 	MMZeroElements: {
 		Element: {
-			Fire: Fire Element
-			Ice: Ice Element
-			Electric: Electric Element
-			Wood: Wood Element
+			Fire: [i:FireIcon] Fire Element
+			Ice: [i:IceIcon] Ice Element
+			Electric: [i:ElectricIcon] Electric Element
+			Wood: [i:WoodIcon] Wood Element
 		}
 
 		Config: {

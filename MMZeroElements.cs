@@ -11,7 +11,7 @@ namespace MMZeroElements
         public const string FireElement = "Mods.MMZeroElements.Element.Fire";
         public const string IceElement = "Mods.MMZeroElements.Element.Ice";
         public const string ElectricElement = "Mods.MMZeroElements.Element.Electric";
-        public const string MetalElement = "Mods.MMZeroElements.Element.Metal";
+        public const string WoodElement = "Mods.MMZeroElements.Element.Wood";
     }
 
     public class MMZeroElements : Mod

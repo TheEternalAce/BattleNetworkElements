@@ -15,6 +15,14 @@ namespace MMZeroElements.Utilities
         {
             WeaponElements.Fire.Add(itemType);
         }
+        public static bool IsFire(this Item item)
+        {
+            return item.type.ItemIsFire();
+        }
+        public static bool ItemIsFire(this int type)
+        {
+            return WeaponElements.Fire.Contains(type);
+        }
 
         public static void AddIce(this Item item)
         {
@@ -24,6 +32,14 @@ namespace MMZeroElements.Utilities
         {
             WeaponElements.Ice.Add(itemType);
         }
+        public static bool IsIce(this Item item)
+        {
+            return item.type.ItemIsIce();
+        }
+        public static bool ItemIsIce(this int type)
+        {
+            return WeaponElements.Ice.Contains(type);
+        }
 
         public static void AddElectric(this Item item)
         {
@@ -32,6 +48,31 @@ namespace MMZeroElements.Utilities
         public static void AddElectricItem(this int itemType)
         {
             WeaponElements.Electric.Add(itemType);
+        }
+        public static bool IsElec(this Item item)
+        {
+            return item.type.ItemElec();
+        }
+        public static bool ItemElec(this int type)
+        {
+            return WeaponElements.Electric.Contains(type);
+        }
+
+        public static void AddWood(this Item item)
+        {
+            item.type.AddWoodItem();
+        }
+        public static void AddWoodItem(this int itemType)
+        {
+            WeaponElements.Wood.Add(itemType);
+        }
+        public static bool IsWood(this Item item)
+        {
+            return item.type.ItemIsWood();
+        }
+        public static bool ItemIsWood(this int type)
+        {
+            return WeaponElements.Wood.Contains(type);
         }
 
         internal static readonly string[] VanillaTooltipNames = new string[]

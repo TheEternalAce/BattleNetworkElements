@@ -1,7 +1,7 @@
 ﻿//using System.ComponentModel;
 //using Terraria.ModLoader.Config;
 
-//namespace ShardsOfAtheria.Config
+//namespace MMZeroElements.Config
 //{
 //    [BackgroundColor(164, 153, 190)]
 //    [Label("$Mods.MMZeroElements.Config.ServerLabel")]

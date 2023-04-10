@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MMZeroElements.Utilities;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
@@ -10,12 +11,12 @@ namespace MMZeroElements
         public static List<int> Fire = new();
         public static List<int> Ice = new();
         public static List<int> Electric = new();
-        public static List<int> Metal = new();
+        public static List<int> Wood = new();
 
         public bool tempFire = false;
         public bool tempIce = false;
         public bool tempElectric = false;
-        public bool tempMetal = false;
+        public bool tempWood = false;
 
         public override bool InstancePerEntity => true;
 
@@ -25,16 +26,15 @@ namespace MMZeroElements
             {
                 if (parentSource.Entity is NPC npc)
                 {
-                    int sourceEnemy = npc.type;
-                    if (NPCElements.Fire.Contains(sourceEnemy))
+                    if (npc.IsFire())
                     {
                         tempFire = true;
                     }
-                    if (NPCElements.Ice.Contains(sourceEnemy))
+                    if (npc.IsIce())
                     {
                         tempIce = true;
                     }
-                    if (NPCElements.Electric.Contains(sourceEnemy))
+                    if (npc.IsElec())
                     {
                         tempElectric = true;
                     }

@@ -23,7 +23,7 @@ namespace MMZeroElements
             if (targetNPC != null)
             {
                 int type = targetNPC.type;
-                double[] multipliers = targetNPC.GetGlobalNPC<NPCElements>().elementMultipliers;
+                float[] multipliers = targetNPC.GetGlobalNPC<NPCElements>().elementMultipliers;
                 data = $"{targetNPC.FullName}\n" +
                     $"-Elements-\n" +
                     $"Fire: {(float)multipliers[0]}x\n" +

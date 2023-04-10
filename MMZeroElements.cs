@@ -71,11 +71,11 @@ namespace MMZeroElements
                                         elementNPC.AddIce();
                                         break;
                                     case Element.Electric:
-                                        elementNPC.AddElectric();
+                                        elementNPC.AddElec();
                                         break;
                                 }
                             }
-                            else if (args[2] is double[] elements)
+                            else if (args[2] is float[] elements)
                             {
                                 elementNPC.GetGlobalNPC<NPCElements>().elementMultipliers = elements;
                             }

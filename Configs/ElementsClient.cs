@@ -3,8 +3,7 @@ using Terraria.ModLoader.Config;
 
 namespace MMZeroElements.Config
 {
-    [BackgroundColor(164, 153, 190)]
-    [Label("Client Side")]
+    [Label("UI Config")]
     public class ElementsClient : ModConfig
     {
         public override ConfigScope Mode => ConfigScope.ClientSide;
@@ -18,7 +17,6 @@ namespace MMZeroElements.Config
         [DrawTicks]
         [OptionStrings(new string[] { "After hit", "Always", "Inventory open only", "Never" })]
         [DefaultValue("After hit")]
-        [ReloadRequired]
         public string elementUIDisplayStyle;
     }
 }

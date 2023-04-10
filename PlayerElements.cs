@@ -13,12 +13,30 @@ namespace MMZeroElements
         public Item latestItem = null;
         public Projectile latestProj = null;
 
+        public override void ResetEffects()
+        {
+            if (MMZeroElements.Client.elementUIDisplayStyle == "Inventory open only")
+            {
+                if (Main.playerInventory)
+                {
+                    ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
+                }
+                else
+                {
+                    ModContent.GetInstance<ElementInfoUI>().HideMyUI();
+                }
+            }
+        }
+
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
             targetedNPC = target;
             latestItem = item;
             latestProj = null;
-            ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
+            if (MMZeroElements.Client.elementUIDisplayStyle != "Inventory open only")
+            {
+                ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
+            }
         }
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
@@ -26,7 +44,10 @@ namespace MMZeroElements
             targetedNPC = target;
             latestItem = null;
             latestProj = proj;
-            ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
+            if (MMZeroElements.Client.elementUIDisplayStyle != "Inventory open only")
+            {
+                ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
+            }
         }
 
         public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
@@ -53,6 +74,10 @@ namespace MMZeroElements
             Main.combatText[ct].position.Y -= 45;
             damage = (int)(damage * multiplier);
             targetedNPC = npc;
+            if (MMZeroElements.Client.elementUIDisplayStyle != "Inventory open only")
+            {
+                ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
+            }
 
             base.ModifyHitByNPC(npc, ref damage, ref crit);
         }
@@ -82,6 +107,10 @@ namespace MMZeroElements
             Main.combatText[ct].position.Y -= 45;
             damage = (int)(damage * multiplier);
             latestProj = proj;
+            if (MMZeroElements.Client.elementUIDisplayStyle != "Inventory open only")
+            {
+                ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
+            }
 
             base.ModifyHitByProjectile(proj, ref damage, ref crit);
         }

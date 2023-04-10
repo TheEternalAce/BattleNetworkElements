@@ -1,5 +1,4 @@
-﻿using System;
-using Terraria;
+﻿using Terraria;
 
 namespace MMZeroElements
 {
@@ -11,14 +10,6 @@ namespace MMZeroElements
         /// </summary>
         public static void SetCustomElementMultipliers(this NPC npc, params float[] multipliers)
         {
-            if (multipliers.Length > 4)
-            {
-                throw new ArgumentException("Too many arguments, please use only four (4) decimal values");
-            }
-            else if (multipliers.Length < 4)
-            {
-                throw new ArgumentException("Too few arguments, please provide only four (4) decimal values");
-            }
             for (int i = 0; i < multipliers.Length; i++)
             {
                 npc.GetGlobalNPC<NPCElements>().elementMultipliers[i] = multipliers[i];

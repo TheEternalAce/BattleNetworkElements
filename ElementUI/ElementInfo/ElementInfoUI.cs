@@ -46,22 +46,21 @@ namespace MMZeroElements.ElementUI.ElementInfo
             uiElement.Height.Set(height, 0f);
         }
 
+        private void CloseButtonClicked(UIMouseEvent evt, UIElement listeningElement)
+        {
+            ModContent.GetInstance<ElementInfoUI>().HideMyUI();
+        }
+
         string SetInfo()
         {
             string info = "Null NPC\n" +
                 "--Elements--\n" +
                 "[i:MMZeroElements/FireIcon] - 0.0x\n" +
                 "[i:MMZeroElements/IceIcon] - 0.0x\n" +
-                "[i:MMZeroElements/ElecIcon] - 0.0\n" +
+                "[i:MMZeroElements/ElecIcon] - 0.0x\n" +
                 //"[i:MMZeroElements/WoodIcon] - 0.0x\n" +
                 "----------";
             return info;
-        }
-
-        private void CloseButtonClicked(UIMouseEvent evt, UIElement listeningElement)
-        {
-            SoundEngine.PlaySound(SoundID.MenuClose);
-            ModContent.GetInstance<ElementInfoUI>().HideMyUI();
         }
 
         string SetInfo(NPC npc, Item item, Projectile proj)
@@ -151,6 +150,10 @@ namespace MMZeroElements.ElementUI.ElementInfo
             {
                 return;
             }
+            if (MMZeroElements.Client.elementUIDisplayStyle != "Inventory open only")
+            {
+                SoundEngine.PlaySound(SoundID.MenuClose);
+            }
             _elementInfoUI?.SetState(null);
         }
 
@@ -170,6 +173,10 @@ namespace MMZeroElements.ElementUI.ElementInfo
 
         public override void UpdateUI(GameTime gameTime)
         {
+            if (MMZeroElements.Client.elementUIDisplayStyle == "Always" && _elementInfoUI == null)
+            {
+                _elementInfoUI?.SetState(ElementInfoState);
+            }
             if (_elementInfoUI != null)
                 _elementInfoUI?.Update(gameTime);
         }

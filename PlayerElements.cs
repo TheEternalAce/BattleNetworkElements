@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
+using MMZeroElements.ElementUI.ElementInfo;
+using MMZeroElements.Utilities;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -9,110 +10,79 @@ namespace MMZeroElements
     {
         public float[] elementMultiplier = { 1.0f, 1.0f, 1.0f, 1.0f };
         public NPC targetedNPC = null;
+        public Item latestItem = null;
+        public Projectile latestProj = null;
 
-        public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
         {
             targetedNPC = target;
+            latestItem = item;
+            latestProj = null;
+            ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
         }
 
-        public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
             targetedNPC = target;
+            latestItem = null;
+            latestProj = proj;
+            ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
         }
 
-        public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit)
+        public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
-            float modifier = 1.0f;
+            float multiplier = 1.0f;
             Color color = Color.Blue;
-            if (NPCElements.Fire.Contains(npc.type))
+            if (npc.IsFire())
             {
-                modifier *= elementMultiplier[Element.Fire];
+                multiplier *= elementMultiplier[Element.Fire];
             }
-            if (NPCElements.Ice.Contains(npc.type))
+            if (npc.IsIce())
             {
-                modifier *= elementMultiplier[Element.Ice];
+                multiplier *= elementMultiplier[Element.Ice];
             }
-            if (NPCElements.Electric.Contains(npc.type))
+            if (npc.IsElec())
             {
-                modifier *= elementMultiplier[Element.Electric];
+                multiplier *= elementMultiplier[Element.Electric];
             }
-            int ct = CombatText.NewText(Player.getRect(), color, modifier + "x");
+            //if (npc.IsWood())
+            //{
+            //    multiplier *= elementMultiplier[Element.Wood];
+            //}
+            int ct = CombatText.NewText(Player.getRect(), color, multiplier + "x");
             Main.combatText[ct].position.Y -= 45;
-            damage = (int)Math.Ceiling(damage * modifier);
+            modifiers.FinalDamage *= multiplier;
             targetedNPC = npc;
 
-            base.ModifyHitByNPC(npc, ref damage, ref crit);
+            base.ModifyHitByNPC(npc, ref modifiers);
         }
 
-        public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit)
+        public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
         {
             ProjectileElements elementProj = proj.GetGlobalProjectile<ProjectileElements>();
-            float modifier = 1.0f;
+            float multiplier = 1.0f;
             Color color = Color.Blue;
-            if (ProjectileElements.Fire.Contains(proj.type) || elementProj.tempFire)
+            if (proj.IsFire() || elementProj.tempFire)
             {
-                modifier *= elementMultiplier[Element.Fire];
+                multiplier *= elementMultiplier[Element.Fire];
             }
-            if (ProjectileElements.Ice.Contains(proj.type) || elementProj.tempIce)
+            if (proj.IsIce() || elementProj.tempIce)
             {
-                modifier *= elementMultiplier[Element.Ice];
+                multiplier *= elementMultiplier[Element.Ice];
             }
-            if (ProjectileElements.Electric.Contains(proj.type) || elementProj.tempElectric)
+            if (proj.IsElec() || elementProj.tempElectric)
             {
-                modifier *= elementMultiplier[Element.Electric];
+                multiplier *= elementMultiplier[Element.Electric];
             }
-            int ct = CombatText.NewText(Player.getRect(), color, modifier + "x");
+            //if (proj.IsWood() || elementProj.tempWood)
+            //{
+            //    multiplier *= elementMultiplier[Element.Wood];
+            //}
+            int ct = CombatText.NewText(Player.getRect(), color, multiplier + "x");
             Main.combatText[ct].position.Y -= 45;
-            damage = (int)Math.Ceiling(damage * modifier);
+            modifiers.FinalDamage *= multiplier;
 
-            base.ModifyHitByProjectile(proj, ref damage, ref crit);
-        }
-
-        public override void ModifyHitPvp(Item item, Player target, ref int damage, ref bool crit)
-        {
-            float modifier = 1.0f;
-            Color color = Color.Blue;
-            if (WeaponElements.Fire.Contains(item.type))
-            {
-                modifier *= elementMultiplier[Element.Fire];
-            }
-            if (WeaponElements.Ice.Contains(item.type))
-            {
-                modifier *= elementMultiplier[Element.Ice];
-            }
-            if (WeaponElements.Electric.Contains(item.type))
-            {
-                modifier *= elementMultiplier[Element.Electric];
-            }
-            int ct = CombatText.NewText(Player.getRect(), color, modifier + "x");
-            Main.combatText[ct].position.Y -= 45;
-            damage = (int)Math.Ceiling(damage * modifier);
-
-            base.ModifyHitPvp(item, target, ref damage, ref crit);
-        }
-
-        public override void ModifyHitPvpWithProj(Projectile proj, Player target, ref int damage, ref bool crit)
-        {
-            ProjectileElements elementProj = proj.GetGlobalProjectile<ProjectileElements>();
-            float modifier = 1.0f;
-            Color color = Color.Blue;
-            if (ProjectileElements.Fire.Contains(proj.type) || elementProj.tempFire)
-            {
-                modifier *= elementMultiplier[Element.Fire];
-            }
-            if (ProjectileElements.Ice.Contains(proj.type) || elementProj.tempIce)
-            {
-                modifier *= elementMultiplier[Element.Ice];
-            }
-            if (ProjectileElements.Electric.Contains(proj.type) || elementProj.tempElectric)
-            {
-                modifier *= elementMultiplier[Element.Electric];
-            }
-            int ct = CombatText.NewText(Player.getRect(), color, modifier + "x");
-            Main.combatText[ct].position.Y -= 45;
-            damage = (int)Math.Ceiling(damage * modifier);
-
-            base.ModifyHitPvpWithProj(proj, target, ref damage, ref crit);
+            base.ModifyHitByProjectile(proj, ref modifiers);
         }
     }
 }

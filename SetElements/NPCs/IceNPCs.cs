@@ -56,7 +56,6 @@ namespace MMZeroElements.SetElements.NPCs
             NPCID.BrainofCthulhu,
             NPCID.Creeper,
             NPCID.Deerclops,
-            NPCID.DeerclopsLeg,
             NPCID.QueenSlimeBoss,
             NPCID.QueenSlimeMinionBlue,
             NPCID.QueenSlimeMinionPink,

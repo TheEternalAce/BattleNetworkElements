@@ -10,12 +10,12 @@ namespace MMZeroElements
         public static List<int> Fire = new();
         public static List<int> Ice = new();
         public static List<int> Electric = new();
-        public static List<int> Metal = new();
+        internal static List<int> Wood = new();
 
         public bool tempFire = false;
         public bool tempIce = false;
         public bool tempElectric = false;
-        public bool tempMetal = false;
+        internal bool tempWood = false;
 
         public override bool InstancePerEntity => true;
 

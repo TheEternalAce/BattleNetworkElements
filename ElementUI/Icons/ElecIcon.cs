@@ -2,20 +2,21 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.ElementUI
+namespace MMZeroElements.ElementUI.Icons
 {
-    public class FireIcon : ModItem
+    public class ElecIcon : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Item.AddFire();
+            Item.AddElectric();
+            Item.ResearchUnlockCount = 0;
         }
 
         public override void SetDefaults()
         {
             Item.width = 32;
             Item.height = 32;
-            Item.rare = ItemRarityID.Red;
+            Item.rare = ItemRarityID.Cyan;
         }
     }
 }

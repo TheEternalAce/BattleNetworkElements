@@ -9,17 +9,13 @@ namespace MMZeroElements
         /// Sets NPC multipliers in the following order: Fire, Ice, Electric, Metal
         /// <para>This method should be called in the SetDefaults() override</para>
         /// </summary>
-        public static void SetCustomElementMultipliers(this NPC npc, params double[] multipliers)
+        public static void SetCustomElementMultipliers(this NPC npc, params float[] multipliers)
         {
-            if (multipliers.Length > 4)
+            if (multipliers.Length < 4)
             {
-                throw new ArgumentException("Too many arguments, please use only four (4) decimal values");
+                throw new ArgumentException("Too few arguments, please provide four (4) float values");
             }
-            else if (multipliers.Length < 4)
-            {
-                throw new ArgumentException("Too few arguments, please provide only four (4) decimal values");
-            }
-            for (int i = 0; i < multipliers.Length; i++)
+            for (int i = 0; i < 4; i++)
             {
                 npc.GetGlobalNPC<NPCElements>().elementMultipliers[i] = multipliers[i];
             }
@@ -52,12 +48,12 @@ namespace MMZeroElements
             }
         }
 
-        public static void SetElementMultiplier(this NPC npc, int element, double multiplier)
+        public static void SetElementMultiplier(this NPC npc, int element, float multiplier)
         {
             npc.GetGlobalNPC<NPCElements>().elementMultipliers[element] = multiplier;
         }
 
-        public static void SetElementMultiplier(this NPC npc, double[] multipliers)
+        public static void SetElementMultiplier(this NPC npc, float[] multipliers)
         {
             npc.GetGlobalNPC<NPCElements>().elementMultipliers = multipliers;
         }

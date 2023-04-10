@@ -9,8 +9,8 @@ Mods: {
 		}
 
 		Config: {
-			// ServerLabel: Server Config
-			// LegacySystem: Legacy System
+			/* ServerLabel: Server Config */
+			/* LegacySystem: Legacy System */
 		}
 
 		/* ConfigDesc.LegacySystem:
@@ -27,30 +27,11 @@ Mods: {
 			''' */
 
 		Items: {
-			DamageIcon: {
-				// DisplayName: Damage Icon
-				// Tooltip: ""
-			}
-
-			ElecIcon: {
-				// DisplayName: Elec Icon
-				// Tooltip: ""
-			}
-
-			FireIcon: {
-				// DisplayName: Fire Icon
-				// Tooltip: ""
-			}
-
-			IceIcon: {
-				// DisplayName: Ice Icon
-				// Tooltip: ""
-			}
-
-			WoodIcon: {
-				// DisplayName: Wood Icon
-				// Tooltip: ""
-			}
+			/* DamageIcon.DisplayName: Damage Icon */
+			/* ElecIcon.DisplayName: Elec Icon */
+			/* FireIcon.DisplayName: Fire Icon */
+			/* IceIcon.DisplayName: Ice Icon */
+			/* WoodIcon.DisplayName: Wood Icon */
 		}
 	}
 }

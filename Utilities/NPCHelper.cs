@@ -12,6 +12,14 @@ namespace MMZeroElements.Utilities
         {
             NPCElements.Fire.Add(npcType);
         }
+        public static bool IsFire(this NPC npc)
+        {
+            return npc.type.NPCIsFire();
+        }
+        public static bool NPCIsFire(this int npcType)
+        {
+            return NPCElements.Fire.Contains(npcType);
+        }
 
         public static void AddIce(this NPC npc)
         {
@@ -21,14 +29,47 @@ namespace MMZeroElements.Utilities
         {
             NPCElements.Ice.Add(npcType);
         }
-
-        public static void AddElectric(this NPC npc)
+        public static bool IsIce(this NPC npc)
         {
-            npc.type.AddElectricNPC();
+            return npc.type.NPCIsIce();
         }
-        public static void AddElectricNPC(this int npcType)
+        public static bool NPCIsIce(this int npcType)
+        {
+            return NPCElements.Ice.Contains(npcType);
+        }
+
+        public static void AddElec(this NPC npc)
+        {
+            npc.type.AddElecNPC();
+        }
+        public static void AddElecNPC(this int npcType)
         {
             NPCElements.Electric.Add(npcType);
+        }
+        public static bool IsElec(this NPC npc)
+        {
+            return npc.type.NPCIsElec();
+        }
+        public static bool NPCIsElec(this int npcType)
+        {
+            return NPCElements.Electric.Contains(npcType);
+        }
+
+        public static void AddWood(this NPC npc)
+        {
+            npc.type.AddWoodNPC();
+        }
+        public static void AddWoodNPC(this int npcType)
+        {
+            NPCElements.Wood.Add(npcType);
+        }
+        public static bool IsWood(this NPC npc)
+        {
+            return npc.type.NPCIsWood();
+        }
+        public static bool NPCIsWood(this int npcType)
+        {
+            return NPCElements.Wood.Contains(npcType);
         }
     }
 }

@@ -23,7 +23,6 @@ namespace MMZeroElements.SetElements.NPCs
                 case NPCID.GoblinSummoner:
                 case NPCID.ShadowFlameApparition:
                     NPCElements.Fire.Add(type);
-                    NPCElements.Metal.Add(type);
                     npc.SetCustomElementMultipliers(0.8f, 1.5f, 1.0f, 0.6f);
                     break;
 
@@ -49,7 +48,7 @@ namespace MMZeroElements.SetElements.NPCs
                     NPCElements.Fire.Add(type);
                     NPCElements.Ice.Add(type);
                     NPCElements.Electric.Add(type);
-                    NPCElements.Metal.Add(type);
+                    NPCElements.Wood.Add(type);
                     npc.SetCustomElementMultipliers(1, 1, 1, 1);
                     break;
             }

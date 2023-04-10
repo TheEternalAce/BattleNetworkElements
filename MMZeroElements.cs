@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace MMZeroElements
 {
-    public class Paths
+    public class LanguagePaths
     {
         public const string FireElement = "Mods.MMZeroElements.Element.Fire";
         public const string IceElement = "Mods.MMZeroElements.Element.Ice";
@@ -71,11 +71,11 @@ namespace MMZeroElements
                                         elementNPC.AddIce();
                                         break;
                                     case Element.Electric:
-                                        elementNPC.AddElectric();
+                                        elementNPC.AddElec();
                                         break;
                                 }
                             }
-                            else if (args[2] is double[] elements)
+                            else if (args[2] is float[] elements)
                             {
                                 elementNPC.GetGlobalNPC<NPCElements>().elementMultipliers = elements;
                             }

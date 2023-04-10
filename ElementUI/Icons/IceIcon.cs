@@ -2,13 +2,14 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.ElementUI
+namespace MMZeroElements.ElementUI.Icons
 {
     public class IceIcon : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Item.AddFire();
+            Item.AddIce();
+            Item.ResearchUnlockCount = 0;
         }
 
         public override void SetDefaults()

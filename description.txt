@@ -10,4 +10,4 @@ Damaging the slime with an Ice weapon will reduce the damage by 20%.
 Damaging the slime with an Electric weapon will reduce the damage by 50%.
 Damaging the slime withe a Fire AND Ice weapon will increase the damage by 60%.
 
-This mod adds no content, other than the mechanic, it simply creates a foundation for other mods to add cool stuff.
+This mod adds no (obtainable) content, other than the mechanic, it simply creates a foundation for other mods to add cool stuff.

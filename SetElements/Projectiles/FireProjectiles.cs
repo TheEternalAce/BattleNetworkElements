@@ -68,9 +68,14 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.Celeb2RocketExplosive,
             ProjectileID.Celeb2RocketLarge,
             ProjectileID.Celeb2RocketExplosiveLarge,
-            // Misc Ammo
+            // Flares
             ProjectileID.Flare,
             ProjectileID.BlueFlare,
+            ProjectileID.SpelunkerFlare,
+            ProjectileID.CursedFlare,
+            ProjectileID.RainbowFlare,
+            ProjectileID.ShimmerFlare,
+            // Misc Ammo
             ProjectileID.CursedDart,
             ProjectileID.JackOLantern,
             ProjectileID.Stynger,
@@ -85,7 +90,7 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.CrystalLeafShot,
 
             // Melee
-            //ProjectileID.BladeOfGrass,
+            ProjectileID.BladeOfGrass,
             ProjectileID.Cascade,
             ProjectileID.Daybreak,
             ProjectileID.DaybreakExplosion,
@@ -110,7 +115,7 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.Starfury,
             ProjectileID.StarWrath,
             ProjectileID.ThornChakram,
-            //ProjectileID.Volcano,
+            ProjectileID.Volcano,
 
             // Ranged
             ProjectileID.DD2BetsyArrow,

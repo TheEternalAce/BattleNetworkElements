@@ -13,7 +13,7 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.UnholyArrow,
             ProjectileID.HolyArrow,
             ProjectileID.IchorArrow,
-            //ProjectileID.ShimmerArrow,
+            ProjectileID.ShimmerArrow,
             // Bullet
             ProjectileID.IchorBullet,
             // Rocket
@@ -32,14 +32,14 @@ namespace MMZeroElements.SetElements.Projectiles
 
             // Melee
             ProjectileID.Amarok,
-            //ProjectileID.BloodButcherer,
+            ProjectileID.BloodButcherer,
             ProjectileID.Flairon,
             ProjectileID.FlaironBubble,
             ProjectileID.FrostBoltSword,
             ProjectileID.FruitcakeChakram,
             ProjectileID.IceBolt,
             ProjectileID.IceBoomerang,
-            //ProjectileID.Muramasa,
+            ProjectileID.Muramasa,
             ProjectileID.NorthPoleSpear,
             ProjectileID.NorthPoleSnowflake,
             ProjectileID.NorthPoleWeapon,

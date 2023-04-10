@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using MMZeroElements.Utilities;
-using ReLogic.Content;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Localization;
@@ -16,10 +14,6 @@ namespace MMZeroElements
         public static List<int> Electric = new();
         public static List<int> Metal = new();
         internal static List<int> Wood = new();
-
-        public static Asset<Texture2D> FireIcon = ModContent.Request<Texture2D>("MMZeroElements/ElementIcons/FireIcon");
-        public static Asset<Texture2D> IceIcon = ModContent.Request<Texture2D>("MMZeroElements/ElementIcons/IceIcon");
-        public static Asset<Texture2D> ElectricIcon = ModContent.Request<Texture2D>("MMZeroElements/ElementIcons/ElectricIcon");
 
         public override bool InstancePerEntity => true;
 

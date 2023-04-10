@@ -1,31 +1,56 @@
-﻿Mods: {
+
+Mods: {
 	MMZeroElements: {
 		Element: {
-			Fire: [i:FireIcon] Fire Element
-			Ice: [i:IceIcon] Ice Element
-			Electric: [i:ElectricIcon] Electric Element
-			Wood: [i:WoodIcon] Wood Element
+			Fire: "[i:MMZeroElements/FireIcon] Fire Element"
+			Ice: "[i:MMZeroElements/IceIcon] Ice Element"
+			Electric: "[i:MMZeroElements/ElecIcon] Elec Element"
+			Wood: "[i:MMZeroElements/WoodIcon] Wood Element"
 		}
 
 		Config: {
 			ServerLabel: Server Config
-
 			LegacySystem: Legacy System
 		}
 
-		ConfigDesc: {
-			LegacySystem:
-				'''
-				(UNIMPLEMENTED: DOES NOTHING)
-				Enable to use the previous 3 elements system
-				Wood element is disabled
-				Aqua renamed to Ice
-				Poison-themed weapons from the Wood weapons list are moved to the Fire weapons list
-				Default multipliers by element:
-				-Fire NPCs: Fire: 0.8x, Ice: 0.5, Electric: 2.0
-				-Ice NPCs: Fire: 2.0x, Ice: 0.8, Electric: 0.5
-				-Electric NPCs: Fire: 0.5x, Ice: 2.0, Electric: 0.8
-				'''
+		ConfigDesc.LegacySystem:
+			'''
+			(UNIMPLEMENTED: DOES NOTHING)
+			Enable to use the previous 3 elements system
+			Wood element is disabled
+			Aqua renamed to Ice
+			Poison-themed weapons from the Wood weapons list are moved to the Fire weapons list
+			Default multipliers by element:
+			-Fire NPCs: Fire: 0.8x, Ice: 0.5, Electric: 2.0
+			-Ice NPCs: Fire: 2.0x, Ice: 0.8, Electric: 0.5
+			-Electric NPCs: Fire: 0.5x, Ice: 2.0, Electric: 0.8
+			'''
+
+		Items: {
+			DamageIcon: {
+				DisplayName: Damage Icon
+				Tooltip: ""
+			}
+
+			ElecIcon: {
+				DisplayName: Elec Icon
+				Tooltip: ""
+			}
+
+			FireIcon: {
+				DisplayName: Fire Icon
+				Tooltip: ""
+			}
+
+			IceIcon: {
+				DisplayName: Ice Icon
+				Tooltip: ""
+			}
+
+			WoodIcon: {
+				DisplayName: Wood Icon
+				Tooltip: ""
+			}
 		}
 	}
 }

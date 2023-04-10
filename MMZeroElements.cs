@@ -1,3 +1,4 @@
+using MMZeroElements.Config;
 using MMZeroElements.Utilities;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,13 @@ namespace MMZeroElements
 
     public class MMZeroElements : Mod
     {
+        public static ElementsClient Client;
+
+        public override void Load()
+        {
+            Client = ModContent.GetInstance<ElementsClient>();
+        }
+
         const string COMMAND_ASSIGN_ELEMENT = "assignElement";
         const string COMMAND_GET_ELEMENT = "getElement";
 

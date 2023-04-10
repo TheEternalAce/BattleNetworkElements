@@ -19,6 +19,6 @@ namespace MMZeroElements.Config
         [OptionStrings(new string[] { "After hit", "Always", "Inventory open only", "Never" })]
         [DefaultValue("After hit")]
         [ReloadRequired]
-        public string betterWeapon;
+        public string elementUIDisplayStyle;
     }
 }

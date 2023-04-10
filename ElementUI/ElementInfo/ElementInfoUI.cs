@@ -138,11 +138,19 @@ namespace MMZeroElements.ElementUI.ElementInfo
         // These two methods will set the state of our custom UI, causing it to show or hide
         public void ShowMyUI()
         {
+            if (MMZeroElements.Client.elementUIDisplayStyle == "Never")
+            {
+                return;
+            }
             _elementInfoUI?.SetState(ElementInfoState);
         }
 
         public void HideMyUI()
         {
+            if (MMZeroElements.Client.elementUIDisplayStyle == "Always")
+            {
+                return;
+            }
             _elementInfoUI?.SetState(null);
         }
 
@@ -152,6 +160,10 @@ namespace MMZeroElements.ElementUI.ElementInfo
             {
                 ElementInfoState = new();
                 _elementInfoUI = new();
+                //if (MMZeroElements.Client.elementUIDisplayStyle == "Always")
+                //{
+                //    _elementInfoUI?.SetState(ElementInfoState);
+                //}
                 ElementInfoState.Activate();
             }
         }

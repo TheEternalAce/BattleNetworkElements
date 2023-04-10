@@ -2,13 +2,14 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.ElementUI
+namespace MMZeroElements.ElementUI.Icons
 {
     public class FireIcon : ModItem
     {
         public override void SetStaticDefaults()
         {
             Item.AddFire();
+            SacrificeTotal = 0;
         }
 
         public override void SetDefaults()

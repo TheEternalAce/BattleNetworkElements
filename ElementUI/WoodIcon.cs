@@ -2,13 +2,14 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.ElementUI
+namespace MMZeroElements.ElementUI.Icons
 {
     public class WoodIcon : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Item.AddFire();
+            Item.AddWood();
+            SacrificeTotal = 0;
         }
 
         public override void SetDefaults()

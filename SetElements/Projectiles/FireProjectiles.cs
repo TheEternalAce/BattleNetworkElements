@@ -68,9 +68,14 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.Celeb2RocketExplosive,
             ProjectileID.Celeb2RocketLarge,
             ProjectileID.Celeb2RocketExplosiveLarge,
-            // Misc Ammo
+            // Flares
             ProjectileID.Flare,
             ProjectileID.BlueFlare,
+            //ProjectileID.SpelunkerFlare,
+            //ProjectileID.CursedFlare,
+            //ProjectileID.RainbowFlare,
+            //ProjectileID.ShimmerFlare,
+            // Misc Ammo
             ProjectileID.CursedDart,
             ProjectileID.JackOLantern,
             ProjectileID.Stynger,

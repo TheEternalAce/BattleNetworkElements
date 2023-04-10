@@ -4,19 +4,22 @@ using Terraria.ModLoader;
 
 namespace MMZeroElements.ElementUI.Icons
 {
-    public class IceIcon : ModItem
+    public class DamageIcon : ModItem
     {
         public override void SetStaticDefaults()
         {
+            Item.AddFire();
             Item.AddIce();
+            Item.AddElectric();
+            Item.AddWood();
             SacrificeTotal = 0;
         }
 
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
-            Item.rare = ItemRarityID.Blue;
+            Item.width = 26;
+            Item.height = 26;
+            Item.rare = ItemRarityID.Expert;
         }
     }
 }

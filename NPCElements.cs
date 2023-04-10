@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
+using MMZeroElements.Utilities;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
@@ -11,59 +11,94 @@ namespace MMZeroElements
         public static List<int> Fire = new();
         public static List<int> Ice = new();
         public static List<int> Electric = new();
-        public static List<int> Metal = new();
+        internal static List<int> Wood = new();
         /// <summary>
         /// Elemental multipliers for a given NPC in the following order: Fire, Ice, Electric, Metal
         /// </summary>
-        public double[] elementMultipliers = { 1.0, 1.0, 1.0, 1.0 };
+        public float[] elementMultipliers = { 1.0f, 1.0f, 1.0f, 1.0f };
 
         public override bool InstancePerEntity => true;
 
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
         {
-            double modifier = 1.0;
+            float multiplier = 1.0f;
             Color color = Color.Blue;
-            if (WeaponElements.Fire.Contains(item.type))
+            if (item.IsFire())
             {
-                modifier *= elementMultipliers[Element.Fire];
+                multiplier *= elementMultipliers[Element.Fire];
             }
-            if (WeaponElements.Ice.Contains(item.type))
+            if (item.IsIce())
             {
-                modifier *= elementMultipliers[Element.Ice];
+                multiplier *= elementMultipliers[Element.Ice];
             }
-            if (WeaponElements.Electric.Contains(item.type))
+            if (item.IsElec())
             {
-                modifier *= elementMultipliers[Element.Electric];
+                multiplier *= elementMultipliers[Element.Electric];
             }
-            int ct = CombatText.NewText(npc.getRect(), color, (float)modifier + "x");
+            //if (item.IsWood())
+            //{
+            //    multiplier *= elementMultipliers[Element.Wood];
+            //}
+            int ct = CombatText.NewText(npc.getRect(), color, multiplier + "x");
             Main.combatText[ct].position.Y -= 45;
-            damage = (int)Math.Ceiling(damage * modifier);
+            damage = (int)(damage * multiplier);
 
             base.ModifyHitByItem(npc, player, item, ref damage, ref knockback, ref crit);
         }
 
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            ProjectileElements elementProj = projectile.GetGlobalProjectile<ProjectileElements>();
-            double modifier = 1.0;
+            float multiplier = 1.0f;
             Color color = Color.Blue;
-            if (ProjectileElements.Fire.Contains(projectile.type) || elementProj.tempFire)
+            if (projectile.IsFire())
             {
-                modifier *= elementMultipliers[Element.Fire];
+                multiplier *= elementMultipliers[Element.Fire];
             }
-            if (ProjectileElements.Ice.Contains(projectile.type) || elementProj.tempIce)
+            if (projectile.IsIce())
             {
-                modifier *= elementMultipliers[Element.Ice];
+                multiplier *= elementMultipliers[Element.Ice];
             }
-            if (ProjectileElements.Electric.Contains(projectile.type) || elementProj.tempElectric)
+            if (projectile.IsElec())
             {
-                modifier *= elementMultipliers[Element.Electric];
+                multiplier *= elementMultipliers[Element.Electric];
             }
-            int ct = CombatText.NewText(npc.getRect(), color, (float)modifier + "x");
+            //if (projectile.IsWood())
+            //{
+            //    multiplier *= elementMultipliers[Element.Wood];
+            //}
+            int ct = CombatText.NewText(npc.getRect(), color, multiplier + "x");
             Main.combatText[ct].position.Y -= 45;
-            damage = (int)Math.Ceiling(damage * modifier);
+            damage = (int)(damage * multiplier);
 
             base.ModifyHitByProjectile(npc, projectile, ref damage, ref knockback, ref crit, ref hitDirection);
+        }
+
+        public override void ModifyHitNPC(NPC npc, NPC target, ref int damage, ref float knockback, ref bool crit)
+        {
+            float multiplier = 1.0f;
+            Color color = Color.Blue;
+            NPCElements targetElements = target.GetGlobalNPC<NPCElements>();
+            if (npc.IsFire())
+            {
+                multiplier *= targetElements.elementMultipliers[Element.Fire];
+            }
+            if (npc.IsIce())
+            {
+                multiplier *= targetElements.elementMultipliers[Element.Ice];
+            }
+            if (npc.IsElec())
+            {
+                multiplier *= targetElements.elementMultipliers[Element.Electric];
+            }
+            //if (npc.IsWood())
+            //{
+            //    multiplier *= targetElements.elementMultipliers[Element.Wood];
+            //}
+            int ct = CombatText.NewText(npc.getRect(), color, multiplier + "x");
+            Main.combatText[ct].position.Y -= 45;
+            damage = (int)(damage * multiplier);
+
+            base.ModifyHitNPC(npc, target, ref damage, ref knockback, ref crit);
         }
     }
 }

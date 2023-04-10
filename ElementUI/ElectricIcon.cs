@@ -2,13 +2,14 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.ElementUI
+namespace MMZeroElements.ElementUI.Icons
 {
-    public class ElectricIcon : ModItem
+    public class ElecIcon : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Item.AddFire();
+            Item.AddElectric();
+            SacrificeTotal = 0;
         }
 
         public override void SetDefaults()

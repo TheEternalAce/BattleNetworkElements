@@ -2,18 +2,19 @@
 Mods: {
 	MMZeroElements: {
 		Element: {
-			Fire: "[i:MMZeroElements/FireIcon] Élément de feu"
-			Ice: "[i:MMZeroElements/IceIcon] Élément de glace"
-			Electric: "[i:MMZeroElements/ElecIcon] Élément d'élec"
-			Wood: "[i:MMZeroElements/WoodIcon] Élément de"
+			Fire: "[i:MMZeroElements/FireIcon] Élément de Feu"
+			Aqua: "[i:MMZeroElements/AquaIcon] Élément de Eau"
+			Ice: "[i:MMZeroElements/IceIcon] Élément de Glace"
+			Electric: "[i:MMZeroElements/ElecIcon] Élément de Élec"
+			Wood: "[i:MMZeroElements/WoodIcon] Élément de Bois"
 		}
 
 		Config: {
-			// ServerLabel: Server Config
-			// LegacySystem: Legacy System
+			ServerLabel: Server Config
+			LegacySystem: Legacy System
 		}
 
-		/* ConfigDesc.LegacySystem:
+		ConfigDesc.LegacySystem:
 			'''
 			(UNIMPLEMENTED: DOES NOTHING)
 			Enable to use the previous 3 elements system
@@ -24,31 +25,37 @@ Mods: {
 			-Fire NPCs: Fire: 0.8x, Ice: 0.5, Electric: 2.0
 			-Ice NPCs: Fire: 2.0x, Ice: 0.8, Electric: 0.5
 			-Electric NPCs: Fire: 0.5x, Ice: 2.0, Electric: 0.8
-			''' */
+			'''
 
+		// These won't be seen under normal circumstances
 		Items: {
 			DamageIcon: {
-				// DisplayName: Damage Icon
-				// Tooltip: ""
-			}
-
-			ElecIcon: {
-				// DisplayName: Elec Icon
+				DisplayName: Damage Icon
 				// Tooltip: ""
 			}
 
 			FireIcon: {
-				// DisplayName: Fire Icon
+				DisplayName: Fire Icon
+				// Tooltip: ""
+			}
+
+			AquaIcon: {
+				DisplayName: Aqua Icon
 				// Tooltip: ""
 			}
 
 			IceIcon: {
-				// DisplayName: Ice Icon
+				DisplayName: Ice Icon
+				// Tooltip: ""
+			}
+
+			ElecIcon: {
+				DisplayName: Elec Icon
 				// Tooltip: ""
 			}
 
 			WoodIcon: {
-				// DisplayName: Wood Icon
+				DisplayName: Wood Icon
 				// Tooltip: ""
 			}
 		}

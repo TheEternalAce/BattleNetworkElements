@@ -10,9 +10,9 @@ namespace MMZeroElements.ElementUI.Icons
         {
             Item.AddFire();
             Item.AddIce();
-            Item.AddElectric();
+            Item.AddElec();
             Item.AddWood();
-            SacrificeTotal = 0;
+            Item.ResearchUnlockCount = 0;
         }
 
         public override void SetDefaults()

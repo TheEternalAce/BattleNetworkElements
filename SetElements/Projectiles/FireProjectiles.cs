@@ -1,23 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using MMZeroElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MMZeroElements.SetElements.Projectiles
 {
-    public class FireProjectiles : GlobalProjectile
+    internal class FireProjectiles : GlobalProjectile
     {
-        static List<int> projectiles = new()
+        internal static int[] projectiles =
         {
             // Arrow
             ProjectileID.FireArrow,
             ProjectileID.JestersArrow,
             ProjectileID.HellfireArrow,
             ProjectileID.CursedArrow,
-            ProjectileID.VenomArrow,
             // Bullet
             ProjectileID.MeteorShot,
             ProjectileID.CursedBullet,
-            ProjectileID.VenomBullet,
             ProjectileID.ExplosiveBullet,
             // Rocket
             ProjectileID.RocketI,
@@ -78,16 +76,11 @@ namespace MMZeroElements.SetElements.Projectiles
             // Misc Ammo
             ProjectileID.CursedDart,
             ProjectileID.JackOLantern,
-            ProjectileID.Stynger,
-            ProjectileID.StyngerShrapnel,
             ProjectileID.StarCannonStar,
             ProjectileID.EbonsandBallGun,
 
             // Accessory
             ProjectileID.StarCloakStar,
-            ProjectileID.GiantBee,
-            ProjectileID.CrystalLeaf,
-            ProjectileID.CrystalLeafShot,
 
             // Melee
             //ProjectileID.BladeOfGrass,
@@ -101,8 +94,6 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.MonkStaffT2,
             ProjectileID.MonkStaffT2Ghast,
             ProjectileID.HelFire,
-            ProjectileID.MushroomSpear,
-            ProjectileID.Mushroom,
             ProjectileID.ShadowFlameKnife,
             ProjectileID.MonkStaffT3,
             ProjectileID.MonkStaffT3_Alt,
@@ -114,12 +105,10 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.Sunfury,
             ProjectileID.Starfury,
             ProjectileID.StarWrath,
-            ProjectileID.ThornChakram,
             //ProjectileID.Volcano,
 
             // Ranged
             ProjectileID.DD2BetsyArrow,
-            ProjectileID.Beenade,
             ProjectileID.BoneGloveProj,
             ProjectileID.Flames,
             ProjectileID.Hellwing,
@@ -129,12 +118,10 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.MolotovFire3,
             ProjectileID.DD2PhoenixBow,
             ProjectileID.DD2PhoenixBowShot,
-            ProjectileID.PoisonedKnife,
             ProjectileID.ShadowFlameArrow,
             ProjectileID.NailFriendly,
 
             // Magic
-            ProjectileID.Bee,
             ProjectileID.DD2BetsyFireball,
             ProjectileID.BookOfSkullsSkull,
             ProjectileID.ClingerStaff,
@@ -155,14 +142,11 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.NebulaBlaze1,
             ProjectileID.NebulaBlaze2,
             ProjectileID.FairyQueenMagicItemShot,
-            ProjectileID.PoisonFang,
             ProjectileID.ShadowBeamFriendly,
             ProjectileID.ShadowFlame,
             ProjectileID.SpiritFlame,
             ProjectileID.UnholyTridentFriendly,
-            ProjectileID.VenomFang,
             ProjectileID.Spark,
-            ProjectileID.Wasp,
 
             // Summon
             ProjectileID.ScytheWhip,
@@ -181,8 +165,6 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.DD2FlameBurstTowerT2Shot,
             ProjectileID.DD2FlameBurstTowerT3,
             ProjectileID.DD2FlameBurstTowerT3Shot,
-            ProjectileID.Hornet,
-            ProjectileID.HornetStinger,
             ProjectileID.FlyingImp,
             ProjectileID.ImpFireball,
             ProjectileID.HoundiusShootius,
@@ -190,18 +172,9 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.Spazmamini,
             ProjectileID.Retanimini,
             ProjectileID.MiniRetinaLaser,
-            ProjectileID.SpiderHiver,
-            ProjectileID.SpiderEgg,
-            ProjectileID.VenomSpider,
-            ProjectileID.JumperSpider,
-            ProjectileID.DangerousSpider,
-            ProjectileID.VampireFrog,
 
             // NPC proj
             ProjectileID.Explosives,
-            ProjectileID.Stinger,
-            ProjectileID.HornetStinger,
-            ProjectileID.QueenBeeStinger,
             ProjectileID.CursedFlameHostile,
             ProjectileID.DemonSickle,
             ProjectileID.CursedFlameHostile,

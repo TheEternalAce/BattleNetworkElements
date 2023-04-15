@@ -1,23 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using MMZeroElements.Elements;
+using MMZeroElements.Utilities;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MMZeroElements.SetElements.NPCs
 {
-    internal class IceNPCs : GlobalNPC
+    internal class IceAquaNPCs : GlobalNPC
     {
-        static List<int> npcs = new()
+        static int[] npcs =
         {
-            NPCID.GreenSlime,
-            NPCID.SlimeSpiked,
-            NPCID.BlueSlime,
-            NPCID.RedSlime,
-            NPCID.PurpleSlime,
-            NPCID.YellowSlime,
-            NPCID.BlackSlime,
-            NPCID.MotherSlime,
-            NPCID.BabySlime,
             NPCID.DarkCaster,
             NPCID.ChaosBall,
             NPCID.IceBat,
@@ -52,11 +45,10 @@ namespace MMZeroElements.SetElements.NPCs
             NPCID.SandsharkCrimson,
             NPCID.Crimslime,
 
-            NPCID.KingSlime,
+            // Boss
             NPCID.BrainofCthulhu,
             NPCID.Creeper,
             NPCID.Deerclops,
-            NPCID.DeerclopsLeg,
             NPCID.QueenSlimeBoss,
             NPCID.QueenSlimeMinionBlue,
             NPCID.QueenSlimeMinionPink,
@@ -70,22 +62,19 @@ namespace MMZeroElements.SetElements.NPCs
 
         public override void Load()
         {
-            NPCElements.Ice.AddRange(npcs);
+            NPCElements.IceAqua.AddRange(npcs);
         }
 
         public override void Unload()
         {
-            NPCElements.Ice.Clear();
+            NPCElements.IceAqua.Clear();
         }
 
         public override void SetDefaults(NPC npc)
         {
-            foreach (int type in npcs)
+            if (npcs.Contains(npc.type))
             {
-                if (npc.type == type)
-                {
-                    npc.SetElementMultipliersByElement(Element.Ice);
-                }
+                npc.SetElementMultipliersByElement(Element.IceAqua);
             }
         }
     }

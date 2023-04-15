@@ -9,7 +9,7 @@ namespace MMZeroElements.ElementUI.Icons
         public override void SetStaticDefaults()
         {
             Item.AddFire();
-            SacrificeTotal = 0;
+            Item.ResearchUnlockCount = 0;
         }
 
         public override void SetDefaults()

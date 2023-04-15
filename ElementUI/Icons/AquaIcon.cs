@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace MMZeroElements.ElementUI.Icons
 {
-    public class IceIcon : ModItem
+    public class AquaIcon : ModItem
     {
         public override void SetStaticDefaults()
         {

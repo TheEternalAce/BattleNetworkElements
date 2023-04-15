@@ -1,4 +1,6 @@
-﻿using Terraria;
+﻿using MMZeroElements.Elements;
+using MMZeroElements.Utilities;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,19 +13,18 @@ namespace MMZeroElements.SetElements.NPCs
             int type = npc.type;
             switch (type)
             {
-                case NPCID.MeteorHead:
-                case NPCID.Tim:
-                case NPCID.ChaosBall:
-                case NPCID.ChaosBallTim:
-                case NPCID.HellArmoredBones:
-                case NPCID.HellArmoredBonesMace:
-                case NPCID.HellArmoredBonesSpikeShield:
-                case NPCID.HellArmoredBonesSword:
-                case NPCID.RuneWizard:
-                case NPCID.GoblinSummoner:
-                case NPCID.ShadowFlameApparition:
-                    NPCElements.Fire.Add(type);
-                    npc.SetCustomElementMultipliers(0.8f, 1.5f, 1.0f, 0.6f);
+                case NPCID.GreenSlime:
+                case NPCID.BlueSlime:
+                case NPCID.SlimeSpiked:
+                case NPCID.RedSlime:
+                case NPCID.PurpleSlime:
+                case NPCID.YellowSlime:
+                case NPCID.BlackSlime:
+                case NPCID.MotherSlime:
+                case NPCID.BabySlime:
+                case NPCID.KingSlime:
+                    NPCElements.IceAqua.Add(type);
+                    npc.SetElementMultiplier(2.0f, 0.8f, 0.5f, 1.0f);
                     break;
 
                 case NPCID.CultistBoss:
@@ -46,9 +47,9 @@ namespace MMZeroElements.SetElements.NPCs
                 case NPCID.MoonLordHead:
                 case NPCID.MoonLordLeechBlob:
                     NPCElements.Fire.Add(type);
-                    NPCElements.Ice.Add(type);
+                    NPCElements.IceAqua.Add(type);
                     NPCElements.Electric.Add(type);
-                    npc.SetCustomElementMultipliers(1, 1, 1, 1);
+                    npc.SetElementMultiplier(0.8f, 0.8f, 0.8f, 0.8f);
                     break;
             }
         }

@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using MMZeroElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MMZeroElements.SetElements.Weapons
 {
-    public class ElectricWeapons : GlobalItem
+    internal class ElectricWeapons : GlobalItem
     {
-        static List<int> items = new()
+        internal static int[] items =
         {
             // Pre-boss
             ItemID.PalmWoodSword,

@@ -4,14 +4,14 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
-namespace MMZeroElements
+namespace MMZeroElements.Elements
 {
     public class ProjectileElements : GlobalProjectile
     {
-        public static List<int> Fire = new();
-        public static List<int> Ice = new();
-        public static List<int> Electric = new();
-        public static List<int> Wood = new();
+        internal static List<int> Fire = new();
+        internal static List<int> Ice = new();
+        internal static List<int> Electric = new();
+        internal static List<int> Wood = new();
 
         public bool tempFire = false;
         public bool tempIce = false;

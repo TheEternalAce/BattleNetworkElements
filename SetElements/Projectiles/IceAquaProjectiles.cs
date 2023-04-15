@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using MMZeroElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MMZeroElements.SetElements.Projectiles
 {
-    public class IceProjectiles : GlobalProjectile
+    internal class IceAquaProjectiles : GlobalProjectile
     {
-        static List<int> projectiles = new()
+        static int[] projectiles =
         {
             // Arrow
             ProjectileID.FrostburnArrow,

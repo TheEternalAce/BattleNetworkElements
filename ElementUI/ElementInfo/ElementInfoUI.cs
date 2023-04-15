@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MMZeroElements.Elements;
 using MMZeroElements.Utilities;
 using ReLogic.Content;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace MMZeroElements.ElementUI.ElementInfo
             Asset<Texture2D> buttonDeleteTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
             UIHoverImageButton closeButton = new UIHoverImageButton(buttonDeleteTexture, Language.GetTextValue("LegacyInterface.52")); // Localized text for "Close"
             SetRectangle(closeButton, 168f, 10f, 22f, 22f);
-            closeButton.OnClick += new MouseEvent(CloseButtonClicked);
+            closeButton.OnLeftClick += new MouseEvent(CloseButtonClicked);
             panel.Append(closeButton);
 
             Append(panel);
@@ -58,7 +59,7 @@ namespace MMZeroElements.ElementUI.ElementInfo
                 "[i:MMZeroElements/FireIcon] - 0.0x\n" +
                 "[i:MMZeroElements/IceIcon] - 0.0x\n" +
                 "[i:MMZeroElements/ElecIcon] - 0.0x\n" +
-                //"[i:MMZeroElements/WoodIcon] - 0.0x\n" +
+                "[i:MMZeroElements/WoodIcon] - 0.0x\n" +
                 "----------";
             return info;
         }
@@ -72,14 +73,14 @@ namespace MMZeroElements.ElementUI.ElementInfo
                 string elementDamageIcon = "[i:MMZeroElements/DamageIcon]";
                 info = npc.FullName + "\n" +
                     "---Elements---\n" +
-                    "[i:MMZeroElements/FireIcon] - " + (float)elementNPC.elementMultipliers[Element.Fire] + "x " +
+                    "[i:MMZeroElements/FireIcon] - " + elementNPC.elementMultipliers[Element.Fire] + "x " +
                     (npc.IsFire() ? elementDamageIcon : "") + "\n" +
-                    "[i:MMZeroElements/IceIcon] - " + (float)elementNPC.elementMultipliers[Element.Ice] + "x " +
+                    "[i:MMZeroElements/IceIcon] - " + elementNPC.elementMultipliers[Element.IceAqua] + "x " +
                     (npc.IsIce() ? elementDamageIcon : "") + "\n" +
-                    "[i:MMZeroElements/ElecIcon] - " + (float)elementNPC.elementMultipliers[Element.Electric] + "x " +
+                    "[i:MMZeroElements/ElecIcon] - " + elementNPC.elementMultipliers[Element.Elec] + "x " +
                     (npc.IsElec() ? elementDamageIcon : "") + "\n" +
-                    //"[i:MMZeroElements/WoodIcon] - " + (float)elementNPC.elementMultipliers[Element.Wood] + "x " +
-                    //(npc.DealsWood() ? elementDamageIcon : "") + "\n" +
+                    "[i:MMZeroElements/WoodIcon] - " + elementNPC.elementMultipliers[Element.Wood] + "x " +
+                    (npc.IsWood() ? elementDamageIcon : "") + "\n" +
                     "------------\n";
             }
             else
@@ -92,7 +93,7 @@ namespace MMZeroElements.ElementUI.ElementInfo
                     (item.IsFire() ? "[i:MMZeroElements/FireIcon] " : "") +
                     (item.IsIce() ? "[i:MMZeroElements/IceIcon] " : "") +
                     (item.IsElec() ? "[i:MMZeroElements/ElecIcon] " : "") +
-                    //(item.DealsWood() ? "[i:MMZeroElements/WoodIcon] " : "") +
+                    (item.IsWood() ? "[i:MMZeroElements/WoodIcon] " : "") +
                     "";
             }
             else if (proj != null)
@@ -101,7 +102,7 @@ namespace MMZeroElements.ElementUI.ElementInfo
                     (proj.IsFire() ? "[i:MMZeroElements/FireIcon] " : "") +
                     (proj.IsIce() ? "[i:MMZeroElements/IceIcon] " : "") +
                     (proj.IsElec() ? "[i:MMZeroElements/ElecIcon] " : "") +
-                    //(item.DealsWood() ? "[i:MMZeroElements/WoodIcon] " : "") +
+                    (proj.IsWood() ? "[i:MMZeroElements/WoodIcon] " : "") +
                     "";
             }
             else

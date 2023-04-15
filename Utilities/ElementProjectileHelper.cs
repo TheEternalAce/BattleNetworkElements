@@ -1,8 +1,9 @@
-﻿using Terraria;
+﻿using MMZeroElements.Elements;
+using Terraria;
 
 namespace MMZeroElements.Utilities
 {
-    public static class ProjectileHelper
+    public static class ElementProjectileHelper
     {
         public static void AddFire(this Projectile proj)
         {
@@ -38,11 +39,11 @@ namespace MMZeroElements.Utilities
             return ProjectileElements.Ice.Contains(type);
         }
 
-        public static void AddElectric(this Projectile proj)
+        public static void AddElec(this Projectile proj)
         {
-            proj.type.AddElectricProjectile();
+            proj.type.AddElecProjectile();
         }
-        public static void AddElectricProjectile(this int projType)
+        public static void AddElecProjectile(this int projType)
         {
             ProjectileElements.Electric.Add(projType);
         }

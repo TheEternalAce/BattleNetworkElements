@@ -5,14 +5,13 @@ using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace MMZeroElements
+namespace MMZeroElements.Elements
 {
     public class WeaponElements : GlobalItem
     {
-        public static List<int> Fire = new();
-        public static List<int> Ice = new();
-        public static List<int> Electric = new();
-        public static List<int> Metal = new();
+        internal static List<int> Fire = new();
+        internal static List<int> Ice = new();
+        internal static List<int> Electric = new();
         internal static List<int> Wood = new();
 
         public override bool InstancePerEntity => true;
@@ -29,10 +28,20 @@ namespace MMZeroElements
             }
             if (Ice.Contains(type))
             {
-                tooltips.Insert(tooltips.GetIndex("OneDropLogo"), new TooltipLine(Mod, "ElementIce", Language.GetTextValue(Paths.IceElement))
+                if (MMZeroElements.Server.legacySystem)
                 {
-                    OverrideColor = Color.LightSkyBlue
-                });
+                    tooltips.Insert(tooltips.GetIndex("OneDropLogo"), new TooltipLine(Mod, "ElementIce", Language.GetTextValue(Paths.IceElement))
+                    {
+                        OverrideColor = Color.LightSkyBlue
+                    });
+                }
+                else
+                {
+                    tooltips.Insert(tooltips.GetIndex("OneDropLogo"), new TooltipLine(Mod, "ElementAqua", Language.GetTextValue(Paths.AquaElement))
+                    {
+                        OverrideColor = Color.LightSkyBlue
+                    });
+                }
             }
             if (Electric.Contains(type))
             {
@@ -45,7 +54,7 @@ namespace MMZeroElements
             {
                 tooltips.Insert(tooltips.GetIndex("OneDropLogo"), new TooltipLine(Mod, "WoodElectric", Language.GetTextValue(Paths.WoodElement))
                 {
-                    OverrideColor = Color.Cyan
+                    OverrideColor = Color.Green
                 });
             }
         }

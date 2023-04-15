@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using MMZeroElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MMZeroElements.SetElements.Weapons
 {
-    public class IceWeapons : GlobalItem
+    internal class IceAquaWeapons : GlobalItem
     {
-        static List<int> items = new()
+        internal static int[] items =
         {
             // Accessory/Armor
             ItemID.StardustHelmet,
@@ -59,7 +59,7 @@ namespace MMZeroElements.SetElements.Weapons
             ItemID.RazorbladeTyphoon,
             ItemID.SpectreStaff,
             ItemID.ToxicFlask,
-            //case ItemID.WandofFrosting,
+            ItemID.WandofFrosting,
             ItemID.WaterBolt,
 
             // Summon
@@ -80,7 +80,7 @@ namespace MMZeroElements.SetElements.Weapons
             ItemID.UnholyArrow,
             ItemID.HolyArrow,
             ItemID.IchorArrow,
-            //case ItemID.ShimmerArrow,
+            ItemID.ShimmerArrow,
             ItemID.WetRocket,
             ItemID.HoneyRocket,
             ItemID.PoisonDart,

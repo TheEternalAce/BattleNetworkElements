@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using MMZeroElements.Elements;
+using MMZeroElements.Utilities;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,7 +9,7 @@ namespace MMZeroElements.SetElements.NPCs
 {
     internal class ElectricNPCs : GlobalNPC
     {
-        static List<int> npcs = new()
+        static int[] npcs =
         {
             NPCID.BlueJellyfish,
             NPCID.Harpy,
@@ -69,12 +71,9 @@ namespace MMZeroElements.SetElements.NPCs
 
         public override void SetDefaults(NPC npc)
         {
-            foreach (int type in npcs)
+            if (npcs.Contains(npc.type))
             {
-                if (npc.type == type)
-                {
-                    npc.SetElementMultipliersByElement(Element.Electric);
-                }
+                npc.SetElementMultipliersByElement(Element.Elec);
             }
         }
     }

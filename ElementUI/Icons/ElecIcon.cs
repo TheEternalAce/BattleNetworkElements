@@ -8,8 +8,8 @@ namespace MMZeroElements.ElementUI.Icons
     {
         public override void SetStaticDefaults()
         {
-            Item.AddElectric();
-            SacrificeTotal = 0;
+            Item.AddElec();
+            Item.ResearchUnlockCount = 0;
         }
 
         public override void SetDefaults()

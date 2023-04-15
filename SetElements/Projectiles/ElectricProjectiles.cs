@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using MMZeroElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace MMZeroElements.SetElements.Projectiles
 {
-    public class ElectricProjectiles : GlobalProjectile
+    internal class ElectricProjectiles : GlobalProjectile
     {
-        static List<int> projectiles = new()
+        internal static int[] projectiles =
         {
             // Arrow
             ProjectileID.MoonlordArrow,

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using MMZeroElements.Elements;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace MMZeroElements.Utilities
 {
-    public static class ItemHelper
+    public static class ElementItemHelper
     {
         public static void AddFire(this Item item)
         {
@@ -41,11 +42,11 @@ namespace MMZeroElements.Utilities
             return WeaponElements.Ice.Contains(type);
         }
 
-        public static void AddElectric(this Item item)
+        public static void AddElec(this Item item)
         {
-            item.type.AddElectricItem();
+            item.type.AddElecItem();
         }
-        public static void AddElectricItem(this int itemType)
+        public static void AddElecItem(this int itemType)
         {
             WeaponElements.Electric.Add(itemType);
         }

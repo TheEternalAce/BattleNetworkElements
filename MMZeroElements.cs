@@ -1,4 +1,8 @@
 using MMZeroElements.Config;
+using MMZeroElements.Elements;
+using MMZeroElements.SetElements.NPCs;
+using MMZeroElements.SetElements.Projectiles;
+using MMZeroElements.SetElements.Weapons;
 using MMZeroElements.Utilities;
 using System;
 using System.Collections.Generic;
@@ -10,18 +14,44 @@ namespace MMZeroElements
     public class Paths
     {
         public const string FireElement = "Mods.MMZeroElements.Element.Fire";
+        public const string AquaElement = "Mods.MMZeroElements.Element.Aqua";
         public const string IceElement = "Mods.MMZeroElements.Element.Ice";
         public const string ElectricElement = "Mods.MMZeroElements.Element.Electric";
         public const string WoodElement = "Mods.MMZeroElements.Element.Wood";
     }
 
+    public static class Element
+    {
+        public const int Null = -1;
+        public const int Fire = 0;
+        public const int IceAqua = 1; // /Aqua
+        public const int Elec = 2;
+        public const int Wood = 3;
+    }
+
     public class MMZeroElements : Mod
     {
         public static ElementsClient Client;
+        public static ElementsServer Server;
 
         public override void Load()
         {
             Client = ModContent.GetInstance<ElementsClient>();
+            Server = ModContent.GetInstance<ElementsServer>();
+        }
+
+        public override void PostSetupContent()
+        {
+            if (Server.legacySystem)
+            {
+                WeaponElements.Fire.AddRange(WoodWeapons.poison);
+                ProjectileElements.Fire.AddRange(WoodProjectiles.poison);
+                NPCElements.Fire.AddRange(WoodNPCs.poison);
+
+                WeaponElements.Wood.Clear();
+                ProjectileElements.Wood.Clear();
+                NPCElements.Wood.Clear();
+            }
         }
 
         const string COMMAND_ASSIGN_ELEMENT = "assignElement";
@@ -56,11 +86,11 @@ namespace MMZeroElements
                                     case Element.Fire:
                                         elementItem.AddFire();
                                         break;
-                                    case Element.Ice:
+                                    case Element.IceAqua:
                                         elementItem.AddIce();
                                         break;
-                                    case Element.Electric:
-                                        elementItem.AddElectric();
+                                    case Element.Elec:
+                                        elementItem.AddElec();
                                         break;
                                 }
                             }
@@ -75,10 +105,10 @@ namespace MMZeroElements
                                     case Element.Fire:
                                         elementNPC.AddFire();
                                         break;
-                                    case Element.Ice:
+                                    case Element.IceAqua:
                                         elementNPC.AddIce();
                                         break;
-                                    case Element.Electric:
+                                    case Element.Elec:
                                         elementNPC.AddElec();
                                         break;
                                 }
@@ -98,11 +128,11 @@ namespace MMZeroElements
                                     case Element.Fire:
                                         elementProjectile.AddFire();
                                         break;
-                                    case Element.Ice:
-                                        elementProjectile.AddElectric();
+                                    case Element.IceAqua:
+                                        elementProjectile.AddElec();
                                         break;
-                                    case Element.Electric:
-                                        elementProjectile.AddElectric();
+                                    case Element.Elec:
+                                        elementProjectile.AddElec();
                                         break;
                                 }
                             }
@@ -120,10 +150,10 @@ namespace MMZeroElements
                                     case Element.Fire:
                                         elementList = WeaponElements.Fire;
                                         break;
-                                    case Element.Ice:
+                                    case Element.IceAqua:
                                         elementList = WeaponElements.Ice;
                                         break;
-                                    case Element.Electric:
+                                    case Element.Elec:
                                         elementList = WeaponElements.Electric;
                                         break;
                                 }
@@ -136,10 +166,10 @@ namespace MMZeroElements
                                     case Element.Fire:
                                         elementList = NPCElements.Fire;
                                         break;
-                                    case Element.Ice:
-                                        elementList = NPCElements.Ice;
+                                    case Element.IceAqua:
+                                        elementList = NPCElements.IceAqua;
                                         break;
-                                    case Element.Electric:
+                                    case Element.Elec:
                                         elementList = WeaponElements.Electric;
                                         break;
                                 }
@@ -152,10 +182,10 @@ namespace MMZeroElements
                                     case Element.Fire:
                                         elementList = ProjectileElements.Fire;
                                         break;
-                                    case Element.Ice:
+                                    case Element.IceAqua:
                                         elementList = ProjectileElements.Ice;
                                         break;
-                                    case Element.Electric:
+                                    case Element.Elec:
                                         elementList = ProjectileElements.Electric;
                                         break;
                                 }

@@ -5,6 +5,11 @@ namespace MMZeroElements.Utilities
 {
     public static class ElementProjectileHelper
     {
+        public static ProjectileElements Elements(this Projectile proj)
+        {
+            return proj.GetGlobalProjectile<ProjectileElements>();
+        }
+
         public static void AddFire(this Projectile proj)
         {
             proj.type.AddFireProjectile();
@@ -15,6 +20,10 @@ namespace MMZeroElements.Utilities
         }
         public static bool IsFire(this Projectile proj)
         {
+            return proj.Elements().isFire;
+        }
+        public static bool IsDefaultFire(this Projectile proj)
+        {
             return proj.type.ProjIsFire();
         }
         public static bool ProjIsFire(this int type)
@@ -22,21 +31,25 @@ namespace MMZeroElements.Utilities
             return ProjectileElements.Fire.Contains(type);
         }
 
-        public static void AddIce(this Projectile proj)
+        public static void AddIceAqua(this Projectile proj)
         {
-            proj.type.AddIceProjectile();
+            proj.type.AddIceAquaProjectile();
         }
-        public static void AddIceProjectile(this int projType)
+        public static void AddIceAquaProjectile(this int projType)
         {
-            ProjectileElements.Ice.Add(projType);
+            ProjectileElements.IceAqua.Add(projType);
         }
-        public static bool IsIce(this Projectile proj)
+        public static bool IsIceAqua(this Projectile proj)
         {
-            return proj.type.ProjIsIce();
+            return proj.Elements().isIceAqua;
         }
-        public static bool ProjIsIce(this int type)
+        public static bool IsDefaultIceAqua(this Projectile proj)
         {
-            return ProjectileElements.Ice.Contains(type);
+            return proj.type.ProjIsIceAqua();
+        }
+        public static bool ProjIsIceAqua(this int type)
+        {
+            return ProjectileElements.IceAqua.Contains(type);
         }
 
         public static void AddElec(this Projectile proj)
@@ -45,15 +58,19 @@ namespace MMZeroElements.Utilities
         }
         public static void AddElecProjectile(this int projType)
         {
-            ProjectileElements.Electric.Add(projType);
+            ProjectileElements.Elec.Add(projType);
         }
         public static bool IsElec(this Projectile proj)
+        {
+            return proj.Elements().isElec;
+        }
+        public static bool IsDefaultElec(this Projectile proj)
         {
             return proj.type.ProjIsElec();
         }
         public static bool ProjIsElec(this int type)
         {
-            return ProjectileElements.Electric.Contains(type);
+            return ProjectileElements.Elec.Contains(type);
         }
 
         public static void AddWood(this Projectile proj)
@@ -65,6 +82,10 @@ namespace MMZeroElements.Utilities
             ProjectileElements.Wood.Add(projType);
         }
         public static bool IsWood(this Projectile proj)
+        {
+            return proj.Elements().isWood;
+        }
+        public static bool IsDefaultWood(this Projectile proj)
         {
             return proj.type.ProjIsWood();
         }

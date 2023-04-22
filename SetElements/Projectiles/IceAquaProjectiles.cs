@@ -103,7 +103,7 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.MiniSharkron,
             ProjectileID.ThornWhip,
 
-            // NPC proj
+            // Hazard
             ProjectileID.SpikedSlimeSpike,
             ProjectileID.IceSpike,
             ProjectileID.JungleSpike,
@@ -128,12 +128,12 @@ namespace MMZeroElements.SetElements.Projectiles
 
         public override void Load()
         {
-            ProjectileElements.Ice.AddRange(projectiles);
+            ProjectileElements.IceAqua.AddRange(projectiles);
         }
 
         public override void Unload()
         {
-            ProjectileElements.Ice.Clear();
+            ProjectileElements.IceAqua.Clear();
         }
     }
 }

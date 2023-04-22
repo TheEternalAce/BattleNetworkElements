@@ -18,21 +18,26 @@ namespace MMZeroElements.ElementUI.ElementInfo
     {
         private UIPanel panel;
         private UIText text;
+        float panelWidth = 250;
+        float panelHeight = 210;
+
+        Asset<Texture2D> buttonDeleteTexture;
+        UIHoverImageButton closeButton;
 
         public override void OnInitialize()
         {
             panel = new();
             panel.SetPadding(0);
-            SetRectangle(panel, Main.screenWidth, Main.screenHeight, 200, 250);
+            SetRectangle(panel, 0, 0, panelWidth, panelHeight);
 
             string startInfo = SetInfo();
             text = new UIText(startInfo); // text to read disk contents
-            SetRectangle(text, 15, 15, 170, 220);
+            SetRectangle(text, 15, 15, panelWidth - 30f, panelHeight - 30f);
             panel.Append(text);
 
-            Asset<Texture2D> buttonDeleteTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
-            UIHoverImageButton closeButton = new UIHoverImageButton(buttonDeleteTexture, Language.GetTextValue("LegacyInterface.52")); // Localized text for "Close"
-            SetRectangle(closeButton, 168f, 10f, 22f, 22f);
+            buttonDeleteTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonDelete");
+            closeButton = new UIHoverImageButton(buttonDeleteTexture, Language.GetTextValue("LegacyInterface.52")); // Localized text for "Close"
+            SetRectangle(closeButton, panelWidth - 32f, panelHeight - 32f, 22f, 22f);
             closeButton.OnLeftClick += new MouseEvent(CloseButtonClicked);
             panel.Append(closeButton);
 
@@ -52,14 +57,20 @@ namespace MMZeroElements.ElementUI.ElementInfo
             ModContent.GetInstance<ElementInfoUI>().HideMyUI();
         }
 
+        string fireIcon = "[i:MMZeroElements/FireIcon]";
+        string aquaIcon = "[i:MMZeroElements/AquaIcon]";
+        string elecIcon = "[i:MMZeroElements/ElecIcon]";
+        string woodIcon = "[i:MMZeroElements/WoodIcon]";
+        string elementDamageIcon = "[i:MMZeroElements/DamageIcon]";
+
         string SetInfo()
         {
             string info = "Null NPC\n" +
                 "--Elements--\n" +
-                "[i:MMZeroElements/FireIcon] - 0.0x\n" +
-                "[i:MMZeroElements/IceIcon] - 0.0x\n" +
-                "[i:MMZeroElements/ElecIcon] - 0.0x\n" +
-                "[i:MMZeroElements/WoodIcon] - 0.0x\n" +
+                fireIcon + " - 0.0x " +
+                aquaIcon + " - 0.0x\n" +
+                elecIcon + " - 0.0x " +
+                woodIcon + " - 0.0x\n" +
                 "----------";
             return info;
         }
@@ -70,18 +81,16 @@ namespace MMZeroElements.ElementUI.ElementInfo
             if (npc != null)
             {
                 NPCElements elementNPC = npc.GetGlobalNPC<NPCElements>();
-                string elementDamageIcon = "[i:MMZeroElements/DamageIcon]";
                 info = npc.FullName + "\n" +
-                    "---Elements---\n" +
-                    "[i:MMZeroElements/FireIcon] - " + elementNPC.elementMultipliers[Element.Fire] + "x " +
-                    (npc.IsFire() ? elementDamageIcon : "") + "\n" +
-                    "[i:MMZeroElements/IceIcon] - " + elementNPC.elementMultipliers[Element.IceAqua] + "x " +
+                    fireIcon + " - " + elementNPC.elementMultipliers[Element.Fire] + "x " +
+                    (npc.IsFire() ? elementDamageIcon : "") + " " +
+                    aquaIcon + " - " + elementNPC.elementMultipliers[Element.IceAqua] + "x " +
                     (npc.IsIce() ? elementDamageIcon : "") + "\n" +
-                    "[i:MMZeroElements/ElecIcon] - " + elementNPC.elementMultipliers[Element.Elec] + "x " +
-                    (npc.IsElec() ? elementDamageIcon : "") + "\n" +
-                    "[i:MMZeroElements/WoodIcon] - " + elementNPC.elementMultipliers[Element.Wood] + "x " +
+                    elecIcon + " - " + elementNPC.elementMultipliers[Element.Elec] + "x " +
+                    (npc.IsElec() ? elementDamageIcon : "") + " " +
+                    woodIcon + " - " + elementNPC.elementMultipliers[Element.Wood] + "x " +
                     (npc.IsWood() ? elementDamageIcon : "") + "\n" +
-                    "------------\n";
+                    "------------------\n";
             }
             else
             {
@@ -89,21 +98,17 @@ namespace MMZeroElements.ElementUI.ElementInfo
             }
             if (item != null)
             {
-                info += item.Name + "\n" +
-                    (item.IsFire() ? "[i:MMZeroElements/FireIcon] " : "") +
-                    (item.IsIce() ? "[i:MMZeroElements/IceIcon] " : "") +
-                    (item.IsElec() ? "[i:MMZeroElements/ElecIcon] " : "") +
-                    (item.IsWood() ? "[i:MMZeroElements/WoodIcon] " : "") +
-                    "";
+                info += item.Name + "\nElements: ";
+                ItemElementInfo(ref info, item);
+                info += "\nDefault: ";
+                ItemElementInfoDefault(ref info, item);
             }
             else if (proj != null)
             {
-                info += proj.Name + "\n" +
-                    (proj.IsFire() ? "[i:MMZeroElements/FireIcon] " : "") +
-                    (proj.IsIce() ? "[i:MMZeroElements/IceIcon] " : "") +
-                    (proj.IsElec() ? "[i:MMZeroElements/ElecIcon] " : "") +
-                    (proj.IsWood() ? "[i:MMZeroElements/WoodIcon] " : "") +
-                    "";
+                info += proj.Name + "\nElements: ";
+                ProjectileElementInfo(ref info, proj);
+                info += "\nDefault: ";
+                ProjectileElementInfoDefault(ref info, proj);
             }
             else
             {
@@ -112,14 +117,123 @@ namespace MMZeroElements.ElementUI.ElementInfo
             return info;
         }
 
+        void ItemElementInfo(ref string info, Item item)
+        {
+            if (item.IsFire() || item.IsIce() || item.IsElec() || item.IsWood())
+            {
+                if (item.IsFire())
+                {
+                    info += fireIcon;
+                }
+                if (item.IsIce())
+                {
+                    info += aquaIcon;
+                }
+                if (item.IsElec())
+                {
+                    info += elecIcon;
+                }
+                if (item.IsWood())
+                {
+                    info += woodIcon;
+                }
+            }
+        }
+        void ItemElementInfoDefault(ref string info, Item item)
+        {
+            if (item.IsDefaultFire() || item.IsDefaultIceAqua() || item.IsDefaultElec() || item.IsDefaultWood())
+            {
+                if (item.IsDefaultFire())
+                {
+                    info += fireIcon;
+                }
+                if (item.IsDefaultIceAqua())
+                {
+                    info += aquaIcon;
+                }
+                if (item.IsDefaultElec())
+                {
+                    info += elecIcon;
+                }
+                if (item.IsDefaultWood())
+                {
+                    info += woodIcon;
+                }
+            }
+        }
+
+        void ProjectileElementInfo(ref string info, Projectile proj)
+        {
+            if (proj.IsFire() || proj.IsIceAqua() || proj.IsElec() || proj.IsWood())
+            {
+                if (proj.IsFire())
+                {
+                    info += fireIcon;
+                }
+                if (proj.IsIceAqua())
+                {
+                    info += aquaIcon;
+                }
+                if (proj.IsElec())
+                {
+                    info += elecIcon;
+                }
+                if (proj.IsWood())
+                {
+                    info += woodIcon;
+                }
+            }
+        }
+        void ProjectileElementInfoDefault(ref string info, Projectile proj)
+        {
+            if (proj.IsDefaultFire() || proj.IsDefaultIceAqua() || proj.IsDefaultElec() || proj.IsDefaultWood())
+            {
+                if (proj.IsDefaultFire())
+                {
+                    info += fireIcon;
+                }
+                if (proj.IsDefaultIceAqua())
+                {
+                    info += aquaIcon;
+                }
+                if (proj.IsDefaultElec())
+                {
+                    info += elecIcon;
+                }
+                if (proj.IsDefaultWood())
+                {
+                    info += woodIcon;
+                }
+            }
+        }
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            SetRectangle(panel, Main.screenWidth - 400 * Main.UIScale,
-                Main.screenHeight - 270 * Main.UIScale,
-                200, 250);
+            string uiStyle = MMZeroElements.Client.elementUIDisplayStyle;
+            if (uiStyle == "Never")
+            {
+                return;
+            }
 
-            if (panel.ContainsPoint(Main.MouseScreen))
+            float xOffset = 400 - MMZeroElements.Client.uiOffsetX;
+            float yOffset = 270 + MMZeroElements.Client.uiOffsetY;
+            SetRectangle(panel, Main.screenWidth - xOffset * Main.UIScale,
+                Main.screenHeight - yOffset * Main.UIScale,
+                panelWidth, panelHeight);
+
+            if (panel.HasChild(closeButton) && uiStyle != "After hit")
+            {
+                if (uiStyle == "Inventory open only" || uiStyle == "Always")
+                {
+                    panel.RemoveChild(closeButton);
+                }
+            }
+            else if (!panel.HasChild(closeButton) && uiStyle == "After hit")
+            {
+                panel.Append(closeButton);
+            }
+            if (closeButton.ContainsPoint(Main.MouseScreen))
             {
                 Main.LocalPlayer.mouseInterface = true;
             }
@@ -174,16 +288,16 @@ namespace MMZeroElements.ElementUI.ElementInfo
 
         public override void UpdateUI(GameTime gameTime)
         {
-            if (MMZeroElements.Client.elementUIDisplayStyle == "Always" && _elementInfoUI == null)
-            {
-                _elementInfoUI?.SetState(ElementInfoState);
-            }
             if (_elementInfoUI != null)
                 _elementInfoUI?.Update(gameTime);
         }
 
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
         {
+            if (MMZeroElements.Client.elementUIDisplayStyle == "Always" && _elementInfoUI.CurrentState == null)
+            {
+                _elementInfoUI?.SetState(ElementInfoState);
+            }
             int mouseTextIndex = layers.FindIndex(layer => layer.Name.Equals("Vanilla: Mouse Text"));
             if (mouseTextIndex != -1)
             {

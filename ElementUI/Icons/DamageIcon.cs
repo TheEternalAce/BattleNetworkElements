@@ -8,10 +8,10 @@ namespace MMZeroElements.ElementUI.Icons
     {
         public override void SetStaticDefaults()
         {
-            Item.AddFire();
-            Item.AddIce();
-            Item.AddElec();
-            Item.AddWood();
+            Item.AddFireDefault();
+            Item.AddIceDefault();
+            Item.AddElecDefault();
+            Item.AddWoodDefault();
             Item.ResearchUnlockCount = 0;
         }
 

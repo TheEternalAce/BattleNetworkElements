@@ -8,7 +8,7 @@ namespace MMZeroElements.ElementUI.Icons
     {
         public override void SetStaticDefaults()
         {
-            Item.AddFire();
+            Item.AddFireDefault();
             Item.ResearchUnlockCount = 0;
         }
 

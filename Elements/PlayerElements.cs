@@ -8,10 +8,10 @@ namespace MMZeroElements.Elements
     public class PlayerElements : ModPlayer
     {
         public float[] elementMultipliers = { 1.0f, 1.0f, 1.0f, 1.0f };
-        public static readonly float[] defaultMultipliers = { 1.0f, 1.0f, 1.0f, 1.0f };
-        public NPC targetedNPC = null;
-        public Item latestItem = null;
-        public Projectile latestProj = null;
+        static readonly float[] defaultMultipliers = { 1.0f, 1.0f, 1.0f, 1.0f };
+        public NPC targetedNPC { get; private set; } = null;
+        public Item latestItem { get; private set; } = null;
+        public Projectile latestProj { get; private set; } = null;
 
         public override void ResetEffects()
         {
@@ -29,45 +29,41 @@ namespace MMZeroElements.Elements
             }
         }
 
-        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
+        void UpdateInfo(NPC npc, Item item, Projectile projectile)
         {
-            targetedNPC = target;
+            targetedNPC = npc;
+            if (projectile?.owner == Player.whoAmI)
+            {
+                latestProj = projectile;
+            }
             latestItem = item;
-            latestProj = null;
             if (MMZeroElements.Client.elementUIDisplayStyle != "Inventory open only")
             {
                 ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
             }
+        }
+
+        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            UpdateInfo(target, item, null);
         }
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            targetedNPC = target;
-            latestItem = null;
-            latestProj = proj;
-            if (MMZeroElements.Client.elementUIDisplayStyle != "Inventory open only")
-            {
-                ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
-            }
+            UpdateInfo(target, null, proj);
         }
 
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
-            targetedNPC = npc;
-            if (MMZeroElements.Client.elementUIDisplayStyle != "Inventory open only")
-            {
-                ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
-            }
+            UpdateInfo(npc, latestItem, latestProj);
+
             modifiers.FinalDamage *= ElementHelper.MultiplyDamage(npc, Player);
         }
 
         public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
         {
-            latestProj = proj;
-            if (MMZeroElements.Client.elementUIDisplayStyle != "Inventory open only")
-            {
-                ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
-            }
+            UpdateInfo(targetedNPC, latestItem, proj);
+
             modifiers.FinalDamage *= ElementHelper.MultiplyDamage(proj, Player);
         }
     }

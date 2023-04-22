@@ -94,7 +94,7 @@ namespace MMZeroElements.Utilities
             {
                 multiplier *= victimElements[Element.Fire];
             }
-            if (proj.IsIce())
+            if (proj.IsIceAqua())
             {
                 multiplier *= victimElements[Element.IceAqua];
             }

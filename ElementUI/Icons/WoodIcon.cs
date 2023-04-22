@@ -8,7 +8,7 @@ namespace MMZeroElements.ElementUI.Icons
     {
         public override void SetStaticDefaults()
         {
-            Item.AddWood();
+            Item.AddWoodDefault();
             Item.ResearchUnlockCount = 0;
         }
 

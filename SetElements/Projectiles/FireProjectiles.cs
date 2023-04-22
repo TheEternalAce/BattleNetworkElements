@@ -80,7 +80,10 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.EbonsandBallGun,
 
             // Accessory
-            ProjectileID.StarCloakStar,
+            ProjectileID.HallowStar,
+            ProjectileID.ManaCloakStar,
+            ProjectileID.BeeCloakStar,
+            ProjectileID.StarVeilStar,
 
             // Melee
             //ProjectileID.BladeOfGrass,
@@ -110,6 +113,7 @@ namespace MMZeroElements.SetElements.Projectiles
             // Ranged
             ProjectileID.DD2BetsyArrow,
             ProjectileID.BoneGloveProj,
+            ProjectileID.FallingStar,
             ProjectileID.Flames,
             ProjectileID.Hellwing,
             ProjectileID.MolotovCocktail,
@@ -119,6 +123,8 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.DD2PhoenixBow,
             ProjectileID.DD2PhoenixBowShot,
             ProjectileID.ShadowFlameArrow,
+            ProjectileID.SuperStar,
+            ProjectileID.SuperStarSlash,
             ProjectileID.NailFriendly,
 
             // Magic
@@ -173,7 +179,7 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.Retanimini,
             ProjectileID.MiniRetinaLaser,
 
-            // NPC proj
+            // Hazard
             ProjectileID.Explosives,
             ProjectileID.CursedFlameHostile,
             ProjectileID.DemonSickle,
@@ -198,6 +204,7 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.GreekFire1,
             ProjectileID.GreekFire2,
             ProjectileID.GreekFire3,
+            ProjectileID.FallingStarSpawner,
             ProjectileID.FlamingScythe,
             ProjectileID.SaucerScrap,
             ProjectileID.CultistBossFireBall,

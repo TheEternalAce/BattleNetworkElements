@@ -95,12 +95,12 @@ namespace MMZeroElements.SetElements.Projectiles
 
         public override void Load()
         {
-            ProjectileElements.Ice.AddRange(projectiles);
+            ProjectileElements.Elec.AddRange(projectiles);
         }
 
         public override void Unload()
         {
-            ProjectileElements.Ice.Clear();
+            ProjectileElements.Elec.Clear();
         }
     }
 }

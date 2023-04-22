@@ -8,7 +8,12 @@ namespace MMZeroElements.Utilities
 {
     public static class ElementItemHelper
     {
-        public static void AddFire(this Item item)
+        public static WeaponElements Elements(this Item item)
+        {
+            return item.GetGlobalItem<WeaponElements>();
+        }
+
+        public static void AddFireDefault(this Item item)
         {
             item.type.AddFireItem();
         }
@@ -18,6 +23,10 @@ namespace MMZeroElements.Utilities
         }
         public static bool IsFire(this Item item)
         {
+            return item.Elements().isFire;
+        }
+        public static bool IsDefaultFire(this Item item)
+        {
             return item.type.ItemIsFire();
         }
         public static bool ItemIsFire(this int type)
@@ -25,7 +34,7 @@ namespace MMZeroElements.Utilities
             return WeaponElements.Fire.Contains(type);
         }
 
-        public static void AddIce(this Item item)
+        public static void AddIceDefault(this Item item)
         {
             item.type.AddIceItem();
         }
@@ -35,6 +44,10 @@ namespace MMZeroElements.Utilities
         }
         public static bool IsIce(this Item item)
         {
+            return item.Elements().isIceAqua;
+        }
+        public static bool IsDefaultIceAqua(this Item item)
+        {
             return item.type.ItemIsIce();
         }
         public static bool ItemIsIce(this int type)
@@ -42,7 +55,7 @@ namespace MMZeroElements.Utilities
             return WeaponElements.Ice.Contains(type);
         }
 
-        public static void AddElec(this Item item)
+        public static void AddElecDefault(this Item item)
         {
             item.type.AddElecItem();
         }
@@ -52,6 +65,10 @@ namespace MMZeroElements.Utilities
         }
         public static bool IsElec(this Item item)
         {
+            return item.Elements().isElec;
+        }
+        public static bool IsDefaultElec(this Item item)
+        {
             return item.type.ItemElec();
         }
         public static bool ItemElec(this int type)
@@ -59,7 +76,7 @@ namespace MMZeroElements.Utilities
             return WeaponElements.Electric.Contains(type);
         }
 
-        public static void AddWood(this Item item)
+        public static void AddWoodDefault(this Item item)
         {
             item.type.AddWoodItem();
         }
@@ -68,6 +85,10 @@ namespace MMZeroElements.Utilities
             WeaponElements.Wood.Add(itemType);
         }
         public static bool IsWood(this Item item)
+        {
+            return item.Elements().isWood;
+        }
+        public static bool IsDefaultWood(this Item item)
         {
             return item.type.ItemIsWood();
         }

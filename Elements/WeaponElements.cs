@@ -14,7 +14,32 @@ namespace MMZeroElements.Elements
         internal static List<int> Electric = new();
         internal static List<int> Wood = new();
 
+        public bool isFire = false;
+        public bool isIceAqua = false;
+        public bool isElec = false;
+        public bool isWood = false;
+
         public override bool InstancePerEntity => true;
+
+        public override void SetDefaults(Item entity)
+        {
+            if (entity.IsFire())
+            {
+                isFire = true;
+            }
+            if (entity.IsIce())
+            {
+                isIceAqua = true;
+            }
+            if (entity.IsElec())
+            {
+                isElec = true;
+            }
+            if (entity.IsWood())
+            {
+                isWood = true;
+            }
+        }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {

@@ -8,7 +8,7 @@ namespace MMZeroElements.ElementUI.Icons
     {
         public override void SetStaticDefaults()
         {
-            Item.AddIce();
+            Item.AddIceDefault();
             Item.ResearchUnlockCount = 0;
         }
 

@@ -84,13 +84,13 @@ namespace MMZeroElements
                                 switch (element)
                                 {
                                     case Element.Fire:
-                                        elementItem.AddFire();
+                                        elementItem.AddFireDefault();
                                         break;
                                     case Element.IceAqua:
-                                        elementItem.AddIce();
+                                        elementItem.AddIceDefault();
                                         break;
                                     case Element.Elec:
-                                        elementItem.AddElec();
+                                        elementItem.AddElecDefault();
                                         break;
                                 }
                             }
@@ -183,10 +183,10 @@ namespace MMZeroElements
                                         elementList = ProjectileElements.Fire;
                                         break;
                                     case Element.IceAqua:
-                                        elementList = ProjectileElements.Ice;
+                                        elementList = ProjectileElements.IceAqua;
                                         break;
                                     case Element.Elec:
-                                        elementList = ProjectileElements.Electric;
+                                        elementList = ProjectileElements.Elec;
                                         break;
                                 }
                                 return elementList.Contains(elementProjectile.type);

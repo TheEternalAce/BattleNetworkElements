@@ -48,14 +48,17 @@ namespace MMZeroElements.SetElements.Projectiles
             ProjectileID.VampireFrog,
 
             // NPC proj
-            ProjectileID.Stinger,
+            ProjectileID.GasTrap,
             ProjectileID.HornetStinger,
-            ProjectileID.QueenBeeStinger,
-            ProjectileID.SeedPlantera,
+            ProjectileID.PoisonDartTrap,
             ProjectileID.PoisonSeedPlantera,
-            ProjectileID.ThornBall,
+            ProjectileID.QueenBeeStinger,
             ProjectileID.RollingCactus,
             ProjectileID.RollingCactusSpike,
+            ProjectileID.SeedPlantera,
+            ProjectileID.Stinger,
+            ProjectileID.ThornBall,
+            ProjectileID.VenomDartTrap,
         };
 
         public override void Load()

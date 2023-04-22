@@ -18,5 +18,13 @@ namespace MMZeroElements.Config
         [OptionStrings(new string[] { "After hit", "Always", "Inventory open only", "Never" })]
         [DefaultValue("After hit")]
         public string elementUIDisplayStyle;
+
+        [Header("Offset")]
+        [Label("Element UI Offset X")]
+        [Range(-4000, 4000)]
+        public int uiOffsetX;
+        [Label("Element UI Offset Y")]
+        [Range(-4000, 4000)]
+        public int uiOffsetY;
     }
 }

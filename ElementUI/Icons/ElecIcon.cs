@@ -1,14 +1,14 @@
-﻿using MMZeroElements.Utilities;
+﻿using BattleNetworkElements.Utilities;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.ElementUI.Icons
+namespace BattleNetworkElements.ElementUI.Icons
 {
     public class ElecIcon : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Item.AddElecDefault();
+            Item.AddElec();
             Item.ResearchUnlockCount = 0;
         }
 

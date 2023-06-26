@@ -1,14 +1,14 @@
-﻿using MMZeroElements.Utilities;
+﻿using BattleNetworkElements.Utilities;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.ElementUI.Icons
+namespace BattleNetworkElements.ElementUI.Icons
 {
     public class WoodIcon : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Item.AddWoodDefault();
+            Item.AddWood();
             Item.ResearchUnlockCount = 0;
         }
 

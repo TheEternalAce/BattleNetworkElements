@@ -1,13 +1,13 @@
-﻿using MMZeroElements.Elements;
-using MMZeroElements.Utilities;
+﻿using BattleNetworkElements.Elements;
+using BattleNetworkElements.Utilities;
 using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetElements.NPCs
+namespace BattleNetworkElements.SetElements.NPCs
 {
-    internal class IceAquaNPCs : GlobalNPC
+    internal class AquaNPCs : GlobalNPC
     {
         static int[] npcs =
         {
@@ -62,19 +62,19 @@ namespace MMZeroElements.SetElements.NPCs
 
         public override void Load()
         {
-            NPCElements.IceAqua.AddRange(npcs);
+            BNGlobalNPC.Aqua.AddRange(npcs);
         }
 
         public override void Unload()
         {
-            NPCElements.IceAqua.Clear();
+            BNGlobalNPC.Aqua.Clear();
         }
 
         public override void SetDefaults(NPC npc)
         {
             if (npcs.Contains(npc.type))
             {
-                npc.SetElementMultipliersByElement(Element.IceAqua);
+                npc.SetElementMultipliersByElement(Element.Aqua);
             }
         }
     }

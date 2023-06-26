@@ -1,11 +1,11 @@
-﻿using MMZeroElements.Elements;
-using MMZeroElements.Utilities;
+﻿using BattleNetworkElements.Elements;
+using BattleNetworkElements.Utilities;
 using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetElements.NPCs
+namespace BattleNetworkElements.SetElements.NPCs
 {
     internal class WoodNPCs : GlobalNPC
     {
@@ -54,12 +54,12 @@ namespace MMZeroElements.SetElements.NPCs
 
         public override void Load()
         {
-            NPCElements.Wood.AddRange(poison);
+            BNGlobalNPC.Wood.AddRange(poison);
         }
 
         public override void Unload()
         {
-            NPCElements.Wood.Clear();
+            BNGlobalNPC.Wood.Clear();
         }
 
         public override void SetDefaults(NPC npc)

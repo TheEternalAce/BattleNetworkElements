@@ -1,8 +1,8 @@
-﻿using MMZeroElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetElements.Projectiles
+namespace BattleNetworkElements.SetElements.Projectiles
 {
     internal class FireProjectiles : GlobalProjectile
     {
@@ -219,12 +219,12 @@ namespace MMZeroElements.SetElements.Projectiles
 
         public override void Load()
         {
-            ProjectileElements.Fire.AddRange(projectiles);
+            BNGlobalProjectile.Fire.AddRange(projectiles);
         }
 
         public override void Unload()
         {
-            ProjectileElements.Fire.Clear();
+            BNGlobalProjectile.Fire.Clear();
         }
     }
 }

@@ -1,13 +1,13 @@
-﻿using MMZeroElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using Terraria;
 
-namespace MMZeroElements.Utilities
+namespace BattleNetworkElements.Utilities
 {
     public static class ElementProjectileHelper
     {
-        public static ProjectileElements Elements(this Projectile proj)
+        public static BNGlobalProjectile Elements(this Projectile proj)
         {
-            return proj.GetGlobalProjectile<ProjectileElements>();
+            return proj.GetGlobalProjectile<BNGlobalProjectile>();
         }
 
         public static void AddFire(this Projectile proj)
@@ -16,7 +16,7 @@ namespace MMZeroElements.Utilities
         }
         public static void AddFireProjectile(this int projType)
         {
-            ProjectileElements.Fire.Add(projType);
+            BNGlobalProjectile.Fire.Add(projType);
         }
         public static bool IsFire(this Projectile proj)
         {
@@ -28,28 +28,28 @@ namespace MMZeroElements.Utilities
         }
         public static bool ProjIsFire(this int type)
         {
-            return ProjectileElements.Fire.Contains(type);
+            return BNGlobalProjectile.Fire.Contains(type);
         }
 
-        public static void AddIceAqua(this Projectile proj)
+        public static void AddAqua(this Projectile proj)
         {
-            proj.type.AddIceAquaProjectile();
+            proj.type.AddAquaProjectile();
         }
-        public static void AddIceAquaProjectile(this int projType)
+        public static void AddAquaProjectile(this int projType)
         {
-            ProjectileElements.IceAqua.Add(projType);
+            BNGlobalProjectile.Aqua.Add(projType);
         }
-        public static bool IsIceAqua(this Projectile proj)
+        public static bool IsAqua(this Projectile proj)
         {
-            return proj.Elements().isIceAqua;
+            return proj.Elements().isAqua;
         }
-        public static bool IsDefaultIceAqua(this Projectile proj)
+        public static bool IsDefaultAqua(this Projectile proj)
         {
-            return proj.type.ProjIsIceAqua();
+            return proj.type.ProjIsAqua();
         }
-        public static bool ProjIsIceAqua(this int type)
+        public static bool ProjIsAqua(this int type)
         {
-            return ProjectileElements.IceAqua.Contains(type);
+            return BNGlobalProjectile.Aqua.Contains(type);
         }
 
         public static void AddElec(this Projectile proj)
@@ -58,7 +58,7 @@ namespace MMZeroElements.Utilities
         }
         public static void AddElecProjectile(this int projType)
         {
-            ProjectileElements.Elec.Add(projType);
+            BNGlobalProjectile.Elec.Add(projType);
         }
         public static bool IsElec(this Projectile proj)
         {
@@ -70,7 +70,7 @@ namespace MMZeroElements.Utilities
         }
         public static bool ProjIsElec(this int type)
         {
-            return ProjectileElements.Elec.Contains(type);
+            return BNGlobalProjectile.Elec.Contains(type);
         }
 
         public static void AddWood(this Projectile proj)
@@ -79,7 +79,7 @@ namespace MMZeroElements.Utilities
         }
         public static void AddWoodProjectile(this int projType)
         {
-            ProjectileElements.Wood.Add(projType);
+            BNGlobalProjectile.Wood.Add(projType);
         }
         public static bool IsWood(this Projectile proj)
         {
@@ -91,7 +91,7 @@ namespace MMZeroElements.Utilities
         }
         public static bool ProjIsWood(this int type)
         {
-            return ProjectileElements.Wood.Contains(type);
+            return BNGlobalProjectile.Wood.Contains(type);
         }
     }
 }

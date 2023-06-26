@@ -1,14 +1,14 @@
-﻿using MMZeroElements.Utilities;
+﻿using BattleNetworkElements.Utilities;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.ElementUI.Icons
+namespace BattleNetworkElements.ElementUI.Icons
 {
     public class AquaIcon : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Item.AddIceDefault();
+            Item.AddAqua();
             Item.ResearchUnlockCount = 0;
         }
 

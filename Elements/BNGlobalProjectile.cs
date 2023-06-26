@@ -1,21 +1,21 @@
-﻿using MMZeroElements.Utilities;
+﻿using BattleNetworkElements.Utilities;
 using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.Elements
+namespace BattleNetworkElements.Elements
 {
-    public class ProjectileElements : GlobalProjectile
+    public class BNGlobalProjectile : GlobalProjectile
     {
         internal static List<int> Fire = new();
-        internal static List<int> IceAqua = new();
+        internal static List<int> Aqua = new();
         internal static List<int> Elec = new();
         internal static List<int> Wood = new();
 
         public bool isFire = false;
-        public bool isIceAqua = false;
+        public bool isAqua = false;
         public bool isElec = false;
         public bool isWood = false;
 
@@ -28,9 +28,9 @@ namespace MMZeroElements.Elements
             {
                 isFire = true;
             }
-            if (projectile.IsDefaultIceAqua())
+            if (projectile.IsDefaultAqua())
             {
-                isIceAqua = true;
+                isAqua = true;
             }
             if (projectile.IsDefaultElec())
             {
@@ -50,7 +50,7 @@ namespace MMZeroElements.Elements
             {
                 text += "Fire";
             }
-            if (isIceAqua)
+            if (isAqua)
             {
                 text += ", Aqua";
             }
@@ -67,9 +67,9 @@ namespace MMZeroElements.Elements
             {
                 text += "Fire";
             }
-            if (proj.IsIceAqua())
+            if (proj.IsAqua())
             {
-                text += ", Ice";
+                text += ", Aqua";
             }
             if (proj.IsElec())
             {

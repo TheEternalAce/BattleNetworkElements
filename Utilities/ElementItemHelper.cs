@@ -1,25 +1,25 @@
-﻿using MMZeroElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.Utilities
+namespace BattleNetworkElements.Utilities
 {
     public static class ElementItemHelper
     {
-        public static WeaponElements Elements(this Item item)
+        public static BNGlobalItem Elements(this Item item)
         {
-            return item.GetGlobalItem<WeaponElements>();
+            return item.GetGlobalItem<BNGlobalItem>();
         }
 
-        public static void AddFireDefault(this Item item)
+        public static void AddFire(this Item item)
         {
             item.type.AddFireItem();
         }
         public static void AddFireItem(this int itemType)
         {
-            WeaponElements.Fire.Add(itemType);
+            BNGlobalItem.Fire.Add(itemType);
         }
         public static bool IsFire(this Item item)
         {
@@ -31,37 +31,37 @@ namespace MMZeroElements.Utilities
         }
         public static bool ItemIsFire(this int type)
         {
-            return WeaponElements.Fire.Contains(type);
+            return BNGlobalItem.Fire.Contains(type);
         }
 
-        public static void AddIceDefault(this Item item)
+        public static void AddAqua(this Item item)
         {
-            item.type.AddIceItem();
+            item.type.AddAquaItem();
         }
-        public static void AddIceItem(this int itemType)
+        public static void AddAquaItem(this int itemType)
         {
-            WeaponElements.Ice.Add(itemType);
+            BNGlobalItem.Aqua.Add(itemType);
         }
-        public static bool IsIce(this Item item)
+        public static bool IsAqua(this Item item)
         {
-            return item.Elements().isIceAqua;
+            return item.Elements().isAqua;
         }
-        public static bool IsDefaultIceAqua(this Item item)
+        public static bool IsDefaultAqua(this Item item)
         {
-            return item.type.ItemIsIce();
+            return item.type.ItemIsAqua();
         }
-        public static bool ItemIsIce(this int type)
+        public static bool ItemIsAqua(this int type)
         {
-            return WeaponElements.Ice.Contains(type);
+            return BNGlobalItem.Aqua.Contains(type);
         }
 
-        public static void AddElecDefault(this Item item)
+        public static void AddElec(this Item item)
         {
             item.type.AddElecItem();
         }
         public static void AddElecItem(this int itemType)
         {
-            WeaponElements.Electric.Add(itemType);
+            BNGlobalItem.Electric.Add(itemType);
         }
         public static bool IsElec(this Item item)
         {
@@ -73,16 +73,16 @@ namespace MMZeroElements.Utilities
         }
         public static bool ItemElec(this int type)
         {
-            return WeaponElements.Electric.Contains(type);
+            return BNGlobalItem.Electric.Contains(type);
         }
 
-        public static void AddWoodDefault(this Item item)
+        public static void AddWood(this Item item)
         {
             item.type.AddWoodItem();
         }
         public static void AddWoodItem(this int itemType)
         {
-            WeaponElements.Wood.Add(itemType);
+            BNGlobalItem.Wood.Add(itemType);
         }
         public static bool IsWood(this Item item)
         {
@@ -94,7 +94,7 @@ namespace MMZeroElements.Utilities
         }
         public static bool ItemIsWood(this int type)
         {
-            return WeaponElements.Wood.Contains(type);
+            return BNGlobalItem.Wood.Contains(type);
         }
 
         internal static readonly string[] VanillaTooltipNames = new string[]

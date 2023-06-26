@@ -1,10 +1,10 @@
-﻿using MMZeroElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetElements.Projectiles
+namespace BattleNetworkElements.SetElements.Projectiles
 {
-    internal class IceAquaProjectiles : GlobalProjectile
+    internal class AquaProjectiles : GlobalProjectile
     {
         static int[] projectiles =
         {
@@ -128,12 +128,12 @@ namespace MMZeroElements.SetElements.Projectiles
 
         public override void Load()
         {
-            ProjectileElements.IceAqua.AddRange(projectiles);
+            BNGlobalProjectile.Aqua.AddRange(projectiles);
         }
 
         public override void Unload()
         {
-            ProjectileElements.IceAqua.Clear();
+            BNGlobalProjectile.Aqua.Clear();
         }
     }
 }

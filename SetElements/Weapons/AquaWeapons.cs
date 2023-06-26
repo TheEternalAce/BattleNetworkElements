@@ -1,10 +1,10 @@
-﻿using MMZeroElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetElements.Weapons
+namespace BattleNetworkElements.SetElements.Weapons
 {
-    internal class IceAquaWeapons : GlobalItem
+    internal class AquaWeapons : GlobalItem
     {
         internal static int[] items =
         {
@@ -103,9 +103,8 @@ namespace MMZeroElements.SetElements.Weapons
             ItemID.StardustHammer,
             ItemID.Hammush,
 
-            // Summons
+            // Boss summons
             ItemID.SlimeCrown,
-            ItemID.WormFood,
             ItemID.BloodySpine,
             ItemID.DeerThing,
             ItemID.QueenSlimeCrystal,
@@ -116,12 +115,12 @@ namespace MMZeroElements.SetElements.Weapons
 
         public override void Load()
         {
-            WeaponElements.Ice.AddRange(items);
+            BNGlobalItem.Aqua.AddRange(items);
         }
 
         public override void Unload()
         {
-            WeaponElements.Ice.Clear();
+            BNGlobalItem.Aqua.Clear();
         }
     }
 }

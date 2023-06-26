@@ -1,10 +1,10 @@
-﻿using MMZeroElements.Elements;
-using MMZeroElements.Utilities;
+﻿using BattleNetworkElements.Elements;
+using BattleNetworkElements.Utilities;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetElements.NPCs
+namespace BattleNetworkElements.SetElements.NPCs
 {
     internal class CustomElementNPCs : GlobalNPC
     {
@@ -23,8 +23,8 @@ namespace MMZeroElements.SetElements.NPCs
                 case NPCID.MotherSlime:
                 case NPCID.BabySlime:
                 case NPCID.KingSlime:
-                    NPCElements.IceAqua.Add(type);
-                    npc.SetElementMultiplier(2.0f, 0.8f, 0.5f, 1.0f);
+                    BNGlobalNPC.Aqua.Add(type);
+                    npc.ElementMultipliers() = new[] { 2.0f, 0.8f, 0.5f, 1.0f };
                     break;
 
                 case NPCID.CultistBoss:
@@ -46,10 +46,10 @@ namespace MMZeroElements.SetElements.NPCs
                 case NPCID.MoonLordHand:
                 case NPCID.MoonLordHead:
                 case NPCID.MoonLordLeechBlob:
-                    NPCElements.Fire.Add(type);
-                    NPCElements.IceAqua.Add(type);
-                    NPCElements.Electric.Add(type);
-                    npc.SetElementMultiplier(0.8f, 0.8f, 0.8f, 0.8f);
+                    BNGlobalNPC.Fire.Add(type);
+                    BNGlobalNPC.Aqua.Add(type);
+                    BNGlobalNPC.Electric.Add(type);
+                    npc.ElementMultipliers() = new[] { 0.8f, 0.8f, 0.8f, 0.8f };
                     break;
             }
         }

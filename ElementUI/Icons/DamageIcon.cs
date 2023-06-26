@@ -1,17 +1,17 @@
-﻿using MMZeroElements.Utilities;
+﻿using BattleNetworkElements.Utilities;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.ElementUI.Icons
+namespace BattleNetworkElements.ElementUI.Icons
 {
     public class DamageIcon : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Item.AddFireDefault();
-            Item.AddIceDefault();
-            Item.AddElecDefault();
-            Item.AddWoodDefault();
+            Item.AddFire();
+            Item.AddAqua();
+            Item.AddElec();
+            Item.AddWood();
             Item.ResearchUnlockCount = 0;
         }
 

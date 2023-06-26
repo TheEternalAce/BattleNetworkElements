@@ -1,8 +1,8 @@
-﻿using MMZeroElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetElements.Weapons
+namespace BattleNetworkElements.SetElements.Weapons
 {
     internal class FireWeapons : GlobalItem
     {
@@ -129,6 +129,7 @@ namespace MMZeroElements.SetElements.Weapons
             ItemID.SolarFlareHammer,
 
             // Summons
+            ItemID.WormFood,
             ItemID.GuideVoodooDoll,
             ItemID.MechanicalSkull,
             ItemID.MechanicalEye,
@@ -138,12 +139,12 @@ namespace MMZeroElements.SetElements.Weapons
 
         public override void Load()
         {
-            WeaponElements.Fire.AddRange(items);
+            BNGlobalItem.Fire.AddRange(items);
         }
 
         public override void Unload()
         {
-            WeaponElements.Fire.Clear();
+            BNGlobalItem.Fire.Clear();
         }
     }
 }

@@ -1,40 +1,16 @@
 Mods: {
-	MMZeroElements: {
+	BattleNetworkElements: {
 		Element: {
-			Fire: "[i:MMZeroElements/FireIcon] Fire Element"
-			Aqua: "[i:MMZeroElements/AquaIcon] Aqua Element"
-			Ice: "[i:MMZeroElements/IceIcon] Ice Element"
-			Electric: "[i:MMZeroElements/ElecIcon] Elec Element"
-			Wood: "[i:MMZeroElements/WoodIcon] Wood Element"
+			Fire: "[i:BattleNetworkElements/FireIcon] Fire Element"
+			Aqua: "[i:BattleNetworkElements/AquaIcon] Aqua Element"
+			Electric: "[i:BattleNetworkElements/ElecIcon] Elec Element"
+			Wood: "[i:BattleNetworkElements/WoodIcon] Wood Element"
 		}
 
-		Config: {
-			ServerLabel: Server Config
-			LegacySystem: Legacy System
-		}
-
-		ConfigDesc.LegacySystem:
-			'''
-			Enable to use the previous 3 elements system
-			Wood element is disabled
-			Aqua renamed to Ice
-			Poison-themed weapons from the Wood weapons list are moved to the Fire weapons list
-			Default multipliers by element:
-			-Fire NPCs: Fire: 0.8x, Ice: 0.5, Electric: 2.0
-			-Ice NPCs: Fire: 2.0x, Ice: 0.8, Electric: 0.5
-			-Electric NPCs: Fire: 0.5x, Ice: 2.0, Electric: 0.8
-			'''
-
-		// These won't be seen under normal circumstances
 		Items: {
-			DamageIcon: {
-				DisplayName: Damage Icon
-				Tooltip: ""
-			}
-
-			FireIcon: {
-				DisplayName: Fire Icon
-				Tooltip: ""
+			ElementDisplay: {
+				DisplayName: Element Display
+				Tooltip: Shows your elemental multipliers
 			}
 
 			AquaIcon: {
@@ -42,8 +18,8 @@ Mods: {
 				Tooltip: ""
 			}
 
-			IceIcon: {
-				DisplayName: Ice Icon
+			DamageIcon: {
+				DisplayName: Damage Icon
 				Tooltip: ""
 			}
 
@@ -52,9 +28,57 @@ Mods: {
 				Tooltip: ""
 			}
 
+			FireIcon: {
+				DisplayName: Fire Icon
+				Tooltip: ""
+			}
+
 			WoodIcon: {
 				DisplayName: Wood Icon
 				Tooltip: ""
+			}
+		}
+
+		Configs: {
+			ElementsClient: {
+				uiOffsetY: {
+					Label: Element UI Offset Y
+					Tooltip: ""
+				}
+
+				uiOffsetX: {
+					Label: Element UI Offset X
+					Tooltip: ""
+				}
+
+				Headers: {
+					OffsetHeader: Offset
+					PlayerElementHeader: Player Element
+				}
+
+				enablePlayerElement: {
+					Label: Enable effects of randomly assigned element.
+					Tooltip: ""
+				}
+
+				assignPlayerElement: {
+					Label: When a character first enters the world, they will be assigned a random element.
+					Tooltip: ""
+				}
+
+				elementUIDisplayStyle: {
+					Tooltip:
+						'''
+						When should the elements info ui be displayed.
+						After hit: Displays elements after hitting an enemy or being hit.
+						Always: Always display elements.
+						Inventory open only: Displays elements only when the inventory is open.
+						Never: Never displays elements.
+						'''
+					Label: Element UI Display
+				}
+
+				DisplayName: UI Config
 			}
 		}
 	}

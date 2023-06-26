@@ -1,49 +1,34 @@
-﻿using MMZeroElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using Terraria;
 
-namespace MMZeroElements.Utilities
+namespace BattleNetworkElements.Utilities
 {
     public static class ElementPlayerHelper
     {
-        public static void SetFireResist(this Player player, float multiplier)
+        public static ref float[] ElementMultipliers(this Player player)
         {
-            player.Elements().elementMultipliers[Element.Fire] = multiplier;
+            return ref player.Elements().elementMultipliers;
         }
-        public static float GetFireResist(this Player player)
+        public static ref float FireMultiplier(this Player player)
         {
-            return player.Elements().elementMultipliers[Element.Fire];
+            return ref player.ElementMultipliers()[Element.Fire];
         }
-
-        public static void SetIceResist(this Player player, float multiplier)
+        public static ref float AquaMultiplier(this Player player)
         {
-            player.Elements().elementMultipliers[Element.IceAqua] = multiplier;
+            return ref player.ElementMultipliers()[Element.Aqua];
         }
-        public static float GetIceResist(this Player player)
+        public static ref float ElecMultiplier(this Player player)
         {
-            return player.Elements().elementMultipliers[Element.IceAqua];
+            return ref player.ElementMultipliers()[Element.Elec];
         }
-
-        public static void SetElecResist(this Player player, float multiplier)
+        public static ref float WoodMultiplier(this Player player)
         {
-            player.Elements().elementMultipliers[Element.Elec] = multiplier;
-        }
-        public static float GetElecResist(this Player player)
-        {
-            return player.Elements().elementMultipliers[Element.Elec];
+            return ref player.ElementMultipliers()[Element.Wood];
         }
 
-        public static void SetWoodResist(this Player player, float multiplier)
+        public static BNPlayer Elements(this Player player)
         {
-            player.Elements().elementMultipliers[Element.Wood] = multiplier;
-        }
-        public static float GetWoodResist(this Player player)
-        {
-            return player.Elements().elementMultipliers[Element.Wood];
-        }
-
-        public static PlayerElements Elements(this Player player)
-        {
-            return player.GetModPlayer<PlayerElements>();
+            return player.GetModPlayer<BNPlayer>();
         }
     }
 }

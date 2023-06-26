@@ -1,8 +1,8 @@
-﻿using MMZeroElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetElements.Weapons
+namespace BattleNetworkElements.SetElements.Weapons
 {
     internal class WoodWeapons : GlobalItem
     {
@@ -49,12 +49,12 @@ namespace MMZeroElements.SetElements.Weapons
 
         public override void Load()
         {
-            WeaponElements.Wood.AddRange(poison);
+            BNGlobalItem.Wood.AddRange(poison);
         }
 
         public override void Unload()
         {
-            WeaponElements.Wood.Clear();
+            BNGlobalItem.Wood.Clear();
         }
     }
 }

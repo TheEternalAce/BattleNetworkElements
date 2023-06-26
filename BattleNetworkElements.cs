@@ -1,57 +1,37 @@
-using MMZeroElements.Config;
-using MMZeroElements.Elements;
-using MMZeroElements.SetElements.NPCs;
-using MMZeroElements.SetElements.Projectiles;
-using MMZeroElements.SetElements.Weapons;
-using MMZeroElements.Utilities;
+using BattleNetworkElements.Config;
+using BattleNetworkElements.Elements;
+using BattleNetworkElements.Utilities;
 using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace MMZeroElements
+namespace BattleNetworkElements
 {
     public class Paths
     {
-        public const string FireElement = "Mods.MMZeroElements.Element.Fire";
-        public const string AquaElement = "Mods.MMZeroElements.Element.Aqua";
-        public const string IceElement = "Mods.MMZeroElements.Element.Ice";
-        public const string ElectricElement = "Mods.MMZeroElements.Element.Electric";
-        public const string WoodElement = "Mods.MMZeroElements.Element.Wood";
+        public const string FireElement = "Mods.BattleNetworkElements.Element.Fire";
+        public const string AquaElement = "Mods.BattleNetworkElements.Element.Aqua";
+        public const string ElectricElement = "Mods.BattleNetworkElements.Element.Electric";
+        public const string WoodElement = "Mods.BattleNetworkElements.Element.Wood";
     }
 
     public static class Element
     {
         public const int Null = -1;
         public const int Fire = 0;
-        public const int IceAqua = 1; // /Aqua
+        public const int Aqua = 1;
         public const int Elec = 2;
         public const int Wood = 3;
     }
 
-    public class MMZeroElements : Mod
+    public class BattleNetworkElements : Mod
     {
         public static ElementsClient Client;
-        public static ElementsServer Server;
 
         public override void Load()
         {
             Client = ModContent.GetInstance<ElementsClient>();
-            Server = ModContent.GetInstance<ElementsServer>();
-        }
-
-        public override void PostSetupContent()
-        {
-            if (Server.legacySystem)
-            {
-                WeaponElements.Fire.AddRange(WoodWeapons.poison);
-                ProjectileElements.Fire.AddRange(WoodProjectiles.poison);
-                NPCElements.Fire.AddRange(WoodNPCs.poison);
-
-                WeaponElements.Wood.Clear();
-                ProjectileElements.Wood.Clear();
-                NPCElements.Wood.Clear();
-            }
         }
 
         const string COMMAND_ASSIGN_ELEMENT = "assignElement";
@@ -84,13 +64,16 @@ namespace MMZeroElements
                                 switch (element)
                                 {
                                     case Element.Fire:
-                                        elementItem.AddFireDefault();
+                                        elementItem.AddFire();
                                         break;
-                                    case Element.IceAqua:
-                                        elementItem.AddIceDefault();
+                                    case Element.Aqua:
+                                        elementItem.AddAqua();
                                         break;
                                     case Element.Elec:
-                                        elementItem.AddElecDefault();
+                                        elementItem.AddElec();
+                                        break;
+                                    case Element.Wood:
+                                        elementItem.AddWood();
                                         break;
                                 }
                             }
@@ -105,17 +88,20 @@ namespace MMZeroElements
                                     case Element.Fire:
                                         elementNPC.AddFire();
                                         break;
-                                    case Element.IceAqua:
-                                        elementNPC.AddIce();
+                                    case Element.Aqua:
+                                        elementNPC.AddAqua();
                                         break;
                                     case Element.Elec:
                                         elementNPC.AddElec();
+                                        break;
+                                    case Element.Wood:
+                                        elementNPC.AddWood();
                                         break;
                                 }
                             }
                             else if (args[2] is float[] elements)
                             {
-                                elementNPC.GetGlobalNPC<NPCElements>().elementMultipliers = elements;
+                                elementNPC.GetGlobalNPC<BNGlobalNPC>().elementMultipliers = elements;
                             }
                             else throw new ArgumentException("args[2] must be a double array of length 4.");
                         }
@@ -128,11 +114,14 @@ namespace MMZeroElements
                                     case Element.Fire:
                                         elementProjectile.AddFire();
                                         break;
-                                    case Element.IceAqua:
-                                        elementProjectile.AddElec();
+                                    case Element.Aqua:
+                                        elementProjectile.AddAqua();
                                         break;
                                     case Element.Elec:
                                         elementProjectile.AddElec();
+                                        break;
+                                    case Element.Wood:
+                                        elementProjectile.AddWood();
                                         break;
                                 }
                             }
@@ -148,13 +137,16 @@ namespace MMZeroElements
                                 switch (elementID)
                                 {
                                     case Element.Fire:
-                                        elementList = WeaponElements.Fire;
+                                        elementList = BNGlobalItem.Fire;
                                         break;
-                                    case Element.IceAqua:
-                                        elementList = WeaponElements.Ice;
+                                    case Element.Aqua:
+                                        elementList = BNGlobalItem.Aqua;
                                         break;
                                     case Element.Elec:
-                                        elementList = WeaponElements.Electric;
+                                        elementList = BNGlobalItem.Electric;
+                                        break;
+                                    case Element.Wood:
+                                        elementList = BNGlobalItem.Wood;
                                         break;
                                 }
                                 return elementList.Contains(itemElement.type);
@@ -164,13 +156,16 @@ namespace MMZeroElements
                                 switch (elementID)
                                 {
                                     case Element.Fire:
-                                        elementList = NPCElements.Fire;
+                                        elementList = BNGlobalNPC.Fire;
                                         break;
-                                    case Element.IceAqua:
-                                        elementList = NPCElements.IceAqua;
+                                    case Element.Aqua:
+                                        elementList = BNGlobalNPC.Aqua;
                                         break;
                                     case Element.Elec:
-                                        elementList = WeaponElements.Electric;
+                                        elementList = BNGlobalItem.Electric;
+                                        break;
+                                    case Element.Wood:
+                                        elementList = BNGlobalItem.Wood;
                                         break;
                                 }
                                 return elementList.Contains(elementNPC.type);
@@ -180,13 +175,16 @@ namespace MMZeroElements
                                 switch (elementID)
                                 {
                                     case Element.Fire:
-                                        elementList = ProjectileElements.Fire;
+                                        elementList = BNGlobalProjectile.Fire;
                                         break;
-                                    case Element.IceAqua:
-                                        elementList = ProjectileElements.IceAqua;
+                                    case Element.Aqua:
+                                        elementList = BNGlobalProjectile.Aqua;
                                         break;
                                     case Element.Elec:
-                                        elementList = ProjectileElements.Elec;
+                                        elementList = BNGlobalProjectile.Elec;
+                                        break;
+                                    case Element.Wood:
+                                        elementList = BNGlobalProjectile.Wood;
                                         break;
                                 }
                                 return elementList.Contains(elementProjectile.type);

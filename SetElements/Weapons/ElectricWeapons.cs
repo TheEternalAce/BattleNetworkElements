@@ -1,8 +1,8 @@
-﻿using MMZeroElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetElements.Weapons
+namespace BattleNetworkElements.SetElements.Weapons
 {
     internal class ElectricWeapons : GlobalItem
     {
@@ -77,12 +77,12 @@ namespace MMZeroElements.SetElements.Weapons
 
         public override void Load()
         {
-            WeaponElements.Electric.AddRange(items);
+            BNGlobalItem.Electric.AddRange(items);
         }
 
         public override void Unload()
         {
-            WeaponElements.Electric.Clear();
+            BNGlobalItem.Electric.Clear();
         }
     }
 }

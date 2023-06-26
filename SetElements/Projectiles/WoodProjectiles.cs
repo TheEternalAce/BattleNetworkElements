@@ -1,8 +1,8 @@
-﻿using MMZeroElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetElements.Projectiles
+namespace BattleNetworkElements.SetElements.Projectiles
 {
     internal class WoodProjectiles : GlobalProjectile
     {
@@ -63,12 +63,12 @@ namespace MMZeroElements.SetElements.Projectiles
 
         public override void Load()
         {
-            ProjectileElements.Wood.AddRange(poison);
+            BNGlobalProjectile.Wood.AddRange(poison);
         }
 
         public override void Unload()
         {
-            ProjectileElements.Wood.Clear();
+            BNGlobalProjectile.Wood.Clear();
         }
     }
 }

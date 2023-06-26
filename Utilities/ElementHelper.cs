@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 
-namespace MMZeroElements.Utilities
+namespace BattleNetworkElements.Utilities
 {
     public static class ElementHelper
     {
@@ -37,6 +37,10 @@ namespace MMZeroElements.Utilities
             if (multiplier != 1f)
             {
                 int ct = CombatText.NewText(victimRect, Color.Blue, multiplier + "x");
+                if (ct > 99)
+                {
+                    ct = 0;
+                }
                 Main.combatText[ct].position.Y -= 45;
             }
 
@@ -50,9 +54,9 @@ namespace MMZeroElements.Utilities
             {
                 multiplier *= victimElements[Element.Fire];
             }
-            if (npc.IsIce())
+            if (npc.IsAqua())
             {
-                multiplier *= victimElements[Element.IceAqua];
+                multiplier *= victimElements[Element.Aqua];
             }
             if (npc.IsElec())
             {
@@ -72,9 +76,9 @@ namespace MMZeroElements.Utilities
             {
                 multiplier *= victimElements[Element.Fire];
             }
-            if (item.IsIce())
+            if (item.IsAqua())
             {
-                multiplier *= victimElements[Element.IceAqua];
+                multiplier *= victimElements[Element.Aqua];
             }
             if (item.IsElec())
             {
@@ -94,9 +98,9 @@ namespace MMZeroElements.Utilities
             {
                 multiplier *= victimElements[Element.Fire];
             }
-            if (proj.IsIceAqua())
+            if (proj.IsAqua())
             {
-                multiplier *= victimElements[Element.IceAqua];
+                multiplier *= victimElements[Element.Aqua];
             }
             if (proj.IsElec())
             {

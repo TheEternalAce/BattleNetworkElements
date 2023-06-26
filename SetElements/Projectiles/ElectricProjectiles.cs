@@ -1,8 +1,8 @@
-﻿using MMZeroElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetElements.Projectiles
+namespace BattleNetworkElements.SetElements.Projectiles
 {
     internal class ElectricProjectiles : GlobalProjectile
     {
@@ -95,12 +95,12 @@ namespace MMZeroElements.SetElements.Projectiles
 
         public override void Load()
         {
-            ProjectileElements.Elec.AddRange(projectiles);
+            BNGlobalProjectile.Elec.AddRange(projectiles);
         }
 
         public override void Unload()
         {
-            ProjectileElements.Elec.Clear();
+            BNGlobalProjectile.Elec.Clear();
         }
     }
 }

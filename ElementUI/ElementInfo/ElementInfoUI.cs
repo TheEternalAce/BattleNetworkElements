@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MMZeroElements.Elements;
-using MMZeroElements.Utilities;
+using BattleNetworkElements.Elements;
+using BattleNetworkElements.Utilities;
 using ReLogic.Content;
 using System.Collections.Generic;
 using Terraria;
@@ -12,7 +12,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 
-namespace MMZeroElements.ElementUI.ElementInfo
+namespace BattleNetworkElements.ElementUI.ElementInfo
 {
     internal class ElementInfoState : UIState
     {
@@ -57,11 +57,11 @@ namespace MMZeroElements.ElementUI.ElementInfo
             ModContent.GetInstance<ElementInfoUI>().HideMyUI();
         }
 
-        string fireIcon = "[i:MMZeroElements/FireIcon]";
-        string aquaIcon = "[i:MMZeroElements/AquaIcon]";
-        string elecIcon = "[i:MMZeroElements/ElecIcon]";
-        string woodIcon = "[i:MMZeroElements/WoodIcon]";
-        string elementDamageIcon = "[i:MMZeroElements/DamageIcon]";
+        string fireIcon = "[i:BattleNetworkElements/FireIcon]";
+        string aquaIcon = "[i:BattleNetworkElements/AquaIcon]";
+        string elecIcon = "[i:BattleNetworkElements/ElecIcon]";
+        string woodIcon = "[i:BattleNetworkElements/WoodIcon]";
+        string elementDamageIcon = "[i:BattleNetworkElements/DamageIcon]";
 
         string SetInfo()
         {
@@ -78,54 +78,63 @@ namespace MMZeroElements.ElementUI.ElementInfo
         string SetInfo(NPC npc, Item item, Projectile proj)
         {
             string info;
-            if (npc != null)
+            if (npc == null)
             {
-                NPCElements elementNPC = npc.GetGlobalNPC<NPCElements>();
-                info = npc.FullName + "\n" +
-                    fireIcon + " - " + elementNPC.elementMultipliers[Element.Fire] + "x " +
-                    (npc.IsFire() ? elementDamageIcon : "") + " " +
-                    aquaIcon + " - " + elementNPC.elementMultipliers[Element.IceAqua] + "x " +
-                    (npc.IsIce() ? elementDamageIcon : "") + "\n" +
-                    elecIcon + " - " + elementNPC.elementMultipliers[Element.Elec] + "x " +
-                    (npc.IsElec() ? elementDamageIcon : "") + " " +
-                    woodIcon + " - " + elementNPC.elementMultipliers[Element.Wood] + "x " +
-                    (npc.IsWood() ? elementDamageIcon : "") + "\n" +
-                    "------------------\n";
+                info = SetInfo();
             }
             else
             {
-                return SetInfo();
-            }
-            if (item != null)
-            {
-                info += item.Name + "\nElements: ";
-                ItemElementInfo(ref info, item);
-                info += "\nDefault: ";
-                ItemElementInfoDefault(ref info, item);
-            }
-            else if (proj != null)
-            {
-                info += proj.Name + "\nElements: ";
-                ProjectileElementInfo(ref info, proj);
-                info += "\nDefault: ";
-                ProjectileElementInfoDefault(ref info, proj);
-            }
-            else
-            {
-                info += "Null Source";
+                if (npc.type == NPCID.None || npc.type == NPCID.None2 || npc.type == NPCID.None3)
+                {
+                    info = SetInfo();
+                }
+                else
+                {
+                    BNGlobalNPC elementNPC = npc.GetGlobalNPC<BNGlobalNPC>();
+                    info = npc.FullName + "\n" +
+                        fireIcon + " - " + elementNPC.elementMultipliers[Element.Fire] + "x " +
+                        (npc.IsFire() ? elementDamageIcon : "") + " " +
+                        aquaIcon + " - " + elementNPC.elementMultipliers[Element.Aqua] + "x " +
+                        (npc.IsAqua() ? elementDamageIcon : "") + "\n" +
+                        elecIcon + " - " + elementNPC.elementMultipliers[Element.Elec] + "x " +
+                        (npc.IsElec() ? elementDamageIcon : "") + " " +
+                        woodIcon + " - " + elementNPC.elementMultipliers[Element.Wood] + "x " +
+                        (npc.IsWood() ? elementDamageIcon : "") + "\n" +
+                        "------------------\n";
+                }
+                if (item != null)
+                {
+                    if (item.type != ItemID.None)
+                    {
+                        info += item.Name + "\nElements: ";
+                        ItemElementInfo(ref info, item);
+                    }
+                }
+                else if (proj != null)
+                {
+                    if (proj.type != ProjectileID.None)
+                    {
+                        info += proj.Name + "\nElements: ";
+                        ProjectileElementInfo(ref info, proj);
+                    }
+                }
+                else
+                {
+                    info += "Null Source";
+                }
             }
             return info;
         }
 
         void ItemElementInfo(ref string info, Item item)
         {
-            if (item.IsFire() || item.IsIce() || item.IsElec() || item.IsWood())
+            if (item.IsFire() || item.IsAqua() || item.IsElec() || item.IsWood())
             {
                 if (item.IsFire())
                 {
                     info += fireIcon;
                 }
-                if (item.IsIce())
+                if (item.IsAqua())
                 {
                     info += aquaIcon;
                 }
@@ -139,38 +148,16 @@ namespace MMZeroElements.ElementUI.ElementInfo
                 }
             }
         }
-        void ItemElementInfoDefault(ref string info, Item item)
-        {
-            if (item.IsDefaultFire() || item.IsDefaultIceAqua() || item.IsDefaultElec() || item.IsDefaultWood())
-            {
-                if (item.IsDefaultFire())
-                {
-                    info += fireIcon;
-                }
-                if (item.IsDefaultIceAqua())
-                {
-                    info += aquaIcon;
-                }
-                if (item.IsDefaultElec())
-                {
-                    info += elecIcon;
-                }
-                if (item.IsDefaultWood())
-                {
-                    info += woodIcon;
-                }
-            }
-        }
 
         void ProjectileElementInfo(ref string info, Projectile proj)
         {
-            if (proj.IsFire() || proj.IsIceAqua() || proj.IsElec() || proj.IsWood())
+            if (proj.IsFire() || proj.IsAqua() || proj.IsElec() || proj.IsWood())
             {
                 if (proj.IsFire())
                 {
                     info += fireIcon;
                 }
-                if (proj.IsIceAqua())
+                if (proj.IsAqua())
                 {
                     info += aquaIcon;
                 }
@@ -184,40 +171,18 @@ namespace MMZeroElements.ElementUI.ElementInfo
                 }
             }
         }
-        void ProjectileElementInfoDefault(ref string info, Projectile proj)
-        {
-            if (proj.IsDefaultFire() || proj.IsDefaultIceAqua() || proj.IsDefaultElec() || proj.IsDefaultWood())
-            {
-                if (proj.IsDefaultFire())
-                {
-                    info += fireIcon;
-                }
-                if (proj.IsDefaultIceAqua())
-                {
-                    info += aquaIcon;
-                }
-                if (proj.IsDefaultElec())
-                {
-                    info += elecIcon;
-                }
-                if (proj.IsDefaultWood())
-                {
-                    info += woodIcon;
-                }
-            }
-        }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            string uiStyle = MMZeroElements.Client.elementUIDisplayStyle;
+            string uiStyle = BattleNetworkElements.Client.elementUIDisplayStyle;
             if (uiStyle == "Never")
             {
                 return;
             }
 
-            float xOffset = 400 - MMZeroElements.Client.uiOffsetX;
-            float yOffset = 270 + MMZeroElements.Client.uiOffsetY;
+            float xOffset = 400 - BattleNetworkElements.Client.uiOffsetX;
+            float yOffset = 270 + BattleNetworkElements.Client.uiOffsetY;
             SetRectangle(panel, Main.screenWidth - xOffset * Main.UIScale,
                 Main.screenHeight - yOffset * Main.UIScale,
                 panelWidth, panelHeight);
@@ -239,7 +204,7 @@ namespace MMZeroElements.ElementUI.ElementInfo
             }
             Player player = Main.LocalPlayer;
 
-            PlayerElements elementPlayer = player.GetModPlayer<PlayerElements>();
+            BNPlayer elementPlayer = player.GetModPlayer<BNPlayer>();
             text.SetText(SetInfo(elementPlayer.targetedNPC, elementPlayer.latestItem, elementPlayer.latestProj));
         }
     }
@@ -252,7 +217,7 @@ namespace MMZeroElements.ElementUI.ElementInfo
         // These two methods will set the state of our custom UI, causing it to show or hide
         public void ShowMyUI()
         {
-            if (MMZeroElements.Client.elementUIDisplayStyle == "Never")
+            if (BattleNetworkElements.Client.elementUIDisplayStyle == "Never")
             {
                 return;
             }
@@ -261,11 +226,11 @@ namespace MMZeroElements.ElementUI.ElementInfo
 
         public void HideMyUI()
         {
-            if (MMZeroElements.Client.elementUIDisplayStyle == "Always")
+            if (BattleNetworkElements.Client.elementUIDisplayStyle == "Always")
             {
                 return;
             }
-            if (MMZeroElements.Client.elementUIDisplayStyle != "Inventory open only")
+            if (BattleNetworkElements.Client.elementUIDisplayStyle != "Inventory open only")
             {
                 SoundEngine.PlaySound(SoundID.MenuClose);
             }
@@ -278,7 +243,7 @@ namespace MMZeroElements.ElementUI.ElementInfo
             {
                 ElementInfoState = new();
                 _elementInfoUI = new();
-                //if (MMZeroElements.Client.elementUIDisplayStyle == "Always")
+                //if (BattleNetworkElements.Client.elementUIDisplayStyle == "Always")
                 //{
                 //    _elementInfoUI?.SetState(ElementInfoState);
                 //}
@@ -294,7 +259,7 @@ namespace MMZeroElements.ElementUI.ElementInfo
 
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
         {
-            if (MMZeroElements.Client.elementUIDisplayStyle == "Always" && _elementInfoUI.CurrentState == null)
+            if (BattleNetworkElements.Client.elementUIDisplayStyle == "Always" && _elementInfoUI.CurrentState == null)
             {
                 _elementInfoUI?.SetState(ElementInfoState);
             }
@@ -302,7 +267,7 @@ namespace MMZeroElements.ElementUI.ElementInfo
             if (mouseTextIndex != -1)
             {
                 layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
-                    "MMZeroElements: Elements Info",
+                    "BattleNetworkElements: Elements Info",
                     delegate
                     {
                         _elementInfoUI.Draw(Main.spriteBatch, new GameTime());

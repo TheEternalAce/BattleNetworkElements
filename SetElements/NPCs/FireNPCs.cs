@@ -1,11 +1,11 @@
-﻿using MMZeroElements.Elements;
-using MMZeroElements.Utilities;
+﻿using BattleNetworkElements.Elements;
+using BattleNetworkElements.Utilities;
 using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.SetElements.NPCs
+namespace BattleNetworkElements.SetElements.NPCs
 {
     internal class FireNPCs : GlobalNPC
     {
@@ -83,12 +83,12 @@ namespace MMZeroElements.SetElements.NPCs
 
         public override void Load()
         {
-            NPCElements.Fire.AddRange(npcs);
+            BNGlobalNPC.Fire.AddRange(npcs);
         }
 
         public override void Unload()
         {
-            NPCElements.Fire.Clear();
+            BNGlobalNPC.Fire.Clear();
         }
 
         public override void SetDefaults(NPC npc)

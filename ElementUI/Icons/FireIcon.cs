@@ -1,14 +1,14 @@
-﻿using MMZeroElements.Utilities;
+﻿using BattleNetworkElements.Utilities;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.ElementUI.Icons
+namespace BattleNetworkElements.ElementUI.Icons
 {
     public class FireIcon : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Item.AddFireDefault();
+            Item.AddFire();
             Item.ResearchUnlockCount = 0;
         }
 

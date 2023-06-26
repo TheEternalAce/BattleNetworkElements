@@ -1,18 +1,19 @@
-﻿using MMZeroElements.Utilities;
+﻿using BattleNetworkElements.Utilities;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace MMZeroElements.Elements
+namespace BattleNetworkElements.Elements
 {
-    public class NPCElements : GlobalNPC
+    public class BNGlobalNPC : GlobalNPC
     {
         internal static List<int> Fire = new();
-        internal static List<int> IceAqua = new();
+        internal static List<int> Aqua = new();
         internal static List<int> Electric = new();
         internal static List<int> Wood = new();
         /// <summary>
-        /// Elemental multipliers for a given NPC in the following order: Fire, Ice, Electric, Metal
+        /// Elemental multipliers for a given NPC in the following order: Fire, Aqua, Electric, Metal
         /// </summary>
         public float[] elementMultipliers = { 1.0f, 1.0f, 1.0f, 1.0f };
 
@@ -31,6 +32,14 @@ namespace MMZeroElements.Elements
         public override void ModifyHitNPC(NPC npc, NPC target, ref NPC.HitModifiers modifiers)
         {
             modifiers.FinalDamage *= ElementHelper.MultiplyDamage(npc, target);
+        }
+
+        public override void ModifyShop(NPCShop shop)
+        {
+            if (shop.NpcType == NPCID.Mechanic)
+            {
+                shop.Add<ElementReader>();
+            }
         }
     }
 }

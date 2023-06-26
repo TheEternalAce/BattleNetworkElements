@@ -1,7 +1,7 @@
-﻿using MMZeroElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using Terraria;
 
-namespace MMZeroElements.Utilities
+namespace BattleNetworkElements.Utilities
 {
     public static class ElementNPCHelper
     {
@@ -11,7 +11,7 @@ namespace MMZeroElements.Utilities
         }
         public static void AddFireNPC(this int npcType)
         {
-            NPCElements.Fire.Add(npcType);
+            BNGlobalNPC.Fire.Add(npcType);
         }
         public static bool IsFire(this NPC npc)
         {
@@ -19,24 +19,24 @@ namespace MMZeroElements.Utilities
         }
         public static bool NPCIsFire(this int npcType)
         {
-            return NPCElements.Fire.Contains(npcType);
+            return BNGlobalNPC.Fire.Contains(npcType);
         }
 
-        public static void AddIce(this NPC npc)
+        public static void AddAqua(this NPC npc)
         {
-            npc.type.AddIceNPC();
+            npc.type.AddAquaNPC();
         }
-        public static void AddIceNPC(this int npcType)
+        public static void AddAquaNPC(this int npcType)
         {
-            NPCElements.IceAqua.Add(npcType);
+            BNGlobalNPC.Aqua.Add(npcType);
         }
-        public static bool IsIce(this NPC npc)
+        public static bool IsAqua(this NPC npc)
         {
-            return npc.type.NPCIsIce();
+            return npc.type.NPCIsAqua();
         }
-        public static bool NPCIsIce(this int npcType)
+        public static bool NPCIsAqua(this int npcType)
         {
-            return NPCElements.IceAqua.Contains(npcType);
+            return BNGlobalNPC.Aqua.Contains(npcType);
         }
 
         public static void AddElec(this NPC npc)
@@ -45,7 +45,7 @@ namespace MMZeroElements.Utilities
         }
         public static void AddElecNPC(this int npcType)
         {
-            NPCElements.Electric.Add(npcType);
+            BNGlobalNPC.Electric.Add(npcType);
         }
         public static bool IsElec(this NPC npc)
         {
@@ -53,7 +53,7 @@ namespace MMZeroElements.Utilities
         }
         public static bool NPCIsElec(this int npcType)
         {
-            return NPCElements.Electric.Contains(npcType);
+            return BNGlobalNPC.Electric.Contains(npcType);
         }
 
         public static void AddWood(this NPC npc)
@@ -62,7 +62,7 @@ namespace MMZeroElements.Utilities
         }
         public static void AddWoodNPC(this int npcType)
         {
-            NPCElements.Wood.Add(npcType);
+            BNGlobalNPC.Wood.Add(npcType);
         }
         public static bool IsWood(this NPC npc)
         {
@@ -70,74 +70,59 @@ namespace MMZeroElements.Utilities
         }
         public static bool NPCIsWood(this int npcType)
         {
-            return NPCElements.Wood.Contains(npcType);
+            return BNGlobalNPC.Wood.Contains(npcType);
         }
 
         /// <summary>
         /// Sets NPC multipliers based on given Element
-        /// <para>0 = Fire, 1 = Ice/Aqua, 2 = Electric, 3 = Wood</para>
+        /// <para>0 = Fire, 1 = Aqua, 2 = Electric, 3 = Wood</para>
         /// <para>This method should be called in the SetDefaults() override</para>
         /// </summary>
         public static void SetElementMultipliersByElement(this NPC npc, int element)
         {
-            bool legacy = MMZeroElements.Server.legacySystem;
+            float[] multipliers = new[] { 1f, 1f, 1f, 1f };
             switch (element)
             {
                 case Element.Fire:
-                    npc.SetElementMultiplier(Element.Fire, 0.8f);
-                    npc.SetElementMultiplier(Element.IceAqua, 0.5f);
-                    npc.SetElementMultiplier(Element.Elec, 2.0f);
-                    if (legacy)
-                    {
-                        npc.SetElementMultiplier(0.8f, 0.5f, 2.0f);
-                    }
-                    else
-                    {
-                        npc.SetElementMultiplier(0.8f, 2.0f, 1.0f, 0.5f);
-                    }
+                    multipliers = new[] { 0.8f, 2.0f, 1.0f, 0.5f };
                     break;
-                case Element.IceAqua:
-                    if (legacy)
-                    {
-                        npc.SetElementMultiplier(2.0f, 0.8f, 0.5f);
-                    }
-                    else
-                    {
-                        npc.SetElementMultiplier(0.5f, 0.8f, 2.0f, 1.0f);
-                    }
+                case Element.Aqua:
+                    multipliers = new[] { 0.5f, 0.8f, 2.0f, 1.0f };
                     break;
                 case Element.Elec:
-                    if (legacy)
-                    {
-                        npc.SetElementMultiplier(0.5f, 2.0f, 0.8f);
-                    }
-                    else
-                    {
-                        npc.SetElementMultiplier(1.0f, 0.5f, 0.8f, 2.0f);
-                    }
+                    multipliers = new[] { 1.0f, 0.5f, 0.8f, 2.0f };
                     break;
                 case Element.Wood:
-                    npc.SetElementMultiplier(2.0f, 1.0f, 0.5f, 0.8f);
+                    multipliers = new[] { 2.0f, 1.0f, 0.5f, 0.8f };
                     break;
             }
+            npc.ElementMultipliers() = multipliers;
         }
 
-        public static void SetElementMultiplier(this NPC npc, int element, float multiplier)
+        public static ref float[] ElementMultipliers(this NPC npc)
         {
-            npc.GetGlobalNPC<NPCElements>().elementMultipliers[element] = multiplier;
+            return ref npc.Elements().elementMultipliers;
+        }
+        public static ref float FireMultiplier(this NPC npc)
+        {
+            return ref npc.Elements().elementMultipliers[Element.Fire];
+        }
+        public static ref float AquaMultiplier(this NPC npc)
+        {
+            return ref npc.Elements().elementMultipliers[Element.Aqua];
+        }
+        public static ref float ElecMultiplier(this NPC npc)
+        {
+            return ref npc.Elements().elementMultipliers[Element.Elec];
+        }
+        public static ref float WoodMultiplier(this NPC npc)
+        {
+            return ref npc.Elements().elementMultipliers[Element.Wood];
         }
 
-        public static void SetElementMultiplier(this NPC npc, params float[] multipliers)
+        public static BNGlobalNPC Elements(this NPC npc)
         {
-            for (int i = 0; i < multipliers.Length; i++)
-            {
-                npc.SetElementMultiplier(i, multipliers[i]);
-            }
-        }
-
-        public static NPCElements Elements(this NPC npc)
-        {
-            return npc.GetGlobalNPC<NPCElements>();
+            return npc.GetGlobalNPC<BNGlobalNPC>();
         }
     }
 }

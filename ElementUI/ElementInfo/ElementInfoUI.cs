@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using BattleNetworkElements.Elements;
+﻿using BattleNetworkElements.Elements;
 using BattleNetworkElements.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System.Collections.Generic;
 using Terraria;
@@ -66,18 +66,23 @@ namespace BattleNetworkElements.ElementUI.ElementInfo
         string SetInfo()
         {
             string info = "Null NPC\n" +
-                "--Elements--\n" +
                 fireIcon + " - 0.0x " +
                 aquaIcon + " - 0.0x\n" +
                 elecIcon + " - 0.0x " +
                 woodIcon + " - 0.0x\n" +
-                "----------";
+                "------------------\n" +
+                "Null Item\n" +
+                "Null Projectile";
             return info;
         }
 
-        string SetInfo(NPC npc, Item item, Projectile proj)
+        string SetInfo(BNPlayer bnPlayer)
         {
             string info;
+            var item = bnPlayer.item;
+            var npc = bnPlayer.targetedNPC;
+            var projectile = bnPlayer.projectile;
+
             if (npc == null)
             {
                 info = SetInfo();
@@ -102,74 +107,50 @@ namespace BattleNetworkElements.ElementUI.ElementInfo
                         (npc.IsWood() ? elementDamageIcon : "") + "\n" +
                         "------------------\n";
                 }
-                if (item != null)
+                if (item.name != "" && item.name != null)
                 {
-                    if (item.type != ItemID.None)
-                    {
-                        info += item.Name + "\nElements: ";
-                        ItemElementInfo(ref info, item);
-                    }
-                }
-                else if (proj != null)
-                {
-                    if (proj.type != ProjectileID.None)
-                    {
-                        info += proj.Name + "\nElements: ";
-                        ProjectileElementInfo(ref info, proj);
-                    }
+                    info += item + " " + ElementInfo(item);
                 }
                 else
                 {
-                    info += "Null Source";
+                    info += "Null Item";
+                }
+                info += "\n";
+                if (projectile.name != "" && projectile.name != null)
+                {
+                    info += projectile + " " + ElementInfo(projectile);
+                }
+                else
+                {
+                    info += "Null Projectile";
                 }
             }
             return info;
         }
 
-        void ItemElementInfo(ref string info, Item item)
+        string ElementInfo(BNPlayer.ElementInfo info)
         {
-            if (item.IsFire() || item.IsAqua() || item.IsElec() || item.IsWood())
+            string str = "";
+            if (info.elements != null)
             {
-                if (item.IsFire())
+                if (info.elements[0])
                 {
-                    info += fireIcon;
+                    str += fireIcon;
                 }
-                if (item.IsAqua())
+                if (info.elements[1])
                 {
-                    info += aquaIcon;
+                    str += aquaIcon;
                 }
-                if (item.IsElec())
+                if (info.elements[2])
                 {
-                    info += elecIcon;
+                    str += elecIcon;
                 }
-                if (item.IsWood())
+                if (info.elements[3])
                 {
-                    info += woodIcon;
+                    str += woodIcon;
                 }
             }
-        }
-
-        void ProjectileElementInfo(ref string info, Projectile proj)
-        {
-            if (proj.IsFire() || proj.IsAqua() || proj.IsElec() || proj.IsWood())
-            {
-                if (proj.IsFire())
-                {
-                    info += fireIcon;
-                }
-                if (proj.IsAqua())
-                {
-                    info += aquaIcon;
-                }
-                if (proj.IsElec())
-                {
-                    info += elecIcon;
-                }
-                if (proj.IsWood())
-                {
-                    info += woodIcon;
-                }
-            }
+            return str;
         }
 
         public override void Update(GameTime gameTime)
@@ -183,6 +164,11 @@ namespace BattleNetworkElements.ElementUI.ElementInfo
 
             float xOffset = 400 - BattleNetworkElements.Client.uiOffsetX;
             float yOffset = 270 + BattleNetworkElements.Client.uiOffsetY;
+            if (Main.playerInventory)
+            {
+                xOffset += 300;
+                yOffset = Main.screenHeight - 100;
+            }
             SetRectangle(panel, Main.screenWidth - xOffset * Main.UIScale,
                 Main.screenHeight - yOffset * Main.UIScale,
                 panelWidth, panelHeight);
@@ -205,7 +191,7 @@ namespace BattleNetworkElements.ElementUI.ElementInfo
             Player player = Main.LocalPlayer;
 
             BNPlayer elementPlayer = player.GetModPlayer<BNPlayer>();
-            text.SetText(SetInfo(elementPlayer.targetedNPC, elementPlayer.latestItem, elementPlayer.latestProj));
+            text.SetText(SetInfo(elementPlayer));
         }
     }
 

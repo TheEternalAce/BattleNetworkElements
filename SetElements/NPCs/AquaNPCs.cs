@@ -49,10 +49,6 @@ namespace BattleNetworkElements.SetElements.NPCs
             NPCID.BrainofCthulhu,
             NPCID.Creeper,
             NPCID.Deerclops,
-            NPCID.QueenSlimeBoss,
-            NPCID.QueenSlimeMinionBlue,
-            NPCID.QueenSlimeMinionPink,
-            NPCID.QueenSlimeMinionPurple,
             NPCID.PrimeVice,
             NPCID.DukeFishron,
             NPCID.DetonatingBubble,
@@ -74,7 +70,7 @@ namespace BattleNetworkElements.SetElements.NPCs
         {
             if (npcs.Contains(npc.type))
             {
-                npc.SetElementMultipliersByElement(Element.Aqua);
+                npc.ElementMultipliers() = Element.AquaMultipliers;
             }
         }
     }

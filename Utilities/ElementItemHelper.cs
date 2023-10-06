@@ -97,6 +97,16 @@ namespace BattleNetworkElements.Utilities
             return BNGlobalItem.Wood.Contains(type);
         }
 
+        public static bool[] ElementBoolArray(this Item item)
+        {
+            bool[] elements = new bool[4];
+            elements[0] = item.IsFire();
+            elements[1] = item.IsAqua();
+            elements[2] = item.IsElec();
+            elements[3] = item.IsWood();
+            return elements;
+        }
+
         internal static readonly string[] VanillaTooltipNames = new string[]
         {
                 "ItemName",

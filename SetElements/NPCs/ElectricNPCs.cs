@@ -54,7 +54,6 @@ namespace BattleNetworkElements.SetElements.NPCs
             NPCID.EyeofCthulhu,
             NPCID.SkeletronHead,
             NPCID.SkeletronHand,
-            NPCID.PrimeLaser,
             NPCID.HallowBoss,
             NPCID.LunarTowerVortex,
         };
@@ -73,7 +72,7 @@ namespace BattleNetworkElements.SetElements.NPCs
         {
             if (npcs.Contains(npc.type))
             {
-                npc.SetElementMultipliersByElement(Element.Elec);
+                npc.ElementMultipliers() = Element.ElecMultipliers;
             }
         }
     }

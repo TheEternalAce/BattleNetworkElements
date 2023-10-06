@@ -1,12 +1,11 @@
-﻿using BattleNetworkElements.Elements;
+﻿using System.Collections.Generic;
 using Terraria.ID;
-using Terraria.ModLoader;
 
-namespace BattleNetworkElements.SetElements.Weapons
+namespace BattleNetworkElements.Elements
 {
-    internal class ElectricWeapons : GlobalItem
+    public partial class BNGlobalItem
     {
-        internal static int[] items =
+        internal static List<int> Electric = new()
         {
             // Pre-boss
             ItemID.PalmWoodSword,
@@ -26,7 +25,6 @@ namespace BattleNetworkElements.SetElements.Weapons
             ItemID.DD2LightningAuraT1Popper,
 
             // Hardmode
-            ItemID.LaserRifle,
             ItemID.SkyFracture,
             ItemID.MagicalHarp,
             ItemID.DaedalusStormbow,
@@ -45,7 +43,6 @@ namespace BattleNetworkElements.SetElements.Weapons
 
             // Post Golem
             ItemID.InfluxWaver,
-            ItemID.LaserMachinegun,
             ItemID.ChargedBlasterCannon,
             ItemID.SparkleGuitar,
             ItemID.Phantasm,
@@ -74,15 +71,5 @@ namespace BattleNetworkElements.SetElements.Weapons
             ItemID.EmpressButterfly,
             ItemID.CelestialSigil,
         };
-
-        public override void Load()
-        {
-            BNGlobalItem.Electric.AddRange(items);
-        }
-
-        public override void Unload()
-        {
-            BNGlobalItem.Electric.Clear();
-        }
     }
 }

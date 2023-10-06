@@ -37,9 +37,6 @@ namespace BattleNetworkElements.SetElements.Projectiles
             // Magic
             ProjectileID.ThunderStaffShot,
             ProjectileID.WeatherPainShot,
-            ProjectileID.ZapinatorLaser,
-            ProjectileID.GreenLaser,
-            ProjectileID.PurpleLaser,
             ProjectileID.SkyFracture,
             ProjectileID.EighthNote,
             ProjectileID.QuarterNote,
@@ -48,8 +45,6 @@ namespace BattleNetworkElements.SetElements.Projectiles
             ProjectileID.DD2ApprenticeStorm,
             ProjectileID.MagnetSphereBall,
             ProjectileID.MagnetSphereBolt,
-            ProjectileID.LaserMachinegun,
-            ProjectileID.LaserMachinegunLaser,
             ProjectileID.ChargedBlasterCannon,
             ProjectileID.ChargedBlasterOrb,
             ProjectileID.ChargedBlasterLaser,

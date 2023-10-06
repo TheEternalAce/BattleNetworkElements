@@ -66,7 +66,7 @@ namespace BattleNetworkElements.SetElements.NPCs
         {
             if (poison.Contains(npc.type))
             {
-                npc.SetElementMultipliersByElement(Element.Wood);
+                npc.ElementMultipliers() = Element.WoodMultipliers;
             }
         }
     }

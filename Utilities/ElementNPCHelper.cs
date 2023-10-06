@@ -73,32 +73,6 @@ namespace BattleNetworkElements.Utilities
             return BNGlobalNPC.Wood.Contains(npcType);
         }
 
-        /// <summary>
-        /// Sets NPC multipliers based on given Element
-        /// <para>0 = Fire, 1 = Aqua, 2 = Electric, 3 = Wood</para>
-        /// <para>This method should be called in the SetDefaults() override</para>
-        /// </summary>
-        public static void SetElementMultipliersByElement(this NPC npc, int element)
-        {
-            float[] multipliers = new[] { 1f, 1f, 1f, 1f };
-            switch (element)
-            {
-                case Element.Fire:
-                    multipliers = new[] { 0.8f, 2.0f, 1.0f, 0.5f };
-                    break;
-                case Element.Aqua:
-                    multipliers = new[] { 0.5f, 0.8f, 2.0f, 1.0f };
-                    break;
-                case Element.Elec:
-                    multipliers = new[] { 1.0f, 0.5f, 0.8f, 2.0f };
-                    break;
-                case Element.Wood:
-                    multipliers = new[] { 2.0f, 1.0f, 0.5f, 0.8f };
-                    break;
-            }
-            npc.ElementMultipliers() = multipliers;
-        }
-
         public static ref float[] ElementMultipliers(this NPC npc)
         {
             return ref npc.Elements().elementMultipliers;

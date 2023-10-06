@@ -8,13 +8,8 @@ using Terraria.ModLoader;
 
 namespace BattleNetworkElements.Elements
 {
-    public class BNGlobalItem : GlobalItem
+    public partial class BNGlobalItem : GlobalItem
     {
-        internal static List<int> Fire = new();
-        internal static List<int> Aqua = new();
-        internal static List<int> Electric = new();
-        internal static List<int> Wood = new();
-
         public bool isFire = false;
         public bool isAqua = false;
         public bool isElec = false;
@@ -37,6 +32,48 @@ namespace BattleNetworkElements.Elements
                 isElec = true;
             }
             if (entity.IsDefaultWood())
+            {
+                isWood = true;
+            }
+        }
+
+        public override void Unload()
+        {
+            Fire.Clear();
+            Aqua.Clear();
+            Electric.Clear();
+            Wood.Clear();
+        }
+
+        public override void UpdateInventory(Item item, Player player)
+        {
+            ResetElements(item);
+        }
+
+        public override void Update(Item item, ref float gravity, ref float maxFallSpeed)
+        {
+            ResetElements(item);
+        }
+
+        public void ResetElements(Item item)
+        {
+            isFire = false;
+            isAqua = false;
+            isElec = false;
+            isWood = false;
+            if (item.IsDefaultFire())
+            {
+                isFire = true;
+            }
+            if (item.IsDefaultAqua())
+            {
+                isAqua = true;
+            }
+            if (item.IsDefaultElec())
+            {
+                isElec = true;
+            }
+            if (item.IsDefaultWood())
             {
                 isWood = true;
             }
@@ -79,10 +116,23 @@ namespace BattleNetworkElements.Elements
             }
             if (item.IsWood())
             {
-                tooltips.Insert(tooltips.GetIndex("OneDropLogo"), new(Mod, "WoodElectric", Language.GetTextValue(Paths.WoodElement))
+                tooltips.Insert(tooltips.GetIndex("OneDropLogo"), new(Mod, "ElementWood", Language.GetTextValue(Paths.WoodElement))
                 {
                     OverrideColor = Color.Green
                 });
+            }
+            if (BattleNetworkElements.Client.nullElementIcon)
+            {
+                if (item.damage > 0)
+                {
+                    if (!item.IsFire() && !item.IsAqua() && !item.IsElec() && !item.IsWood())
+                    {
+                        tooltips.Insert(tooltips.GetIndex("OneDropLogo"), new(Mod, "ElementNull", Language.GetTextValue(Paths.NullElement))
+                        {
+                            OverrideColor = Color.Gray
+                        });
+                    }
+                }
             }
         }
     }

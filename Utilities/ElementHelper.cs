@@ -36,12 +36,7 @@ namespace BattleNetworkElements.Utilities
 
             if (multiplier != 1f)
             {
-                int ct = CombatText.NewText(victimRect, Color.Blue, multiplier + "x");
-                if (ct > 99)
-                {
-                    ct = 0;
-                }
-                Main.combatText[ct].position.Y -= 45;
+                CombatText.NewText(victimRect, Color.Blue, multiplier + "x", false, true);
             }
 
             return multiplier;

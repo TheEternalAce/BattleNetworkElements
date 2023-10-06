@@ -1,12 +1,11 @@
-﻿using BattleNetworkElements.Elements;
+﻿using System.Collections.Generic;
 using Terraria.ID;
-using Terraria.ModLoader;
 
-namespace BattleNetworkElements.SetElements.Weapons
+namespace BattleNetworkElements.Elements
 {
-    internal class AquaWeapons : GlobalItem
+    public partial class BNGlobalItem
     {
-        internal static int[] items =
+        internal static List<int> Aqua = new()
         {
             // Accessory/Armor
             ItemID.StardustHelmet,
@@ -112,15 +111,5 @@ namespace BattleNetworkElements.SetElements.Weapons
             ItemID.TruffleWorm,
             ItemID.CelestialSigil,
         };
-
-        public override void Load()
-        {
-            BNGlobalItem.Aqua.AddRange(items);
-        }
-
-        public override void Unload()
-        {
-            BNGlobalItem.Aqua.Clear();
-        }
     }
 }

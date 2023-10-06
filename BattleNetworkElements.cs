@@ -4,6 +4,7 @@ using BattleNetworkElements.Utilities;
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace BattleNetworkElements
@@ -14,6 +15,7 @@ namespace BattleNetworkElements
         public const string AquaElement = "Mods.BattleNetworkElements.Element.Aqua";
         public const string ElectricElement = "Mods.BattleNetworkElements.Element.Electric";
         public const string WoodElement = "Mods.BattleNetworkElements.Element.Wood";
+        public const string NullElement = "Mods.BattleNetworkElements.Element.Null";
     }
 
     public static class Element
@@ -23,15 +25,28 @@ namespace BattleNetworkElements
         public const int Aqua = 1;
         public const int Elec = 2;
         public const int Wood = 3;
+
+        public static readonly float[] FireMultipliers = { 0.8f, 2.0f, 1.0f, 0.5f };
+        public static readonly float[] AquaMultipliers = { 0.5f, 0.8f, 2.0f, 1.0f };
+        public static readonly float[] ElecMultipliers = { 1.0f, 0.5f, 0.8f, 2.0f };
+        public static readonly float[] WoodMultipliers = { 2.0f, 1.0f, 0.5f, 0.8f };
     }
 
     public class BattleNetworkElements : Mod
     {
-        public static ElementsClient Client;
+        public static ElementsClient Client { get; private set; }
 
         public override void Load()
         {
             Client = ModContent.GetInstance<ElementsClient>();
+        }
+
+        public override void PostSetupContent()
+        {
+            if (Client.flymealWoodElement)
+            {
+                BNGlobalItem.Wood.Add(ItemID.Flymeal);
+            }
         }
 
         const string COMMAND_ASSIGN_ELEMENT = "assignElement";
@@ -81,7 +96,7 @@ namespace BattleNetworkElements
                         }
                         else if (args[1] is NPC elementNPC)
                         {
-                            if (args[3] is int element)
+                            if (args[2] is int element)
                             {
                                 switch (element)
                                 {
@@ -103,7 +118,7 @@ namespace BattleNetworkElements
                             {
                                 elementNPC.GetGlobalNPC<BNGlobalNPC>().elementMultipliers = elements;
                             }
-                            else throw new ArgumentException("args[2] must be a double array of length 4.");
+                            else throw new ArgumentException("args[2] must be a float array of length 4.");
                         }
                         else if (args[1] is Projectile elementProjectile)
                         {
@@ -125,7 +140,7 @@ namespace BattleNetworkElements
                                         break;
                                 }
                             }
-                            else throw new ArgumentException("args[2] must be an int of either 0, 1, or 2.");
+                            else throw new ArgumentException("args[2] must be an int of either 0, 1, 2, or 3.");
                         }
                         break;
                     case COMMAND_GET_ELEMENT:

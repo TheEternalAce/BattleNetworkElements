@@ -23,6 +23,10 @@ namespace BattleNetworkElements.SetElements.NPCs
                 case NPCID.MotherSlime:
                 case NPCID.BabySlime:
                 case NPCID.KingSlime:
+                case NPCID.QueenSlimeBoss:
+                case NPCID.QueenSlimeMinionBlue:
+                case NPCID.QueenSlimeMinionPink:
+                case NPCID.QueenSlimeMinionPurple:
                     BNGlobalNPC.Aqua.Add(type);
                     npc.ElementMultipliers() = new[] { 2.0f, 0.8f, 0.5f, 1.0f };
                     break;

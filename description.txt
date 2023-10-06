@@ -1,4 +1,5 @@
 Elements of Terraria, initially introduced by Shards of Atheria, implements a new immersive elemental mechanic to Terraria!
+The element mechanic comes from the MegaMan Battle Network series.
 There are four elements that any NPC, weapon or projectile can have: Fire, Aqua, Electric, and Wood. 
 The elemental system is based on a multiplier system.
 When an NPC or Player takes damage, the damage is multiplied by the element multiplier for the corresponding element.

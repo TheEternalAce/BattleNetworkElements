@@ -18,6 +18,11 @@ namespace BattleNetworkElements.Config
         public bool assignPlayerElement;
         [DefaultValue(true)]
         public bool enablePlayerElement;
+        [DefaultValue(true)]
+        public bool nullElementIcon;
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool flymealWoodElement;
 
         [Header("OffsetHeader")]
         [Range(-4000, 4000)]

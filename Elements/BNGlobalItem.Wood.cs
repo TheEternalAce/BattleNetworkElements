@@ -1,12 +1,11 @@
-﻿using BattleNetworkElements.Elements;
+﻿using System.Collections.Generic;
 using Terraria.ID;
-using Terraria.ModLoader;
 
-namespace BattleNetworkElements.SetElements.Weapons
+namespace BattleNetworkElements.Elements
 {
-    internal class WoodWeapons : GlobalItem
+    public partial class BNGlobalItem
     {
-        internal static int[] poison =
+        internal static List<int> Wood = new()
         {
             // Accessory/Armor
             ItemID.BeeCloak,
@@ -19,10 +18,24 @@ namespace BattleNetworkElements.SetElements.Weapons
 
             // Melee
             ItemID.BladeofGrass,
+            ItemID.ChlorophyteSaber,
+            ItemID.ChlorophyteClaymore,
+            ItemID.ChristmasTreeSword,
+            ItemID.Seedler,
+            ItemID.JungleYoyo,
+            ItemID.HiveFive,
+            ItemID.ChlorophytePartisan,
             ItemID.MushroomSpear,
             ItemID.ThornChakram,
+            ItemID.Bananarang,
+            ItemID.FlowerPow,
 
-            // Ranged/throwing
+            // Ranged
+            ItemID.WoodenBow,
+            ItemID.BorealWoodBow,
+            ItemID.PalmWoodBow,
+            ItemID.RichMahoganyBow,
+            //ItemID.RichMahoganyBow,
             ItemID.Beenade,
             ItemID.PoisonedKnife,
 
@@ -43,18 +56,8 @@ namespace BattleNetworkElements.SetElements.Weapons
             ItemID.VenomArrow,
             ItemID.StyngerBolt,
 
-            // Summons
+            // Boss summons
             ItemID.Abeemination,
         };
-
-        public override void Load()
-        {
-            BNGlobalItem.Wood.AddRange(poison);
-        }
-
-        public override void Unload()
-        {
-            BNGlobalItem.Wood.Clear();
-        }
     }
 }

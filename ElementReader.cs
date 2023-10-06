@@ -1,4 +1,5 @@
-﻿using BattleNetworkElements.Utilities;
+﻿
+using BattleNetworkElements.Utilities;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -15,8 +16,8 @@ namespace BattleNetworkElements
 
         public override void SetDefaults()
         {
-            Item.width = 32;
-            Item.height = 32;
+            Item.width = 34;
+            Item.height = 34;
             Item.rare = ItemRarityID.Blue;
             Item.value = 20000;
         }

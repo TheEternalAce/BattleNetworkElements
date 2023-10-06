@@ -128,6 +128,11 @@ namespace BattleNetworkElements.SetElements.Projectiles
             ProjectileID.NailFriendly,
 
             // Magic
+            ProjectileID.ZapinatorLaser,
+            ProjectileID.GreenLaser,
+            ProjectileID.PurpleLaser,
+            ProjectileID.LaserMachinegun,
+            ProjectileID.LaserMachinegunLaser,
             ProjectileID.DD2BetsyFireball,
             ProjectileID.BookOfSkullsSkull,
             ProjectileID.ClingerStaff,

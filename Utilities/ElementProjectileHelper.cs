@@ -93,5 +93,15 @@ namespace BattleNetworkElements.Utilities
         {
             return BNGlobalProjectile.Wood.Contains(type);
         }
+
+        public static bool[] ElementBoolArray(this Projectile projectile)
+        {
+            bool[] elements = new bool[4];
+            elements[0] = projectile.IsFire();
+            elements[1] = projectile.IsAqua();
+            elements[2] = projectile.IsElec();
+            elements[3] = projectile.IsWood();
+            return elements;
+        }
     }
 }

@@ -67,8 +67,11 @@ namespace BattleNetworkElements.SetElements.NPCs
             NPCID.QueenBee,
             NPCID.WallofFlesh,
             NPCID.WallofFleshEye,
-            NPCID.PrimeCannon,
+            NPCID.TheHungry,
+            NPCID.TheHungryII,
             NPCID.SkeletronPrime,
+            NPCID.PrimeCannon,
+            NPCID.PrimeLaser,
             NPCID.Spazmatism,
             NPCID.Retinazer,
             NPCID.Plantera,
@@ -95,7 +98,7 @@ namespace BattleNetworkElements.SetElements.NPCs
         {
             if (npcs.Contains(npc.type))
             {
-                npc.SetElementMultipliersByElement(Element.Fire);
+                npc.ElementMultipliers() = Element.FireMultipliers;
             }
         }
     }

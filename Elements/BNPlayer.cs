@@ -13,8 +13,8 @@ namespace BattleNetworkElements.Elements
         private float[] ElementMultipliersDefault = { 1.0f, 1.0f, 1.0f, 1.0f };
         bool vulnSet = false;
         public NPC targetedNPC = null;
-        public Item latestItem = null;
-        public Projectile latestProj = null;
+        public ElementInfo item;
+        public ElementInfo projectile;
 
         public override void SaveData(TagCompound tag)
         {
@@ -40,27 +40,29 @@ namespace BattleNetworkElements.Elements
             {
                 if (Main.rand.NextFloat() <= 0.66f)
                 {
-                    int element = Main.rand.Next(4);
-                    float[] multipliers = new float[4];
-                    switch (element)
-                    {
-                        case Element.Fire:
-                            multipliers = new[] { 0.8f, 2.0f, 1.0f, 0.5f };
-                            break;
-                        case Element.Aqua:
-                            multipliers = new[] { 0.5f, 0.8f, 2.0f, 1.0f };
-                            break;
-                        case Element.Elec:
-                            multipliers = new[] { 1.0f, 0.5f, 0.8f, 2.0f };
-                            break;
-                        case Element.Wood:
-                            multipliers = new[] { 2.0f, 1.0f, 0.5f, 0.8f };
-                            break;
-                    }
-                    ElementMultipliersDefault = multipliers;
+                    ElementMultipliersDefault = AssignElements();
                 }
                 vulnSet = true;
             }
+        }
+
+        public float[] AssignElements(int t = -1)
+        {
+            int element = t;
+            if (t == -1)
+            {
+                element = Main.rand.Next(4);
+            }
+            float[] multipliers = element switch
+            {
+                Element.Fire => new[] { 0.8f, 2.0f, 1.0f, 0.5f },
+                Element.Aqua => new[] { 0.5f, 0.8f, 2.0f, 1.0f },
+                Element.Elec => new[] { 1.0f, 0.5f, 0.8f, 2.0f },
+                Element.Wood => new[] { 2.0f, 1.0f, 0.5f, 0.8f },
+                _ => new[] { 1.0f, 1.0f, 1.0f, 1.0f },
+            };
+            ElementMultipliersDefault = multipliers;
+            return multipliers;
         }
 
         public override void ResetEffects()
@@ -88,14 +90,11 @@ namespace BattleNetworkElements.Elements
             }
         }
 
-        void UpdateInfo(NPC npc, Item item, Projectile projectile)
+        void UpdateInfo(NPC npc, ElementInfo item, ElementInfo proj)
         {
             targetedNPC = npc;
-            if (projectile?.owner == Player.whoAmI)
-            {
-                latestProj = projectile;
-            }
-            latestItem = item;
+            this.item = item;
+            projectile = proj;
             if (BattleNetworkElements.Client.elementUIDisplayStyle != "Inventory open only")
             {
                 ModContent.GetInstance<ElementInfoUI>().ShowMyUI();
@@ -104,26 +103,46 @@ namespace BattleNetworkElements.Elements
 
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            UpdateInfo(target, item, null);
+            ElementInfo eInfo = new()
+            {
+                name = item.Name,
+                elements = item.ElementBoolArray()
+            };
+            UpdateInfo(target, eInfo, projectile);
         }
-
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            UpdateInfo(target, null, proj);
+            ElementInfo eInfo = new()
+            {
+                name = proj.Name,
+                elements = proj.ElementBoolArray()
+            };
+            UpdateInfo(target, item, eInfo);
         }
-
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
-            UpdateInfo(npc, latestItem, latestProj);
-
+            UpdateInfo(npc, item, projectile);
             modifiers.FinalDamage *= ElementHelper.MultiplyDamage(npc, Player);
         }
-
         public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
         {
-            UpdateInfo(targetedNPC, latestItem, proj);
-
+            ElementInfo eInfo = new()
+            {
+                name = proj.Name,
+                elements = proj.ElementBoolArray()
+            };
+            UpdateInfo(targetedNPC, item, eInfo);
             modifiers.FinalDamage *= ElementHelper.MultiplyDamage(proj, Player);
+        }
+        public struct ElementInfo
+        {
+            public string name;
+            public bool[] elements;
+
+            public override string ToString()
+            {
+                return name;
+            }
         }
     }
 }

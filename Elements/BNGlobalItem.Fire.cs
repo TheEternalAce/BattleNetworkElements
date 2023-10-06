@@ -1,12 +1,11 @@
-﻿using BattleNetworkElements.Elements;
+﻿using System.Collections.Generic;
 using Terraria.ID;
-using Terraria.ModLoader;
 
-namespace BattleNetworkElements.SetElements.Weapons
+namespace BattleNetworkElements.Elements
 {
-    internal class FireWeapons : GlobalItem
+    public partial class BNGlobalItem
     {
-        internal static int[] items =
+        internal static List<int> Fire = new()
         {
             // Accessory/Armor
             ItemID.StarCloak,
@@ -66,6 +65,8 @@ namespace BattleNetworkElements.SetElements.Weapons
             ItemID.FlowerofFire,
             ItemID.HeatRay,
             ItemID.InfernoFork,
+            ItemID.LaserMachinegun,
+            ItemID.LaserRifle,
             ItemID.LastPrism,
             ItemID.LunarFlareBook,
             ItemID.MagicMissile,
@@ -136,15 +137,5 @@ namespace BattleNetworkElements.SetElements.Weapons
             ItemID.LihzahrdPowerCell,
             ItemID.CelestialSigil,
         };
-
-        public override void Load()
-        {
-            BNGlobalItem.Fire.AddRange(items);
-        }
-
-        public override void Unload()
-        {
-            BNGlobalItem.Fire.Clear();
-        }
     }
 }

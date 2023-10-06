@@ -5,6 +5,7 @@ Mods: {
 			Aqua: "[i:BattleNetworkElements/AquaIcon] Élément de Eau"
 			Electric: "[i:BattleNetworkElements/ElecIcon] Élément de Élec"
 			Wood: "[i:BattleNetworkElements/WoodIcon] Élément de Bois"
+			// Null: "[i:BattleNetworkElements/NullIcon] Null Element"
 		}
 
 		Items: {
@@ -37,6 +38,21 @@ Mods: {
 				// DisplayName: Wood Icon
 				// Tooltip: ""
 			}
+
+			NullIcon: {
+				// DisplayName: Null Icon
+				// Tooltip: ""
+			}
+
+			ElementReader: {
+				// DisplayName: Element Reader
+				// Tooltip: ""
+			}
+
+			ElementReassigner: {
+				// DisplayName: Element Reassigner
+				// Tooltip: ""
+			}
 		}
 
 		Configs: {
@@ -58,6 +74,16 @@ Mods: {
 
 				enablePlayerElement: {
 					// Label: Enable effects of randomly assigned element.
+					// Tooltip: ""
+				}
+
+				nullElementIcon: {
+					// Label: Enable the Null Element tooltip if an item has no elements.
+					// Tooltip: ""
+				}
+
+				flymealWoodElement: {
+					// Label: Enable the Flymeal to have the Wood Element.
 					// Tooltip: ""
 				}
 
